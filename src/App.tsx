@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import { Context } from './index';
 import AppRouter from './components/AppRouter';
 import { BrowserRouter } from 'react-router-dom';
+import GlobalStyle from './styles/global';
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -14,6 +15,7 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <AppRouter />
     </BrowserRouter>
   );

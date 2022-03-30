@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { Button } from './UI/Button';
+import { Button } from './Button';
 
-const LinkButton = (props: {
+interface Props {
   [x: string]: any;
   history: any;
   location: any;
@@ -11,7 +11,9 @@ const LinkButton = (props: {
   staticContext: any;
   to: any;
   onClick: any;
-}) => {
+}
+
+const LinkButton = (props: Props) => {
   const {
     history,
     location,
@@ -19,12 +21,11 @@ const LinkButton = (props: {
     staticContext,
     to,
     onClick,
-    // ⬆ filtering out props that `button` doesn’t know what to do with.
     ...rest
   } = props;
   return (
     <Button
-      {...rest} // `children` is just another prop!
+      {...rest}
       onClick={event => {
         onClick && onClick(event);
         history.push(to);

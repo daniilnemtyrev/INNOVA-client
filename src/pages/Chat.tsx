@@ -13,10 +13,11 @@ import {
 } from '../styles/chat';
 import { Message, Payload } from '../interfaces/IChat';
 import { Context } from '..';
-import { Button } from '../components/UI/Button';
-import { Input } from '../components/UI/Input';
+
 import { observer } from 'mobx-react-lite';
 import { ButtonNav } from '../components/UI/ButtonNav';
+import { Button } from '../components/UI/buttons/Button';
+import { Input } from '../components/UI/inputs/Input';
 
 const socket = io('ws://localhost:4000');
 

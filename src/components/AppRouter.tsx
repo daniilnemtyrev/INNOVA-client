@@ -29,7 +29,7 @@ const AppRouter: FC = () => {
           exact={route.exact}
         />
       ))}
-      <Redirect to="/login" />
+      <Redirect to="/home" />
     </Switch>
   );
 };
