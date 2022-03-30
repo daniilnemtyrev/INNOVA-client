@@ -17,7 +17,7 @@ const initialValues: RegistInput = {
 };
 
 export const RegistFormik = () => {
-  const { store } = useContext(Context);
+  const { authStore } = useContext(Context);
   return (
     <Formik
       initialValues={initialValues}
@@ -26,7 +26,7 @@ export const RegistFormik = () => {
       validateOnChange
       validationSchema={registValidSchema}
       onSubmit={values => {
-        store.registration(values.email, values.name, values.password);
+        authStore.registration(values.email, values.name, values.password);
       }}
       component={formikProps => <RegistForm {...formikProps} />}
     />

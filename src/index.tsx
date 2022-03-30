@@ -1,20 +1,20 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Store from './store/store';
+import AuthStore from './stores/auth-store';
 
-interface State {
-  store: Store;
+interface IAuthStore {
+  authStore: AuthStore;
 }
 
-const store = new Store();
+const authStore = new AuthStore();
 
-export const Context = createContext<State>({
-  store,
+export const Context = createContext<IAuthStore>({
+  authStore,
 });
 
 ReactDOM.render(
-  <Context.Provider value={{ store }}>
+  <Context.Provider value={{ authStore }}>
     <App />
   </Context.Provider>,
   document.getElementById('root'),

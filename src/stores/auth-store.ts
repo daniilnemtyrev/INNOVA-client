@@ -5,7 +5,7 @@ import axios from 'axios';
 import { AuthResponse } from '../models/response/authResponse';
 import { Message } from '../interfaces/IChat';
 
-export default class Store {
+export default class AuthStore {
   user = {} as IUser;
   IsAuth = false;
   IsSend = false;

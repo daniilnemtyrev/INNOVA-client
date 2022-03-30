@@ -5,9 +5,9 @@ import { Context } from '../index';
 import { publicRoutes, privateRoutes } from '../routes';
 
 const AppRouter: FC = () => {
-  const { store } = useContext(Context);
+  const { authStore } = useContext(Context);
 
-  return store.IsAuth ? (
+  return authStore.IsAuth ? (
     <Switch>
       {privateRoutes.map(route => (
         <Route

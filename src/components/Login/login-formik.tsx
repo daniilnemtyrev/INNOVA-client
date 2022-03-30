@@ -15,7 +15,7 @@ const initialValues: LoginInput = {
 };
 
 export const LoginFormik = () => {
-  const { store } = useContext(Context);
+  const { authStore } = useContext(Context);
   return (
     <Formik
       initialValues={initialValues}
@@ -24,7 +24,7 @@ export const LoginFormik = () => {
       validateOnChange
       validationSchema={loginValidSchema}
       onSubmit={values => {
-        store.login(values.email, values.password);
+        authStore.login(values.email, values.password);
       }}
       component={formikProps => <LoginForm {...formikProps} />}
     />

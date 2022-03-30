@@ -6,10 +6,10 @@ import { BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './styles/global';
 
 const App: React.FC = () => {
-  const { store } = useContext(Context);
+  const { authStore } = useContext(Context);
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      store.checkAut();
+      authStore.checkAut();
     }
   }, []);
 

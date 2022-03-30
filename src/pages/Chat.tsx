@@ -22,7 +22,7 @@ import { Input } from '../components/UI/inputs/Input';
 const socket = io('ws://localhost:4000');
 
 const Chat: React.FC = () => {
-  const { store } = useContext(Context);
+  const { authStore } = useContext(Context);
   const [title] = useState('ЧАЧАЧАТ');
   const [text, setText] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
@@ -35,7 +35,7 @@ const Chat: React.FC = () => {
 
   function receivedMessage(message: Payload) {
     const newMessage: Message = {
-      userId: store.user.id,
+      userId: authStore.user.id,
       name: message.name,
       text: message.text,
     };
@@ -49,7 +49,7 @@ const Chat: React.FC = () => {
   function sendMessage() {
     if (validateInput()) {
       const message: Payload = {
-        name: store.user.name,
+        name: authStore.user.name,
         text,
       };
       socket.emit('msgToServer', message);
@@ -62,10 +62,10 @@ const Chat: React.FC = () => {
       <Content>
         <h1>{title}</h1>
         <ButtonNav>
-          <h4>{store.user.name}</h4>
+          <h4>{authStore.user.name}</h4>
           <Button
             onClick={() => {
-              store.logout(messages);
+              authStore.logout(messages);
               //setMessages([]);
             }}
           >
@@ -75,7 +75,7 @@ const Chat: React.FC = () => {
         <Card>
           <ul>
             {messages.map(message => {
-              if (message.name === store.user.name) {
+              if (message.name === authStore.user.name) {
                 return (
                   <MyMessage key={message.text}>
                     <p>{message.text}</p>
