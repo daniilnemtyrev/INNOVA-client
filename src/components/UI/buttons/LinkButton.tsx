@@ -11,6 +11,7 @@ interface Props {
   staticContext: any;
   to: any;
   onClick: any;
+  disabled?: boolean;
 }
 
 const LinkButton = (props: Props) => {
@@ -21,15 +22,17 @@ const LinkButton = (props: Props) => {
     staticContext,
     to,
     onClick,
+    disabled,
     ...rest
   } = props;
   return (
     <Button
-      {...rest}
+      disabled={disabled}
       onClick={event => {
         onClick && onClick(event);
         history.push(to);
       }}
+      {...rest}
     />
   );
 };

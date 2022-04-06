@@ -96,7 +96,6 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
       />
 
       <LinkButton
-        to="/chat"
         type={'submit'}
         disabled={!isValid}
         onClick={() => {
@@ -108,3 +107,6 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
     </Content>
   );
 };
+function useStore(rootStore: any) {
+  throw new Error('Function not implemented.');
+}

@@ -2,8 +2,7 @@ import { FormikTouched } from 'formik';
 import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
-import { LoginInput } from '../../Login/login-formik';
-import { Input } from './Input';
+import { InputBase } from './input-base';
 
 interface Props {
   value?: string;
@@ -24,15 +23,20 @@ const Container = styled.div`
   margin-bottom: 16px;
 `;
 
+const Input = styled(InputBase)<{ error?: string; touched?: boolean }>`
+  border-color: ${props => props.error && props.touched && colors.red[0]};
+`;
+
 const LabelError = styled.div`
   background-color: ${colors.white[0]};
+  padding: 3px 3px;
   position: absolute;
   top: -8px;
   left: 20px;
 `;
 
 const StyledText = styled.p`
-  color: red;
+  color: ${colors.red[0]};
   font-size: 12px;
 `;
 
@@ -46,8 +50,6 @@ export const FormikInput = ({
   error,
   handleChange,
 }: Props) => {
-  console.log(touched);
-
   return (
     <Container>
       {error && touched ? (
@@ -56,6 +58,8 @@ export const FormikInput = ({
         </LabelError>
       ) : null}
       <Input
+        error={error}
+        touched={touched}
         value={value}
         onBlur={handleBlur}
         name={name}

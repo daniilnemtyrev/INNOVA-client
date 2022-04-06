@@ -1,11 +1,13 @@
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
 import { LogoInnova } from '../../icons/logo-innova';
 import { colors } from '../../styles/colors/colors';
+import { OptionsModal } from '../Home/options-modal';
 import { Button } from '../UI/buttons/Button';
+import { ButtonWithoutStyles } from '../UI/buttons/button-without-styles';
 import LinkButton from '../UI/buttons/LinkButton';
 
 const Container = styled.header`
@@ -26,22 +28,24 @@ const Container = styled.header`
 `;
 
 const SignContainer = styled.section`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 250px;
 `;
 
+const UserText = styled.p`
+  font-family: 'Source Sans Pro' sans-serif;
+  font-size: 25px;
+  color: ${colors.grey[2]};
+`;
+
 export const Header = observer(() => {
+  const [visibleOptions, setVisibleOptions] = useState(false);
   const { rootStore } = useStores();
   const userStore = rootStore.userStore;
   const authStore = rootStore.authStore;
-  console.log(toJS(userStore.user));
-  console.log(Boolean(userStore.user));
-
-  const logout = async () => {
-    await authStore.logout();
-  };
 
   return (
     <Container>
@@ -49,8 +53,9 @@ export const Header = observer(() => {
       <SignContainer>
         {userStore.user.name && authStore.IsAuth ? (
           <>
-            <p>{userStore.user.name}</p>
-            <Button onClick={logout}>Выйти</Button>
+            <ButtonWithoutStyles
+              onClick={() => setVisibleOptions(prev => !prev)}
+            >{`${userStore.user.name}  ${userStore.user.surname}`}</ButtonWithoutStyles>
           </>
         ) : (
           <>
@@ -58,6 +63,10 @@ export const Header = observer(() => {
             <LinkButton to="/registration">Регистрация</LinkButton>
           </>
         )}
+        <OptionsModal
+          visible={visibleOptions}
+          setVisibleOptions={setVisibleOptions}
+        />
       </SignContainer>
     </Container>
   );

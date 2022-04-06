@@ -28,7 +28,7 @@ const Container = styled.input`
   font-family: 'Roboto Slab', serif;
 `;
 
-export const Input = ({
+export const InputBase = ({
   value,
   placeholder,
   name,

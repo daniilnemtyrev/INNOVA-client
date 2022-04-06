@@ -10,26 +10,20 @@ interface Props {
 }
 
 const Container = styled.button<{ disabled?: boolean }>`
-  min-width: 100px;
-  height: 35px;
-  background-color: ${colors.white[0]};
-  border-radius: 3px;
-  border: 1px solid ${colors.blue[1]};
+  border: none;
   box-shadow: none;
-  color: ${colors.grey[1]};
-  margin-bottom: 10px;
-  margin-top: 3px;
-  font-size: 13px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 400;
+  font-family: 'Source Sans Pro' sans-serif;
+  font-size: 20px;
+  background: transparent;
   cursor: pointer;
   &:hover {
-    background-color: ${props =>
-      props.disabled ? colors.white[0] : colors.blue[0]};
+    p {
+      color: ${colors.blue[2]};
+    }
   }
 `;
 
-export const Button = ({
+export const ButtonWithoutStyles = ({
   type,
   onClick,
   children,
@@ -38,7 +32,7 @@ export const Button = ({
 }: Props) => {
   return (
     <Container type={type} onClick={onClick} disabled={disabled} {...rest}>
-      {children}
+      <p>{children}</p>
     </Container>
   );
 };

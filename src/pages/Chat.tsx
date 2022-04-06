@@ -5,7 +5,7 @@ import { Message, Payload } from '../interfaces/IChat';
 import { observer } from 'mobx-react-lite';
 import { ButtonNav } from '../components/UI/ButtonNav';
 import { Button } from '../components/UI/buttons/Button';
-import { Input } from '../components/UI/inputs/Input';
+import { InputBase } from '../components/UI/inputs/input-base';
 import styled from 'styled-components';
 import { useStores } from '../hooks/useStore';
 
@@ -198,7 +198,7 @@ const Chat: React.FC = () => {
           </ul>
         </Card>
         <Send>
-          <Input
+          <InputBase
             value={text}
             onChange={e => setText(e.target.value)}
             placeholder="Enter message..."

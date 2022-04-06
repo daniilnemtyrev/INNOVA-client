@@ -3,13 +3,13 @@ import { IUser } from '../models/IUser';
 import AuthService from '../services/authService';
 import axios from 'axios';
 import { AuthResponse } from '../models/response/authResponse';
-import { Message } from '../interfaces/IChat';
 import { RegistInput } from '../components/Regist/regist-formik';
 
 export default class AuthStore {
   rootStore;
   IsAuth = false;
   IsSend = false;
+  errorMessage = '';
 
   constructor(rootStore: any) {
     makeAutoObservable(this, { rootStore: false });
@@ -24,16 +24,21 @@ export default class AuthStore {
     this.IsSend = bool;
   }
 
+  setErrorMessage(value: string) {
+    this.errorMessage = value;
+  }
+
   async login(email: string, password: string) {
     try {
       const response = await AuthService.login(email, password);
-      console.log(response);
+
       localStorage.setItem('token', response.data.acessToken);
       this.setAuth(true);
       this.setSend(true);
-      console.log(this.IsAuth);
+
       this.rootStore.userStore.setUser(response.data.user);
     } catch (err) {
+      this.setErrorMessage('Неверный логин или пароль');
       this.setSend(true);
       console.log(err);
     }
@@ -42,7 +47,6 @@ export default class AuthStore {
   async registration(data: RegistInput) {
     try {
       const response = await AuthService.registration(data);
-      console.log(response);
       localStorage.setItem('token', response.data.acessToken);
       this.setAuth(true);
       this.rootStore.userStore.setUser(response.data.user);

@@ -18,6 +18,7 @@ const AppRouter: FC = () => {
           exact={route.exact}
         />
       ))}
+      <Redirect to="/home" />
     </Switch>
   ) : (
     <Switch>

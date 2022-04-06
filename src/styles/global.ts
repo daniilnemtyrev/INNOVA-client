@@ -6,7 +6,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-
+    width: 100%;
+    height: 100%;
 
     -webkit-font-smoothing: antialiased;
   }
@@ -17,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
 body, input, button {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
   box-shadow: none;
 }
