@@ -1,21 +1,11 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import AuthStore from './stores/auth-store';
-
-interface IAuthStore {
-  authStore: AuthStore;
-}
-
-const authStore = new AuthStore();
-
-export const Context = createContext<IAuthStore>({
-  authStore,
-});
+import { RootStoreProvider } from './stores/root-provider';
 
 ReactDOM.render(
-  <Context.Provider value={{ authStore }}>
+  <RootStoreProvider>
     <App />
-  </Context.Provider>,
+  </RootStoreProvider>,
   document.getElementById('root'),
 );

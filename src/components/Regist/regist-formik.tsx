@@ -1,23 +1,30 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
-import { Context } from '../..';
 import { RegistForm } from './regist-form';
-import { registValidSchema } from '../../schemas/regist-valid-schema';
+import { registValidSchema } from '../../shared/schemas/regist-valid-schema';
+import { useStores } from '../../hooks/useStore';
 
 export interface RegistInput {
+  surname: string;
   name: string;
+  patronymic: string;
+  birthdate: string;
   email: string;
   password: string;
 }
 
 const initialValues: RegistInput = {
+  surname: '',
   name: '',
+  patronymic: '',
+  birthdate: '',
   email: '',
   password: '',
 };
 
 export const RegistFormik = () => {
-  const { authStore } = useContext(Context);
+  const { rootStore } = useStores();
+  const authStore = rootStore.authStore;
   return (
     <Formik
       initialValues={initialValues}
@@ -26,7 +33,7 @@ export const RegistFormik = () => {
       validateOnChange
       validationSchema={registValidSchema}
       onSubmit={values => {
-        authStore.registration(values.email, values.name, values.password);
+        authStore.registration(values);
       }}
       component={formikProps => <RegistForm {...formikProps} />}
     />

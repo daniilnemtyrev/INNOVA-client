@@ -4,14 +4,16 @@ import AuthService from '../services/authService';
 import axios from 'axios';
 import { AuthResponse } from '../models/response/authResponse';
 import { Message } from '../interfaces/IChat';
+import { RegistInput } from '../components/Regist/regist-formik';
 
 export default class AuthStore {
-  user = {} as IUser;
+  rootStore;
   IsAuth = false;
   IsSend = false;
 
-  constructor() {
-    makeAutoObservable(this);
+  constructor(rootStore: any) {
+    makeAutoObservable(this, { rootStore: false });
+    this.rootStore = rootStore;
   }
 
   setAuth(bool: boolean) {
@@ -22,10 +24,6 @@ export default class AuthStore {
     this.IsSend = bool;
   }
 
-  setUser(user: IUser) {
-    this.user = user;
-  }
-
   async login(email: string, password: string) {
     try {
       const response = await AuthService.login(email, password);
@@ -34,32 +32,32 @@ export default class AuthStore {
       this.setAuth(true);
       this.setSend(true);
       console.log(this.IsAuth);
-      this.setUser(response.data.user);
+      this.rootStore.userStore.setUser(response.data.user);
     } catch (err) {
       this.setSend(true);
       console.log(err);
     }
   }
 
-  async registration(email: string, name: string, password: string) {
+  async registration(data: RegistInput) {
     try {
-      const response = await AuthService.registration(email, name, password);
+      const response = await AuthService.registration(data);
       console.log(response);
       localStorage.setItem('token', response.data.acessToken);
       this.setAuth(true);
-      this.setUser(response.data.user);
+      this.rootStore.userStore.setUser(response.data.user);
     } catch (err) {
       console.log(err);
     }
   }
 
-  async logout(messages: Message[]) {
+  async logout() {
     try {
-      const response = await AuthService.logout(messages);
+      const response = await AuthService.logout();
       localStorage.removeItem('token');
       this.setAuth(false);
       this.setSend(false);
-      this.setUser({} as IUser);
+      this.rootStore.userStore.setUser({} as IUser);
     } catch (err) {
       console.log(err);
     }
@@ -75,7 +73,7 @@ export default class AuthStore {
       );
       localStorage.setItem('token', response.data.acessToken);
       this.setAuth(true);
-      this.setUser(response.data.user);
+      this.rootStore.userStore.setUser(response.data.user);
     } catch (error) {
       console.log(error);
     }

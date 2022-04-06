@@ -5,7 +5,10 @@ import Login from '../pages/Login';
 
 import Regist from '../pages/Regist';
 
-export const privateRoutes = [{ path: '/chat', component: Chat, exact: true }];
+export const privateRoutes = [
+  { path: '/chat', component: Chat, exact: true },
+  { path: '/home', component: Home, exact: true },
+];
 
 export const publicRoutes = [
   { path: '/home', component: Home, exact: true },

@@ -1,6 +1,7 @@
 import { FormikProps } from 'formik';
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { colors } from '../../styles/colors/colors';
 import LinkButton from '../UI/buttons/LinkButton';
 import { FormikInput } from '../UI/inputs/formik-input';
 import { RegistInput } from './regist-formik';
@@ -10,10 +11,10 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   min-height: 190px;
-  max-width: 320px;
   background-color: #fff;
   padding: 25px;
   border-radius: 10px;
+  border: 1px solid ${colors.blue[1]};
   box-shadow: 0 0 2px rgba(194, 195, 197);
 `;
 
@@ -29,13 +30,13 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
   return (
     <Content>
       <FormikInput
-        value={values.email}
-        name={'email'}
+        value={values.surname}
+        name={'surname'}
         type={'text'}
-        placeholder="Email"
-        error={errors.email}
-        touched={touched.email}
-        handleChange={handleChange('email')}
+        placeholder="Фамилия"
+        error={errors.surname}
+        touched={touched.surname}
+        handleChange={handleChange('surname')}
         handleBlur={handleBlur}
       />
 
@@ -43,10 +44,43 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
         value={values.name}
         name={'name'}
         type={'text'}
-        placeholder="Name"
+        placeholder="Имя"
         error={errors.name}
         touched={touched.name}
         handleChange={handleChange('name')}
+        handleBlur={handleBlur}
+      />
+
+      <FormikInput
+        value={values.patronymic}
+        name={'patronymic'}
+        type={'text'}
+        placeholder="Отчество"
+        error={errors.patronymic}
+        touched={touched.patronymic}
+        handleChange={handleChange('patronymic')}
+        handleBlur={handleBlur}
+      />
+
+      <FormikInput
+        value={values.birthdate}
+        name={'birthdate'}
+        type={'text'}
+        placeholder="Дата рождения"
+        error={errors.birthdate}
+        touched={touched.birthdate}
+        handleChange={handleChange('birthdate')}
+        handleBlur={handleBlur}
+      />
+
+      <FormikInput
+        value={values.email}
+        name={'email'}
+        type={'text'}
+        placeholder="E-mail"
+        error={errors.email}
+        touched={touched.email}
+        handleChange={handleChange('email')}
         handleBlur={handleBlur}
       />
 

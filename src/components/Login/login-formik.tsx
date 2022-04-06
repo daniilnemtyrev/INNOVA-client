@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Formik } from 'formik';
 import { LoginForm } from './login-form';
-import { Context } from '../..';
-import { loginValidSchema } from '../../schemas/login-valid-schema';
+
+import { loginValidSchema } from '../../shared/schemas/login-valid-schema';
+import { useStores } from '../../hooks/useStore';
 
 export interface LoginInput {
   email: string;
@@ -15,7 +16,8 @@ const initialValues: LoginInput = {
 };
 
 export const LoginFormik = () => {
-  const { authStore } = useContext(Context);
+  const { rootStore } = useStores();
+  const authStore = rootStore.authStore;
   return (
     <Formik
       initialValues={initialValues}

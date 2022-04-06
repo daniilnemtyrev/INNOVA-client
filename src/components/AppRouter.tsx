@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC, useContext } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { Context } from '../index';
+import { useStores } from '../hooks/useStore';
 import { publicRoutes, privateRoutes } from '../routes';
 
 const AppRouter: FC = () => {
-  const { authStore } = useContext(Context);
+  const { rootStore } = useStores();
+  const authStore = rootStore.authStore;
 
   return authStore.IsAuth ? (
     <Switch>
@@ -17,7 +18,6 @@ const AppRouter: FC = () => {
           exact={route.exact}
         />
       ))}
-      <Redirect to="/chat" />
     </Switch>
   ) : (
     <Switch>

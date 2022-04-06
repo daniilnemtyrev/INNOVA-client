@@ -1,6 +1,7 @@
 import { FormikProps } from 'formik';
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { colors } from '../../styles/colors/colors';
 import LinkButton from '../UI/buttons/LinkButton';
 import { FormikInput } from '../UI/inputs/formik-input';
 import { LoginInput } from './login-formik';
@@ -10,10 +11,10 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   min-height: 190px;
-  max-width: 320px;
-  background-color: #fff;
+  background-color: ${colors.white[0]};
   padding: 25px;
   border-radius: 10px;
+  border: 1px solid ${colors.blue[1]};
   box-shadow: 0 0 2px rgba(194, 195, 197);
 `;
 

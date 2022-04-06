@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { colors } from '../../../styles/colors/colors';
 
 interface Props {
   value?: string;
@@ -12,14 +13,18 @@ interface Props {
 }
 
 const Container = styled.input`
-  max-width: 270px;
-  min-height: 25px;
+  width: 350px;
+  min-height: 40px;
   margin-bottom: 10px;
-  border-radius: 3px;
+  border-radius: 6px;
   box-shadow: none;
   border: none;
   padding-left: 3px;
-  box-shadow: 0 0 2px rgba(194, 195, 197);
+  font-size: 13px;
+  font-family: 'Roboto Slab', serif;
+  color: ${colors.grey[1]};
+  padding-left: 10px;
+  border: 1px solid ${colors.blue[1]};
   font-family: 'Roboto Slab', serif;
 `;
 
