@@ -1,23 +1,14 @@
 export interface IUser {
-  readonly id: number;
-
-  readonly email: string;
-
-  readonly surname: string;
-
-  readonly name: string;
-
-  readonly patronymic: string;
-
-  readonly employee_post: string;
-
-  readonly student_status: string;
-
-  readonly birthdate: string;
-
-  readonly phone: string;
-
-  readonly move: string;
-
-  readonly password: string;
+  id: number | null;
+  email?: string;
+  surname: string;
+  name: string;
+  patronymic: string;
+  post_status: string;
+  place_of_work_stud: string;
+  birthdate: string;
+  phone: string;
+  move_to: string;
+  move_from: string;
+  password?: string;
 }
