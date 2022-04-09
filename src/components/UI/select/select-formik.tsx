@@ -1,21 +1,16 @@
-import { FormikTouched } from 'formik';
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
-import { InputBase } from './input-base';
+import { SelectBase } from './select-basic';
 
 interface Props {
   value?: string;
-  name?: string;
-  type?: string;
-  placeholder?: string;
-  handleChange: (e: string | ChangeEvent<any>) => void;
-  handleBlur: {
-    (e: React.FocusEvent<any>): void;
-    <T = any>(fieldOrEvent: T): T extends string ? (e: any) => void : void;
-  };
+  handleChange: (selectedOption: { value: string; label: string }) => void;
   error?: string;
   touched?: boolean;
+  options: readonly unknown[];
+  name: string;
+  placeholder?: string;
 }
 
 const Container = styled.div`
@@ -24,7 +19,7 @@ const Container = styled.div`
   max-height: 40px;
 `;
 
-const Input = styled(InputBase)<{ error?: string; touched?: boolean }>`
+const SelectForm = styled(SelectBase)<{ error?: string; touched?: boolean }>`
   border-color: ${props => props.error && props.touched && colors.red[0]};
 `;
 
@@ -41,15 +36,14 @@ const StyledText = styled.p`
   font-size: 12px;
 `;
 
-export const FormikInput = ({
+export const FormikSelect = ({
   value,
-  handleBlur,
-  name,
-  type,
-  placeholder,
   touched,
   error,
   handleChange,
+  placeholder,
+  options,
+  name,
 }: Props) => {
   return (
     <Container>
@@ -58,15 +52,12 @@ export const FormikInput = ({
           <StyledText>{error}</StyledText>
         </LabelError>
       ) : null}
-      <Input
-        error={error}
-        touched={touched}
-        value={value}
-        onBlur={handleBlur}
+      <SelectForm
         name={name}
-        type={type}
-        placeholder={placeholder}
+        value={value}
+        options={options}
         onChange={handleChange}
+        placeholder={placeholder}
       />
     </Container>
   );

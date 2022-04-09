@@ -6,28 +6,23 @@ import styled from 'styled-components';
 import { colors } from '../styles/colors/colors';
 import { ProfileFormik } from '../components/Profile/form/profile-formik';
 
-export const Container = styled.section`
+export const Container = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100%;
   background-color: ${colors.blue[0]};
 `;
 
-export const Content = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-  width: 100%;
-`;
-
 const Profile: FC = () => {
   return (
-    <Container>
+    <>
       <Header />
-      <Content>
+      <Container>
         <ProfileFormik />
-      </Content>
-    </Container>
+      </Container>
+    </>
   );
 };
 
