@@ -7,8 +7,8 @@ interface Props {
   value?: string;
   handleChange: (selectedOption: { value: string; label: string }) => void;
   error?: string;
-  touched?: boolean;
-  options: readonly unknown[];
+
+  options: any;
   name: string;
   placeholder?: string;
 }
@@ -17,10 +17,6 @@ const Container = styled.div`
   position: relative;
   margin-bottom: 16px;
   max-height: 40px;
-`;
-
-const SelectForm = styled(SelectBase)<{ error?: string; touched?: boolean }>`
-  border-color: ${props => props.error && props.touched && colors.red[0]};
 `;
 
 const LabelError = styled.div`
@@ -38,21 +34,20 @@ const StyledText = styled.p`
 
 export const FormikSelect = ({
   value,
-  touched,
+
   error,
   handleChange,
   placeholder,
   options,
   name,
 }: Props) => {
+  console.log(value);
+  console.log(error);
+
   return (
     <Container>
-      {error && touched ? (
-        <LabelError>
-          <StyledText>{error}</StyledText>
-        </LabelError>
-      ) : null}
-      <SelectForm
+      <SelectBase
+        error={error}
         name={name}
         value={value}
         options={options}

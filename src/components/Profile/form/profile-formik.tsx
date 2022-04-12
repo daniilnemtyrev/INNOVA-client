@@ -38,8 +38,6 @@ export const ProfileFormik = () => {
       validateOnChange
       validationSchema={profileValidSchema}
       onSubmit={values => {
-        console.log(1);
-
         userStore.editUser(values);
       }}
       component={formikProps => <ProfileForm {...formikProps} />}

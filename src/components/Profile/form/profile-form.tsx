@@ -8,6 +8,10 @@ import LinkButton from '../../UI/buttons/LinkButton';
 import { FormikInput } from '../../UI/inputs/formik-input';
 import { FormikSelect } from '../../UI/select/select-formik';
 import { ProfileInput } from './profile-formik';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { CalendarIcon } from '../../../icons/calendar-icon';
+import { format } from 'date-fns';
 
 type Option = {
   value: string;
@@ -26,6 +30,14 @@ export const Content = styled.div`
   border: 1px solid ${colors.blue[1]};
   box-shadow: 0 0 2px rgba(194, 195, 197);
   align-items: center;
+`;
+
+const StyledCalendar = styled(Calendar)`
+  position: absolute;
+  width: 300px;
+  top: 30px;
+  right: -100px;
+  z-index: 2;
 `;
 
 const Row = styled.div`
@@ -61,17 +73,22 @@ export const ProfileForm: FC<FormikProps<ProfileInput>> = observer(
     const [selectedMoveTo, setSelectedMoveTo] = useState(
       values.move_to ? values.move_to : '',
     );
+
     const [selectedMoveFrom, setSelectedMoveFrom] = useState(
       values.move_from ? values.move_from : '',
     );
+
+    const [calendarVisible, setCalendarVisible] = useState(false);
+
+    const [calendarDate, setCalendarDate] = useState(new Date());
+
     const handleOptionChange = (
       selectedOption: any,
-      value: string,
       setter: React.Dispatch<React.SetStateAction<string>>,
     ) => {
-      value = selectedOption.value;
       setter(selectedOption);
     };
+
     return (
       <Content>
         <Row>
@@ -125,7 +142,19 @@ export const ProfileForm: FC<FormikProps<ProfileInput>> = observer(
             touched={touched.birthdate}
             handleChange={handleChange('birthdate')}
             handleBlur={handleBlur}
-          />
+            setCalendarVisible={() => setCalendarVisible(prev => !prev)}
+          >
+            <CalendarIcon />
+          </FormikInput>
+          {calendarVisible && (
+            <StyledCalendar
+              onChange={(e: Date) => {
+                values.birthdate = format(e, 'dd.MM.Y');
+                setCalendarDate(e);
+              }}
+              value={calendarDate}
+            />
+          )}
         </Row>
         <Row>
           <LabelInput>Место работы / учебы</LabelInput>
@@ -160,14 +189,9 @@ export const ProfileForm: FC<FormikProps<ProfileInput>> = observer(
             value={selectedMoveTo}
             name={'move_to'}
             error={errors.move_to}
-            touched={touched.move_to}
             handleChange={(selectedOption: Option) => {
               handleChange('move_to')(selectedOption.value);
-              handleOptionChange(
-                selectedOption,
-                values.move_to,
-                setSelectedMoveTo,
-              );
+              handleOptionChange(selectedOption, setSelectedMoveTo);
             }}
             placeholder={values.move_to ? values.move_to : 'Способ приезда'}
             options={moveOptions}
@@ -180,14 +204,9 @@ export const ProfileForm: FC<FormikProps<ProfileInput>> = observer(
             value={selectedMoveFrom}
             name={'move_from'}
             error={errors.move_from}
-            touched={touched.move_from}
             handleChange={(selectedOption: Option) => {
               handleChange('move_from')(selectedOption.value);
-              handleOptionChange(
-                selectedOption,
-                values.move_from,
-                setSelectedMoveFrom,
-              );
+              handleOptionChange(selectedOption, setSelectedMoveFrom);
             }}
             options={moveOptions}
             placeholder={values.move_from ? values.move_from : 'Способ отъезда'}

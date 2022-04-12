@@ -1,6 +1,5 @@
-import React from 'react';
-import Select from 'react-select';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import Select, { GroupBase, StylesConfig } from 'react-select';
 import { colors } from '../../../styles/colors/colors';
 
 interface Props {
@@ -8,19 +7,9 @@ interface Props {
   onChange?: (e: any) => void;
   placeholder?: string;
   name?: string;
-  options: readonly unknown[];
+  options: any;
+  error?: string;
 }
-
-const Container = styled(Select)`
-  width: 350px;
-  min-height: 40px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  box-shadow: none;
-  border: 1px solid ${colors.blue[1]};
-  font-size: 14px;
-  font-family: 'Source Sans Pro', sans-serif;
-`;
 
 export const SelectBase = ({
   value,
@@ -28,14 +17,40 @@ export const SelectBase = ({
   name,
   placeholder,
   options,
+  error,
 }: Props) => {
+  const [touched, setTouched] = useState(false);
+
+  const styles: StylesConfig<string, false, GroupBase<string>> = {
+    control: (styles: any, { isFocused }) => {
+      if (!touched) {
+        setTouched(isFocused);
+      }
+      return {
+        ...styles,
+        width: 350,
+        minHeight: 40,
+        borderRadius: 6,
+        borderWidth: 1,
+        borderColor: error && touched ? colors.red[0] : colors.blue[1],
+        borderStyle: 'solid',
+        fontSize: 14,
+      };
+    },
+    option: (styles: any) => ({
+      ...styles,
+      fontSize: 14,
+    }),
+  };
+
   return (
-    <Container
+    <Select
       value={value}
       placeholder={placeholder}
       onChange={onChange}
       name={name}
       options={options}
+      styles={styles}
     />
   );
 };

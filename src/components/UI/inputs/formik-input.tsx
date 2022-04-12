@@ -9,13 +9,15 @@ interface Props {
   name?: string;
   type?: string;
   placeholder?: string;
-  handleChange: (e: string | ChangeEvent<any>) => void;
+  handleChange: any;
   handleBlur: {
     (e: React.FocusEvent<any>): void;
     <T = any>(fieldOrEvent: T): T extends string ? (e: any) => void : void;
   };
   error?: string;
   touched?: boolean;
+  children?: React.ReactNode;
+  setCalendarVisible?: () => void;
 }
 
 const Container = styled.div`
@@ -41,6 +43,14 @@ const StyledText = styled.p`
   font-size: 12px;
 `;
 
+const Icon = styled.button`
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  border: none;
+  background: none;
+`;
+
 export const FormikInput = ({
   value,
   handleBlur,
@@ -50,6 +60,8 @@ export const FormikInput = ({
   touched,
   error,
   handleChange,
+  children,
+  setCalendarVisible,
 }: Props) => {
   return (
     <Container>
@@ -68,6 +80,7 @@ export const FormikInput = ({
         placeholder={placeholder}
         onChange={handleChange}
       />
+      {children && <Icon onClick={setCalendarVisible}>{children}</Icon>}
     </Container>
   );
 };

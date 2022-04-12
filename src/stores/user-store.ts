@@ -39,7 +39,6 @@ export default class UserStore {
 
     try {
       const response = await UserService.editUser(dataWithId);
-      console.log(response.data);
 
       this.setUser(response.data);
     } catch (err) {
