@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite';
-import React from 'react';
-import styled from 'styled-components';
+import React, { FC } from 'react';
 import { Header } from '../components/general/Header';
-import { ProfileCard } from '../components/Profile/profile-card';
+import styled from 'styled-components';
 import { colors } from '../styles/colors/colors';
+import { EditProfileFormik } from '../components/EditProfile/form/edit-profile-formik';
 
-export const Container = styled.section`
+export const Container = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,15 +14,15 @@ export const Container = styled.section`
   background-color: ${colors.blue[0]};
 `;
 
-const Profile = () => {
+const EditProfile: FC = () => {
   return (
     <>
       <Header />
       <Container>
-        <ProfileCard />
+        <EditProfileFormik />
       </Container>
     </>
   );
 };
 
-export default observer(Profile);
+export default observer(EditProfile);

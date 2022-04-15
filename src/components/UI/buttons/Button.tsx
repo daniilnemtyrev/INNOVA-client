@@ -11,12 +11,14 @@ interface Props {
 
 const Container = styled.button<{ disabled?: boolean }>`
   min-width: 100px;
+  max-width: 200px;
   height: 35px;
-  background-color: ${colors.white[0]};
+  background-color: ${props =>
+    props.disabled ? colors.grey[0] : colors.white[0]};
   border-radius: 3px;
   border: 1px solid ${colors.blue[1]};
   box-shadow: none;
-  color: ${colors.grey[1]};
+  color: ${colors.blue[3]};
   margin-bottom: 10px;
   margin-top: 3px;
   font-size: 13px;
@@ -25,7 +27,7 @@ const Container = styled.button<{ disabled?: boolean }>`
   cursor: pointer;
   &:hover {
     background-color: ${props =>
-      props.disabled ? colors.white[0] : colors.blue[0]};
+      props.disabled ? colors.grey[0] : colors.blue[0]};
   }
 `;
 

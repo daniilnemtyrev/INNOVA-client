@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
 body, input, button {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Exo 2', sans-serif;
   font-size: 16px;
   box-shadow: none;
 }

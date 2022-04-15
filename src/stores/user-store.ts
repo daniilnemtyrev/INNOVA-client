@@ -1,5 +1,7 @@
-import { makeAutoObservable } from 'mobx';
-import { ProfileInput } from '../components/Profile/form/profile-formik';
+import { makeAutoObservable, runInAction } from 'mobx';
+import { EditProfileInput } from '../components/EditProfile/form/edit-profile-formik';
+import { IUpdReqStatus } from '../models/IUpdReqStatus';
+
 import { IUser } from '../models/IUser';
 import UserService from '../services/userService';
 
@@ -11,6 +13,7 @@ const initialValues: IUser = {
   name: '',
   patronymic: '',
   post_status: '',
+  request_status: '',
   place_of_work_stud: '',
   birthdate: '',
   phone: '',
@@ -21,6 +24,7 @@ const initialValues: IUser = {
 export default class UserStore {
   rootStore;
   user = initialValues;
+  profileIsFilled = false;
 
   constructor(rootStore: any) {
     makeAutoObservable(this, { rootStore: false });
@@ -31,7 +35,11 @@ export default class UserStore {
     this.user = user;
   }
 
-  async editUser(data: ProfileInput) {
+  setProfileIsFilled(value: boolean) {
+    this.profileIsFilled = value;
+  }
+
+  async editUser(data: EditProfileInput) {
     const dataWithId = {
       ...data,
       id: this.user.id,
@@ -41,6 +49,18 @@ export default class UserStore {
       const response = await UserService.editUser(dataWithId);
 
       this.setUser(response.data);
+      this.setProfileIsFilled(true);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async updateRequestStatus(data: IUpdReqStatus) {
+    try {
+      const response = await UserService.updateRequestStatus(data);
+      runInAction(() => {
+        this.user.request_status = response.data;
+      });
     } catch (err) {
       console.log(err);
     }
