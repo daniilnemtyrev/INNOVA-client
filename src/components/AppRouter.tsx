@@ -2,24 +2,40 @@ import { observer } from 'mobx-react-lite';
 import React, { FC, useContext } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useStores } from '../hooks/useStore';
-import { publicRoutes, privateRoutes } from '../routes';
+import { publicRoutes, privateRoutes, adminRoutes } from '../routes';
+
+
 
 const AppRouter: FC = () => {
   const { rootStore } = useStores();
   const authStore = rootStore.authStore;
-
+  const userStore = rootStore.userStore
+  const userRole = userStore.user.roles?.[0]?.value
   return authStore.IsAuth ? (
-    <Switch>
-      {privateRoutes.map(route => (
-        <Route
-          key={route.path}
-          component={route.component}
-          path={route.path}
-          exact={route.exact}
-        />
-      ))}
-      <Redirect to="/home" />
-    </Switch>
+    userRole === 'admin' ?
+      <Switch>
+        {adminRoutes.map(route => (
+          <Route
+            key={route.path}
+            component={route.component}
+            path={route.path}
+            exact={route.exact}
+          />
+        ))}
+        <Redirect to="/admin" />
+      </Switch>
+      :
+      <Switch>
+        {privateRoutes.map(route => (
+          <Route
+            key={route.path}
+            component={route.component}
+            path={route.path}
+            exact={route.exact}
+          />
+        ))}
+        <Redirect to="/home" />
+      </Switch>
   ) : (
     <Switch>
       {publicRoutes.map(route => (

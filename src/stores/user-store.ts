@@ -11,6 +11,7 @@ const initialValues: IUser = {
   name: '',
   patronymic: '',
   post_status: '',
+  request_status: '',
   place_of_work_stud: '',
   birthdate: '',
   phone: '',
