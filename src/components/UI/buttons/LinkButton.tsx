@@ -14,6 +14,7 @@ interface Props {
   onClick: any;
   disabled?: boolean;
   noStyle?: boolean;
+  color?: string;
 }
 
 const LinkButton = (props: Props) => {
@@ -26,6 +27,7 @@ const LinkButton = (props: Props) => {
     onClick,
     disabled,
     noStyle,
+    color,
     ...rest
   } = props;
   return (
@@ -33,6 +35,7 @@ const LinkButton = (props: Props) => {
       {noStyle ? (
         <ButtonWithoutStyles
           disabled={disabled}
+          color={color}
           onClick={event => {
             onClick && onClick(event);
             history.push(to);

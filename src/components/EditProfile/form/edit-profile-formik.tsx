@@ -1,10 +1,10 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { ProfileForm } from './profile-form';
+import { EditProfileForm } from './edit-profile-form';
 import { useStores } from '../../../hooks/useStore';
 import { profileValidSchema } from '../../../shared/schemas/profile-valid-schema';
 
-export interface ProfileInput {
+export interface EditProfileInput {
   surname: string;
   name: string;
   patronymic: string;
@@ -17,10 +17,10 @@ export interface ProfileInput {
   move_from: string;
 }
 
-export const ProfileFormik = () => {
+export const EditProfileFormik = () => {
   const { rootStore } = useStores();
   const userStore = rootStore.userStore;
-  const initialValues: ProfileInput = {
+  const initialValues: EditProfileInput = {
     surname: userStore.user.surname,
     name: userStore.user.name,
     patronymic: userStore.user.patronymic,
@@ -42,7 +42,7 @@ export const ProfileFormik = () => {
       onSubmit={values => {
         userStore.editUser(values);
       }}
-      component={formikProps => <ProfileForm {...formikProps} />}
+      component={formikProps => <EditProfileForm {...formikProps} />}
     />
   );
 };

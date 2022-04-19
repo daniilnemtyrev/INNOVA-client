@@ -7,20 +7,27 @@ interface Props {
   onClick?: (event: any) => void;
   children?: string;
   disabled?: boolean;
+  color?: string;
+  fontSize?: string;
 }
 
 const Container = styled.button<{ disabled?: boolean }>`
   border: none;
   box-shadow: none;
-  font-family: 'Source Sans Pro' sans-serif;
-  font-size: 20px;
   background: transparent;
   cursor: pointer;
   &:hover {
     p {
-      color: ${colors.blue[2]};
+      color: ${colors.blue[1]};
     }
   }
+`;
+
+const Text = styled.p<{ color?: string; fontSize?: string }>`
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 400;
+  font-size: ${props => props.fontSize};
+  color: ${props => props.color};
 `;
 
 export const ButtonWithoutStyles = ({
@@ -28,11 +35,15 @@ export const ButtonWithoutStyles = ({
   onClick,
   children,
   disabled,
+  color = colors.blue[3],
+  fontSize = '25px',
   ...rest
 }: Props) => {
   return (
-    <Container type={type} onClick={onClick} disabled={disabled} {...rest}>
-      <p>{children}</p>
+    <Container type={type} onClick={onClick} disabled={disabled}>
+      <Text color={color} fontSize={fontSize}>
+        {children}
+      </Text>
     </Container>
   );
 };

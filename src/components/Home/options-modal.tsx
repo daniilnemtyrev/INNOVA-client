@@ -16,9 +16,8 @@ const Content = styled.section`
   left: 0px;
   top: 40px;
   background-color: ${colors.white[0]};
-  border: 1px solid ${colors.blue[1]};
-  border-radius: 20px;
-  box-shadow: 0 0 2px rgba(194, 195, 197);
+  border: 1px solid ${colors.grey[1]};
+  border-radius: 5px;
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -44,11 +43,13 @@ export const OptionsModal = ({ visible, setVisibleOptions }: Props) => {
     <>
       {visible && (
         <Content>
-          <LinkButton noStyle={true} to="/profile">
+          <LinkButton fontSize={'14px'} noStyle={true} to="/profile">
             Профиль
           </LinkButton>
           <Separator />
-          <ButtonWithoutStyles onClick={logout}>Выйти</ButtonWithoutStyles>
+          <ButtonWithoutStyles fontSize={'14px'} onClick={logout}>
+            Выйти
+          </ButtonWithoutStyles>
         </Content>
       )}
     </>
