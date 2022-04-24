@@ -4,7 +4,7 @@ import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { moveOptions } from '../../UI/select/move-options';
 import { colors } from '../../../styles/colors/colors';
-import LinkButton from '../../UI/buttons/LinkButton';
+import LinkButton from '../../UI/buttons/link-button';
 import { FormikInput } from '../../UI/inputs/formik-input';
 import { FormikSelect } from '../../UI/select/select-formik';
 
@@ -13,14 +13,14 @@ import 'react-calendar/dist/Calendar.css';
 import { CalendarIcon } from '../../../icons/calendar-icon';
 import { format } from 'date-fns';
 import { EditProfileInput } from './edit-profile-formik';
-import { BackArrow } from '../../../icons/back-arrow';
+import { BackButton } from '../../UI/buttons/back-button';
 
 type Option = {
   value: string;
   label: string;
 };
 
-export const Content = styled.div`
+export const Content = styled.main`
   position: relative;
   width: 60%;
   display: flex;
@@ -63,19 +63,6 @@ const LabelInput = styled.div`
   }
 `;
 
-const BackButton = styled(LinkButton)`
-  position: absolute;
-  top: 20px;
-  left: 15px;
-  min-width: 40px;
-  height: 40px;
-  border: none;
-  background: none;
-  &:hover {
-    background-color: transparent;
-  }
-`;
-
 export const EditProfileForm: FC<FormikProps<EditProfileInput>> = observer(
   ({
     values,
@@ -107,9 +94,7 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = observer(
 
     return (
       <Content>
-        <BackButton to="/profile">
-          <BackArrow />
-        </BackButton>
+        <BackButton to="/profile" />
 
         <Row>
           <LabelInput>Фамилия</LabelInput>

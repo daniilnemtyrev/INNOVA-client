@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { colors } from '../styles/colors/colors';
 import { EditProfileFormik } from '../components/EditProfile/form/edit-profile-formik';
 
-export const Container = styled.main`
+export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

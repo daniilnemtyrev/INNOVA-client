@@ -5,8 +5,8 @@ import { useStores } from '../../hooks/useStore';
 import { SettingsIcon } from '../../icons/settings-icon';
 import { UserIcon } from '../../icons/user-icon';
 import { colors } from '../../styles/colors/colors';
-import { Button } from '../UI/buttons/Button';
-import LinkButton from '../UI/buttons/LinkButton';
+import { Button } from '../UI/buttons/button-base';
+import LinkButton from '../UI/buttons/link-button';
 
 export const Content = styled.main`
   width: 60%;
@@ -71,11 +71,10 @@ export const ProfileCard = observer(() => {
   const { rootStore } = useStores();
   const userStore = rootStore.userStore;
   const fioStr = `${userStore.user.surname}  ${userStore.user.name}  ${userStore.user.patronymic}`;
-  const hardRequestStatus = 'Подтвержден';
 
   const updateRequestStatus = async () => {
     const data = {
-      userId: userStore.user.id,
+      userId: userStore.user.userId,
       reqStatus: 'Ожидается подтверждение',
     };
     await userStore.updateRequestStatus(data);
@@ -112,9 +111,13 @@ export const ProfileCard = observer(() => {
           </Button>
         </>
       )}
-      {/* {hardRequestStatus === 'Подтвержден' && (
+      {userStore.user.request_status === 'Подтвержден' && (
+        <LinkButton to="/profile/myProject">Мои проекты</LinkButton>
+      )}
 
-      )} */}
+      {userStore.user.request_status === 'Подтвержден' && (
+        <LinkButton to="/profile/createProject">Создать проект</LinkButton>
+      )}
     </Content>
   );
 });

@@ -15,7 +15,7 @@ const Container = styled.button<{ disabled?: boolean }>`
   border: none;
   box-shadow: none;
   background: transparent;
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   &:hover {
     p {
       color: ${colors.blue[1]};

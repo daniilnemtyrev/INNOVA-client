@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import { EditProfileForm } from './edit-profile-form';
 import { useStores } from '../../../hooks/useStore';
 import { profileValidSchema } from '../../../shared/schemas/profile-valid-schema';
+import { useHistory } from 'react-router-dom';
 
 export interface EditProfileInput {
   surname: string;
@@ -18,6 +19,7 @@ export interface EditProfileInput {
 
 export const EditProfileFormik = () => {
   const { rootStore } = useStores();
+  const history = useHistory();
   const userStore = rootStore.userStore;
   const initialValues: EditProfileInput = {
     surname: userStore.user.surname,
@@ -30,6 +32,15 @@ export const EditProfileFormik = () => {
     move_to: userStore.user.move_to,
     move_from: userStore.user.move_from,
   };
+
+  const editUserAsync = async (values: EditProfileInput) => {
+    try {
+      await userStore.editUser(values);
+      history.push('/profile');
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <Formik
       initialValues={initialValues}
@@ -38,7 +49,7 @@ export const EditProfileFormik = () => {
       validateOnChange
       validationSchema={profileValidSchema}
       onSubmit={values => {
-        userStore.editUser(values);
+        editUserAsync(values);
       }}
       component={formikProps => <EditProfileForm {...formikProps} />}
     />

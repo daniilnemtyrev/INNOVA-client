@@ -2,7 +2,7 @@ import { FormikProps } from 'formik';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../styles/colors/colors';
-import LinkButton from '../UI/buttons/LinkButton';
+import LinkButton from '../UI/buttons/link-button';
 import { FormikInput } from '../UI/inputs/formik-input';
 import { RegistInput } from './regist-formik';
 

@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
 import { colors } from '../../styles/colors/colors';
-import { Button } from '../UI/buttons/Button';
+import { Button } from '../UI/buttons/button-base';
 import { ButtonWithoutStyles } from '../UI/buttons/button-without-styles';
-import LinkButton from '../UI/buttons/LinkButton';
+import LinkButton from '../UI/buttons/link-button';
 
 interface Props {
   visible: boolean;

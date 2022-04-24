@@ -22,7 +22,7 @@ const Container = styled.input`
   padding-left: 3px;
   font-size: 13px;
   font-family: 'Roboto Slab', serif;
-  color: ${colors.grey[1]};
+  color: ${colors.grey[2]};
   padding-left: 10px;
   border: 1px solid ${colors.blue[1]};
   font-family: 'Roboto Slab', serif;

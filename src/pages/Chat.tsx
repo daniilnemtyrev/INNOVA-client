@@ -4,7 +4,7 @@ import { Message, Payload } from '../interfaces/IChat';
 
 import { observer } from 'mobx-react-lite';
 import { ButtonNav } from '../components/UI/ButtonNav';
-import { Button } from '../components/UI/buttons/Button';
+import { Button } from '../components/UI/buttons/button-base';
 import { InputBase } from '../components/UI/inputs/input-base';
 import styled from 'styled-components';
 import { useStores } from '../hooks/useStore';
@@ -138,7 +138,7 @@ const Chat: React.FC = () => {
 
   function receivedMessage(message: Payload) {
     const newMessage: Message = {
-      userId: userStore.user.id,
+      userId: userStore.user.userId,
       name: message.name,
       text: message.text,
     };

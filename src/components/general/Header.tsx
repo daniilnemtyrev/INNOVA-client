@@ -5,7 +5,7 @@ import { useStores } from '../../hooks/useStore';
 import { colors } from '../../styles/colors/colors';
 import { OptionsModal } from '../Home/options-modal';
 import { ButtonWithoutStyles } from '../UI/buttons/button-without-styles';
-import LinkButton from '../UI/buttons/LinkButton';
+import LinkButton from '../UI/buttons/link-button';
 import logo from '../../icons/logo_innova_2.png';
 
 const Container = styled.header`
