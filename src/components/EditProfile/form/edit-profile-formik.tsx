@@ -10,6 +10,7 @@ export interface EditProfileInput {
   name: string;
   patronymic: string;
   post_status: string;
+  request_status: string,
   place_of_work_stud: string;
   birthdate: string;
   phone: string;
@@ -27,6 +28,7 @@ export const EditProfileFormik = () => {
     patronymic: userStore.user.patronymic,
     birthdate: userStore.user.birthdate,
     place_of_work_stud: userStore.user.place_of_work_stud,
+    request_status: userStore.user.request_status,
     post_status: userStore.user.post_status,
     phone: userStore.user.phone,
     move_to: userStore.user.move_to,
