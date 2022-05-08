@@ -6,7 +6,7 @@ import { IUser } from '../models/IUser';
 import UserService from '../services/userService';
 
 const initialValues: IUser = {
-  userId: null,
+  id: null,
   email: '',
   password: '',
   surname: '',
@@ -43,7 +43,7 @@ export default class UserStore {
   async editUser(data: EditProfileInput) {
     const dataWithId = {
       ...data,
-      userId: this.user.userId,
+      id: this.user.id,
     };
 
     try {

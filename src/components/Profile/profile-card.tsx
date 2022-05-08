@@ -74,7 +74,7 @@ export const ProfileCard = observer(() => {
 
   const updateRequestStatus = async () => {
     const data = {
-      userId: userStore.user.userId,
+      id: userStore.user.id,
       reqStatus: 'Ожидается подтверждение',
     };
     await userStore.updateRequestStatus(data);

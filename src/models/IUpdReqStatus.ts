@@ -1,4 +1,4 @@
 export interface IUpdReqStatus {
-  userId: number | null;
+  id: number | null;
   reqStatus: string | null;
 }

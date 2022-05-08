@@ -138,7 +138,7 @@ const Chat: React.FC = () => {
 
   function receivedMessage(message: Payload) {
     const newMessage: Message = {
-      userId: userStore.user.userId,
+      userId: userStore.user.id,
       name: message.name,
       text: message.text,
     };

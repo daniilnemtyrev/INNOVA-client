@@ -9,7 +9,7 @@ interface IDataGetCases {
 }
 
 interface IDataGetProjects {
-  userId: number | null;
+  id: number | null;
 }
 
 export default class ProjectService {

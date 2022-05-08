@@ -32,7 +32,7 @@ export const CreateProjectFormik = () => {
   const createProject = async (values: ICreateProjectForm) => {
     const data = {
       ...values,
-      userId: userStore.user.userId,
+      userId: userStore.user.id,
       trackId: project.trackId,
       trackName: project.trackName,
       trackDescription: project.trackDescription,

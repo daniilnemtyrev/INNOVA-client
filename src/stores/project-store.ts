@@ -94,7 +94,7 @@ export default class ProjectStore {
 
   async getProjectsByUserId(userId: number | null) {
     const data = {
-      userId: userId,
+      id: userId,
     };
     try {
       const response = await ProjectService.getProjectsByUserId(data);

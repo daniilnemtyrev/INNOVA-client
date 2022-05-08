@@ -29,7 +29,7 @@ export const ProjectsList = observer(() => {
   useEffect(() => {
     const getProjects = async () => {
       projectStore.setIsLoading(true);
-      await projectStore.getProjectsByUserId(userStore.user.userId);
+      await projectStore.getProjectsByUserId(userStore.user.id);
       projectStore.setIsLoading(false);
     };
 
