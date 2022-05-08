@@ -10,7 +10,7 @@ export interface EditProfileInput {
   name: string;
   patronymic: string;
   post_status: string;
-  request_status: string,
+  request_status?: string;
   place_of_work_stud: string;
   birthdate: string;
   phone: string;

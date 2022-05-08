@@ -19,6 +19,7 @@ const initialValues: IUser = {
   phone: '',
   move_to: '',
   move_from: '',
+  roles: [{ id: null, value: '', description: '' }],
 };
 
 export default class UserStore {

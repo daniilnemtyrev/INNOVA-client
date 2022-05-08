@@ -12,4 +12,11 @@ export interface IUser {
   move_to: string;
   move_from: string;
   password?: string;
+  roles?: [
+    {
+      id: number | null;
+      value: string;
+      description: string;
+    },
+  ];
 }

@@ -4,15 +4,17 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { useStores } from '../hooks/useStore';
 import { publicRoutes, privateRoutes, adminRoutes } from '../routes';
 
-
-
 const AppRouter: FC = () => {
   const { rootStore } = useStores();
   const authStore = rootStore.authStore;
-  const userStore = rootStore.userStore
-  const userRole = userStore.user.roles?.[0]?.value
+  const userStore = rootStore.userStore;
+  console.log(userStore.user.roles);
+
+  const isAdmin = userStore.user.roles?.find(role => role.value === 'admin');
+  console.log(isAdmin);
+
   return authStore.IsAuth ? (
-    userRole === 'admin' ?
+    isAdmin ? (
       <Switch>
         {adminRoutes.map(route => (
           <Route
@@ -24,7 +26,7 @@ const AppRouter: FC = () => {
         ))}
         <Redirect to="/admin" />
       </Switch>
-      :
+    ) : (
       <Switch>
         {privateRoutes.map(route => (
           <Route
@@ -36,6 +38,7 @@ const AppRouter: FC = () => {
         ))}
         <Redirect to="/home" />
       </Switch>
+    )
   ) : (
     <Switch>
       {publicRoutes.map(route => (
