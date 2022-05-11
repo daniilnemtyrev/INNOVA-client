@@ -4,73 +4,124 @@ import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
 import { colors } from '../../styles/colors/colors';
 import { OptionsModal } from '../Home/options-modal';
-import { ButtonWithoutStyles } from '../UI/buttons/button-without-styles';
-import LinkButton from '../UI/buttons/link-button';
+import NavButton from '../UI/buttons/nav-button';
 import logo from '../../icons/logo_innova_2.png';
+import { NavIcon } from '../../icons/nav-icon';
+
+interface NavElems {
+  id: number;
+  content: string | React.ReactElement;
+  to?: any;
+  onClick?: () => void;
+}
 
 const Container = styled.header`
   width: 100%;
   height: 120px;
+  grid-columns: 2/3;
+  grid-row: 1/2;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 40px;
   padding-right: 40px;
   box-shadow: 0px 0px 5px 0px rgba(122, 122, 122, 0.2);
-  background: linear-gradient(
-    to right,
-    ${colors.blue[4]} 0%,
-    ${colors.blue[3]} 100%
-  );
+  background: transparent;
 `;
 
-const SignContainer = styled.section`
-  position: relative;
+const Nav = styled.nav`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 250px;
 `;
 
-const UserText = styled.p`
-  font-family: 'Source Sans Pro' sans-serif;
-  font-size: 25px;
-  color: ${colors.grey[2]};
+const NavContent = styled.ul`
+  display: flex;
+  > * {
+    &:first-child {
+      margin: 0;
+    }
+  }
 `;
 
-const LogoInnova2 = styled.img`
+const Logo = styled.div`
+  display: flex;
+  width: 380px;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const LogoText = styled.p`
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 56px;
+  color: ${colors.white[0]};
+`;
+
+const LogoImage = styled.img`
   width: 100px;
   height: 90px;
 `;
 
 export const Header = observer(() => {
   const [visibleOptions, setVisibleOptions] = useState(false);
+  const [currentItemId, setCurrentItemId] = useState(0);
   const { rootStore } = useStores();
   const userStore = rootStore.userStore;
   const authStore = rootStore.authStore;
 
   return (
     <Container>
-      <LogoInnova2 src={logo} />
-      <SignContainer>
-        {userStore.user.name && authStore.IsAuth ? (
-          <>
-            <ButtonWithoutStyles
-              color={colors.white[0]}
-              onClick={() => setVisibleOptions(prev => !prev)}
-            >{`${userStore.user.name}  ${userStore.user.surname}`}</ButtonWithoutStyles>
-          </>
-        ) : (
-          <>
-            <LinkButton to="/login">Логин</LinkButton>
-            <LinkButton to="/registration">Регистрация</LinkButton>
-          </>
-        )}
+      <Logo>
+        <LogoText>ИННОВА ФОРУМ</LogoText>
+        <LogoImage src={logo} />
+      </Logo>
+
+      <Nav>
+        <NavContent>
+          <NavButton
+            id={0}
+            to="/home"
+            onClick={() => setCurrentItemId(0)}
+            currentItemId={currentItemId}
+          >
+            Главная
+          </NavButton>
+
+          <NavButton
+            id={1}
+            to="/home"
+            onClick={() => setCurrentItemId(1)}
+            currentItemId={currentItemId}
+          >
+            Новости
+          </NavButton>
+
+          <NavButton
+            id={2}
+            onClick={() => setCurrentItemId(2)}
+            currentItemId={currentItemId}
+          >
+            ИННОВА
+          </NavButton>
+
+          <NavButton
+            id={3}
+            onClick={() => {
+              setVisibleOptions(prev => !prev);
+              setCurrentItemId(3);
+            }}
+            currentItemId={currentItemId}
+          >
+            <NavIcon />
+          </NavButton>
+        </NavContent>
+
         <OptionsModal
           visible={visibleOptions}
           setVisibleOptions={setVisibleOptions}
         />
-      </SignContainer>
+      </Nav>
     </Container>
   );
 });

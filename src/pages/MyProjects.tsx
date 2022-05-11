@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
 
-import { Header } from '../components/general/Header';
+import { Header } from '../components/general/header';
 import { ProjectsList } from '../components/MyProjects/projects-list';
 
 import { colors } from '../styles/colors/colors';
