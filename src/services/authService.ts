@@ -1,28 +1,23 @@
 import $api from '../http';
 import { AxiosResponse } from 'axios';
 import { AuthResponse } from '../models/response/authResponse';
-import { Message } from '../interfaces/IChat';
-import { LogoutResponse } from '../models/response/logoutResponse';
+import { RegistInput } from '../components/Regist/regist-formik';
 
 export default class AuthService {
   static async login(
     email: string,
-    name: string,
     password: string,
   ): Promise<AxiosResponse<AuthResponse>> {
-    return $api.post<AuthResponse>('/login', { email, name, password });
+    return $api.post<AuthResponse>('auth/login', { email, password });
   }
 
   static async registration(
-    email: string,
-    name: string,
-    password: string,
+    data: RegistInput,
   ): Promise<AxiosResponse<AuthResponse>> {
-    return $api.post<AuthResponse>('/registration', { email, name, password });
+    return $api.post<AuthResponse>('auth/registration', data);
   }
 
-  static async logout(messages: Message[]): Promise<void> {
-    console.log(messages);
-    return $api.post('/logout', messages);
+  static async logout(): Promise<void> {
+    return $api.post('auth/logout');
   }
 }

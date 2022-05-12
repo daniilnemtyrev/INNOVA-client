@@ -1,21 +1,12 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Store from './store/store';
 
-interface State {
-  store: Store;
-}
-
-const store = new Store();
-
-export const Context = createContext<State>({
-  store,
-});
+import { RootStoreProvider } from './stores/root-provider';
 
 ReactDOM.render(
-  <Context.Provider value={{ store }}>
+  <RootStoreProvider>
     <App />
-  </Context.Provider>,
+  </RootStoreProvider>,
   document.getElementById('root'),
 );

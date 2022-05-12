@@ -1,116 +1,43 @@
 import { observer } from 'mobx-react-lite';
-import React, { FC, useState } from 'react';
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { Context } from '../index';
-import { Container, Content } from '../styles/auth.module.';
-import { Button } from '../components/UI/Button';
-import { Input } from '../components/UI/Input';
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import { ValidDiv } from '../components/UI/Valid';
-import LinkButton from '../components/LinkButton';
+import React, { FC } from 'react';
+import { LoginFormik } from '../components/Login/login-formik';
+import { Header } from '../components/general/header';
+import styled from 'styled-components';
+import { colors } from '../styles/colors/colors';
+import { Sidebar } from '../components/general/sidebar';
+
+const Content = styled.section`
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 120px 1fr;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(
+    98.26% 251.56% at 13.33% 18.61%,
+    #343131 0%,
+    #1d1919 100%
+  );
+`;
+
+export const Main = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 120px);
+  grid-columns: 2/3;
+  grid-row: 2/3;
+  background: transparent;
+`;
 
 const Login: FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [name, setName] = useState<string>('');
-  const { store } = useContext(Context);
-
-  const validationsSchema = yup.object().shape({
-    email: yup
-      .string()
-      .typeError('Должно быть строкой')
-      .required('Поле email обязательно')
-      .email('Некорректный email'),
-    password: yup
-      .string()
-      .typeError('Должно быть строкой')
-      .required('Поле password обязательно'),
-  });
-
   return (
-    <Container>
-      <Content>
-        <Formik
-          initialValues={{
-            email: '',
-            password: '',
-          }}
-          validateOnBlur
-          validateOnMount
-          validateOnChange
-          onSubmit={values => {
-            console.log(values);
-          }}
-          validationSchema={validationsSchema}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            isValid,
-            handleSubmit,
-          }) => (
-            <>
-              <Input
-                value={values.email}
-                name={'email'}
-                type={'text'}
-                placeholder="Email"
-                onChange={e => {
-                  setEmail(e.target.value);
-                  handleChange(e);
-                }}
-                onBlur={handleBlur}
-              />
-              <Input
-                value={values.password}
-                onBlur={handleBlur}
-                name={'password'}
-                type="password"
-                placeholder="Password"
-                onChange={e => {
-                  setPassword(e.target.value);
-                  handleChange(e);
-                }}
-              />
-              {touched.email && errors.email && (
-                <ValidDiv>{errors.email}</ValidDiv>
-              )}
-              {touched.password && errors.password && (
-                <ValidDiv>{errors.password}</ValidDiv>
-              )}
-
-              <LinkButton
-                to="/chat"
-                type={'submit'}
-                disabled={!isValid}
-                onClick={() => {
-                  store.login(email, name, password);
-                  handleSubmit();
-                }}
-              >
-                Вход
-              </LinkButton>
-              <LinkButton
-                onClick={() => {
-                  store.setSend(false);
-                }}
-                to="/menu"
-              >
-                Меню
-              </LinkButton>
-            </>
-          )}
-        </Formik>
-        {store.IsSend && !store.IsAuth && (
-          <ValidDiv>Неверный логин или пароль</ValidDiv>
-        )}
-      </Content>
-    </Container>
+    <Content>
+      <Sidebar />
+      <Header />
+      <Main>
+        <LoginFormik />
+      </Main>
+    </Content>
   );
 };
 

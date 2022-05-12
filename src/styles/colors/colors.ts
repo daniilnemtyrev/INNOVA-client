@@ -1,0 +1,11 @@
+export const colors = {
+  white: ['#fff'],
+  black: ['#000'],
+  grey: ['#f8fafc', '#252525', '#505050', '#232234;'],
+  purple: ['#c8a2c8'],
+  blue: ['#E1F5FE', '#81D4FA', '#01579B', '#00C8F8', '#E3F2FD'],
+  red: ['#ff0000'],
+  green:['#009933'],
+  darkred:['#330000'],
+  darkgreen:['#003300']
+};
