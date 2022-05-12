@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { RegistFormik } from '../components/Regist/regist-formik';
-import { Header } from '../components/general/Header';
+import { Header } from '../components/general/header';
 import styled from 'styled-components';
 import { colors } from '../styles/colors/colors';
 

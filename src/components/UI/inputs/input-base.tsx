@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Line } from '../../../icons/line';
 import { colors } from '../../../styles/colors/colors';
 
 interface Props {
@@ -12,20 +13,32 @@ interface Props {
   required?: boolean;
 }
 
-const Container = styled.input`
-  width: 350px;
+const Input = styled.input`
+  width: 100%;
   min-height: 40px;
   margin-bottom: 10px;
-  border-radius: 6px;
   box-shadow: none;
   border: none;
-  padding-left: 3px;
+  background-color: none;
+  background: transparent;
   font-size: 13px;
-  font-family: 'Roboto Slab', serif;
-  color: ${colors.grey[2]};
-  padding-left: 10px;
-  border: 1px solid ${colors.blue[1]};
-  font-family: 'Roboto Slab', serif;
+  color: ${colors.white[0]};
+  border-bottom: 1px solid ${colors.grey[1]};
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid green;
+    -webkit-text-fill-color: green;
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 `;
 
 export const InputBase = ({
@@ -39,15 +52,17 @@ export const InputBase = ({
   ...rest
 }: Props) => {
   return (
-    <Container
-      value={value}
-      name={name}
-      type={type}
-      placeholder={placeholder}
-      required={required}
-      onChange={onChange}
-      onBlur={onBlur}
-      {...rest}
-    />
+    <>
+      <Input
+        value={value}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        required={required}
+        onChange={onChange}
+        onBlur={onBlur}
+        {...rest}
+      />
+    </>
   );
 };

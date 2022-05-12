@@ -1,14 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
 
+const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;600;700;800;900&family=Caudex:wght@700&family=Montserrat:wght@600&family=Orbitron:wght@700&family=Play&display=swap');
   html,
   body {
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-
+    background: radial-gradient(98.26% 251.56% at 13.33% 18.61%, #343131 0%, #1D1919 100%)
     -webkit-font-smoothing: antialiased;
   }
   * {
@@ -18,7 +20,6 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
 body, input, button {
-  font-family: 'Exo 2', sans-serif;
   font-size: 16px;
   box-shadow: none;
 }

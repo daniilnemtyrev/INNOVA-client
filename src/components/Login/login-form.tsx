@@ -10,13 +10,13 @@ import { LoginInput } from './login-formik';
 
 export const Content = styled.div`
   display: flex;
+  width: 650px;
   flex-direction: column;
   justify-content: center;
   min-height: 190px;
-  background-color: ${colors.white[0]};
+  background: linear-gradient(127.44deg, #505050 0%, #383838 100%);
   padding: 25px;
   border-radius: 10px;
-  border: 1px solid ${colors.blue[1]};
   box-shadow: 0 0 2px rgba(194, 195, 197);
 `;
 

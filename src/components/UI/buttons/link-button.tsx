@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { Button } from './button-base';
-import { ButtonWithoutStyles } from './button-without-styles';
 
 interface Props {
   [x: string]: any;
@@ -13,7 +12,6 @@ interface Props {
   to: any;
   onClick: any;
   disabled?: boolean;
-  noStyle?: boolean;
   color?: string;
 }
 
@@ -26,32 +24,19 @@ const LinkButton = (props: Props) => {
     to,
     onClick,
     disabled,
-    noStyle,
     color,
     ...rest
   } = props;
   return (
     <>
-      {noStyle ? (
-        <ButtonWithoutStyles
-          disabled={disabled}
-          color={color}
-          onClick={event => {
-            onClick && onClick(event);
-            history.push(to);
-          }}
-          {...rest}
-        />
-      ) : (
-        <Button
-          disabled={disabled}
-          onClick={event => {
-            onClick && onClick(event);
-            history.push(to);
-          }}
-          {...rest}
-        />
-      )}
+      <Button
+        disabled={disabled}
+        onClick={event => {
+          onClick && onClick(event);
+          history.push(to);
+        }}
+        {...rest}
+      />
     </>
   );
 };
