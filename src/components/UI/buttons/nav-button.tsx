@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
@@ -48,6 +47,7 @@ const Container = styled.li<{ isActive: boolean }>`
     &:hover::after  {
       opacity:1 ;
     },
+  }
 `;
 
 const Button = styled.button`

@@ -5,6 +5,7 @@ import AppRouter from './components/AppRouter';
 import { BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './styles/global';
 import { useStores } from './hooks/useStore';
+import { ModalsContextProvider } from './context/modals-context';
 
 const App: React.FC = () => {
   const { rootStore } = useStores();
@@ -19,7 +20,9 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <AppRouter />
+      <ModalsContextProvider>
+        <AppRouter />
+      </ModalsContextProvider>
     </BrowserRouter>
   );
 };

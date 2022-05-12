@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
 import { colors } from '../../styles/colors/colors';
-import { OptionsModal } from '../Home/options-modal';
+import { OptionsModal } from './options-modal';
 import NavButton from '../UI/buttons/nav-button';
 import logo from '../../icons/logo_innova_2.png';
 import { NavIcon } from '../../icons/nav-icon';
+import { useModalContext } from '../../context/modals-context';
 
 interface NavElems {
   id: number;
@@ -64,11 +65,9 @@ const LogoImage = styled.img`
 `;
 
 export const Header = observer(() => {
-  const [visibleOptions, setVisibleOptions] = useState(false);
-  const [currentItemId, setCurrentItemId] = useState(0);
   const { rootStore } = useStores();
-  const userStore = rootStore.userStore;
-  const authStore = rootStore.authStore;
+  const otherStore = rootStore.otherStore;
+  const { setHeaderModalVisible } = useModalContext();
 
   return (
     <Container>
@@ -82,8 +81,8 @@ export const Header = observer(() => {
           <NavButton
             id={0}
             to="/home"
-            onClick={() => setCurrentItemId(0)}
-            currentItemId={currentItemId}
+            onClick={() => otherStore.setNavCurrentId(0)}
+            currentItemId={otherStore.navCurrentId}
           >
             Главная
           </NavButton>
@@ -91,16 +90,16 @@ export const Header = observer(() => {
           <NavButton
             id={1}
             to="/home"
-            onClick={() => setCurrentItemId(1)}
-            currentItemId={currentItemId}
+            onClick={() => otherStore.setNavCurrentId(1)}
+            currentItemId={otherStore.navCurrentId}
           >
             Новости
           </NavButton>
 
           <NavButton
             id={2}
-            onClick={() => setCurrentItemId(2)}
-            currentItemId={currentItemId}
+            onClick={() => otherStore.setNavCurrentId(2)}
+            currentItemId={otherStore.navCurrentId}
           >
             ИННОВА
           </NavButton>
@@ -108,19 +107,16 @@ export const Header = observer(() => {
           <NavButton
             id={3}
             onClick={() => {
-              setVisibleOptions(prev => !prev);
-              setCurrentItemId(3);
+              setHeaderModalVisible(prev => !prev);
+              otherStore.setNavCurrentId(3);
             }}
-            currentItemId={currentItemId}
+            currentItemId={otherStore.navCurrentId}
           >
             <NavIcon />
           </NavButton>
         </NavContent>
 
-        <OptionsModal
-          visible={visibleOptions}
-          setVisibleOptions={setVisibleOptions}
-        />
+        <OptionsModal />
       </Nav>
     </Container>
   );
