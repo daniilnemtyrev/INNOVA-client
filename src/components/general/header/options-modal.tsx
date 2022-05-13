@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { useModalContext } from '../../context/modals-context';
-import { useStores } from '../../hooks/useStore';
-import { Line } from '../../icons/line';
-import { colors } from '../../styles/colors/colors';
-import { TextButton } from '../UI/buttons/text-button';
+import { useModalContext } from '../../../context/modals-context';
+import { useStores } from '../../../hooks/useStore';
+import { Line } from '../../../icons/line';
+import { colors } from '../../../styles/colors/colors';
+import { TextButton } from '../../UI/buttons/text-button';
 
 const Content = styled.section`
   position: absolute;

@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useStores } from '../../../hooks/useStore';
 import { colors } from '../../../styles/colors/colors';
+import { StateSetter } from '../../types/custom-types';
 
 const Container = styled.div`
-  width: 100px;
+  width: 130px;
   height: 120px;
   border: none;
   position: relative;
@@ -13,7 +15,7 @@ const Container = styled.div`
 `;
 
 const Button = styled.button`
-  width: 100px;
+  width: 130px;
   height: 120px;
   border: none;
   position: relative;
@@ -56,8 +58,10 @@ const LineBottom = styled.div`
 `;
 
 export const SidebarButton = () => {
+  const { rootStore } = useStores();
+  const otherStore = rootStore.otherStore;
   return (
-    <Container>
+    <Container onClick={() => otherStore.setSidebarVisible(false)}>
       <Button />
       <LineTop />
       <LineMiddle />

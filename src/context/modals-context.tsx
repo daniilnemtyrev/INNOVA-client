@@ -7,8 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-
-type StateSetter<T> = Dispatch<SetStateAction<T>>;
+import { StateSetter } from '../components/types/custom-types';
 
 interface IContext {
   headerModalVisible: boolean;

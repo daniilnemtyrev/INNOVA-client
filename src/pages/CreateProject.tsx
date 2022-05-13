@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { CasesGrid } from '../components/CreateProject/cases-grid';
 import { CreateProjectFormik } from '../components/CreateProject/form/create-project-formik';
 import { TracksGrid } from '../components/CreateProject/tracks-grid';
-import { Header } from '../components/general/header';
+import { Header } from '../components/general/header/header';
 import { useStores } from '../hooks/useStore';
 import { colors } from '../styles/colors/colors';
 

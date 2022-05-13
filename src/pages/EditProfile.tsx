@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
-import { Header } from '../components/general/header';
+import { Header } from '../components/general/header/header';
 import styled from 'styled-components';
 import { colors } from '../styles/colors/colors';
 import { EditProfileFormik } from '../components/EditProfile/form/edit-profile-formik';
