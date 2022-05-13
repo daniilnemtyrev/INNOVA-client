@@ -4,10 +4,11 @@ import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
 import { colors } from '../../styles/colors/colors';
 import { OptionsModal } from './options-modal';
-import NavButton from '../UI/buttons/nav-button';
 import logo from '../../icons/logo_innova_2.png';
 import { NavIcon } from '../../icons/nav-icon';
 import { useModalContext } from '../../context/modals-context';
+import { NavButton } from '../UI/buttons/nav-button';
+import { Link } from 'react-router-dom';
 
 interface NavElems {
   id: number;
@@ -78,24 +79,25 @@ export const Header = observer(() => {
 
       <Nav>
         <NavContent>
-          <NavButton
-            id={0}
-            to="/home"
-            onClick={() => otherStore.setNavCurrentId(0)}
-            currentItemId={otherStore.navCurrentId}
-          >
-            Главная
-          </NavButton>
+          <Link to="/home">
+            <NavButton
+              id={0}
+              onClick={() => otherStore.setNavCurrentId(0)}
+              currentItemId={otherStore.navCurrentId}
+            >
+              Главная
+            </NavButton>
+          </Link>
 
-          <NavButton
-            id={1}
-            to="/home"
-            onClick={() => otherStore.setNavCurrentId(1)}
-            currentItemId={otherStore.navCurrentId}
-          >
-            Новости
-          </NavButton>
-
+          <Link to="/login">
+            <NavButton
+              id={1}
+              onClick={() => otherStore.setNavCurrentId(1)}
+              currentItemId={otherStore.navCurrentId}
+            >
+              Новости
+            </NavButton>
+          </Link>
           <NavButton
             id={2}
             onClick={() => otherStore.setNavCurrentId(2)}

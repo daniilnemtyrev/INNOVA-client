@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { CreateProjectForm } from './create-project-form';
 import { useStores } from '../../../hooks/useStore';
 import { projectValidSchema } from '../../../shared/schemas/project-valid-schema';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export interface ICreateProjectForm {
   name: string;
@@ -16,7 +16,7 @@ export interface ICreateProjectForm {
 
 export const CreateProjectFormik = () => {
   const { rootStore } = useStores();
-  const history = useHistory();
+  const navigate = useNavigate();
   const projectStore = rootStore.projectStore;
   const userStore = rootStore.userStore;
   const project = rootStore.projectStore.project;
@@ -42,7 +42,7 @@ export const CreateProjectFormik = () => {
     };
     try {
       await projectStore.createProject(data);
-      history.push('/profile');
+      navigate('/profile');
     } catch (e) {
       console.log(e);
     }
@@ -60,3 +60,6 @@ export const CreateProjectFormik = () => {
     />
   );
 };
+function useNavigation() {
+  throw new Error('Function not implemented.');
+}

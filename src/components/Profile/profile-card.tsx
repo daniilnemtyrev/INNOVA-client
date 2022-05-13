@@ -6,7 +6,6 @@ import { SettingsIcon } from '../../icons/settings-icon';
 import { UserIcon } from '../../icons/user-icon';
 import { colors } from '../../styles/colors/colors';
 import { Button } from '../UI/buttons/button-base';
-import LinkButton from '../UI/buttons/link-button';
 
 export const Content = styled.main`
   width: 60%;
@@ -57,13 +56,13 @@ const NameContainer = styled.div`
   margin-bottom: 15px;
 `;
 
-const SettingsButton = styled(LinkButton)`
-  min-width: 20px;
-  margin: 0;
-  height: 20px;
-  border: none;
-  background: none;
-`;
+// const SettingsButton = styled(LinkButton)`
+//   min-width: 20px;
+//   margin: 0;
+//   height: 20px;
+//   border: none;
+//   background: none;
+// `;
 
 const LabelText = styled(Email)``;
 
@@ -86,9 +85,9 @@ export const ProfileCard = observer(() => {
         <GeneralInfo>
           <NameContainer>
             <Name>{fioStr}</Name>
-            <SettingsButton to="/profile/edit">
+            {/* <SettingsButton to="/profile/edit">
               <SettingsIcon />
-            </SettingsButton>
+            </SettingsButton> */}
           </NameContainer>
 
           <Email>{`e-mail: ${userStore.user.email}`}</Email>
@@ -111,13 +110,13 @@ export const ProfileCard = observer(() => {
           </Button>
         </>
       )}
-      {userStore.user.request_status === 'Подтвержден' && (
+      {/* {userStore.user.request_status === 'Подтвержден' && (
         <LinkButton to="/profile/myProject">Мои проекты</LinkButton>
       )}
 
       {userStore.user.request_status === 'Подтвержден' && (
         <LinkButton to="/profile/createProject">Создать проект</LinkButton>
-      )}
+      )} */}
     </Content>
   );
 });

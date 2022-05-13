@@ -4,7 +4,6 @@ import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { moveOptions } from '../../UI/select/move-options';
 import { colors } from '../../../styles/colors/colors';
-import LinkButton from '../../UI/buttons/link-button';
 import { FormikInput } from '../../UI/inputs/formik-input';
 import { FormikSelect } from '../../UI/select/select-formik';
 
@@ -232,7 +231,7 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = observer(
           />
         </Row>
 
-        <LinkButton
+        {/* <LinkButton
           type={'submit'}
           disabled={!isValid}
           onClick={() => {
@@ -240,7 +239,7 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = observer(
           }}
         >
           Сохранить
-        </LinkButton>
+        </LinkButton> */}
       </Content>
     );
   },

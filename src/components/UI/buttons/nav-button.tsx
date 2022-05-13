@@ -1,15 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
 
 interface Props {
-  [x: string]: any;
-  history: any;
-  location: any;
-  match: any;
-  staticContext: any;
-  to?: any;
   onClick?: any;
   disabled?: boolean;
   color?: string;
@@ -65,13 +58,8 @@ const Text = styled.p`
   color: ${colors.white[0]};
 `;
 
-const NavButton = (props: Props) => {
+export const NavButton = (props: Props) => {
   const {
-    history,
-    location,
-    match,
-    staticContext,
-    to,
     onClick,
     disabled,
     color,
@@ -85,18 +73,9 @@ const NavButton = (props: Props) => {
   const isActive = id === currentItemId;
   return (
     <Container isActive={isActive}>
-      <Button
-        disabled={disabled}
-        onClick={() => {
-          onClick && onClick();
-          to && history.push(to);
-        }}
-        {...rest}
-      >
+      <Button disabled={disabled} onClick={onClick} {...rest}>
         <Text>{children}</Text>
       </Button>
     </Container>
   );
 };
-
-export default withRouter(NavButton);

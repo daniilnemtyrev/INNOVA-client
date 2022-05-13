@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BackArrow } from '../../../icons/back-arrow';
-import LinkButton from './link-button';
 
 interface Props {
   to?: string;
   onClick?: () => void;
 }
 
-const Container = styled(LinkButton)`
+const Container = styled.button`
   position: absolute;
   top: 20px;
   left: 15px;
@@ -23,7 +22,7 @@ const Container = styled(LinkButton)`
 
 export const BackButton = ({ to, onClick }: Props) => {
   return (
-    <Container to={to} onClick={onClick}>
+    <Container onClick={onClick}>
       <BackArrow />
     </Container>
   );

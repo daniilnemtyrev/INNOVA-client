@@ -1,14 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { setTimeout } from 'timers';
 import { useStores } from '../../hooks/useStore';
-import { BackArrow } from '../../icons/back-arrow';
 import { ITrack } from '../../models/ITrack';
 import { colors } from '../../styles/colors/colors';
 import { GridLoader } from '../Loaders/grid-loader';
 import { BackButton } from '../UI/buttons/back-button';
-import LinkButton from '../UI/buttons/link-button';
 import { GridCard } from './grid-card';
 
 export const Content = styled.main`

@@ -2,7 +2,6 @@ import { FormikProps } from 'formik';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../styles/colors/colors';
-import LinkButton from '../UI/buttons/link-button';
 import { FormikInput } from '../UI/inputs/formik-input';
 import { RegistInput } from './regist-formik';
 
@@ -95,7 +94,7 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
         handleBlur={handleBlur}
       />
 
-      <LinkButton
+      {/* <LinkButton
         type={'submit'}
         disabled={!isValid}
         onClick={() => {
@@ -103,7 +102,7 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
         }}
       >
         Зарегестрироваться
-      </LinkButton>
+      </LinkButton> */}
     </Content>
   );
 };

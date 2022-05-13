@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useModalContext } from '../../context/modals-context';
 import { useStores } from '../../hooks/useStore';
 import { Line } from '../../icons/line';
 import { colors } from '../../styles/colors/colors';
-import TextButton from '../UI/buttons/text-button';
+import { TextButton } from '../UI/buttons/text-button';
 
 const Content = styled.section`
   position: absolute;
@@ -47,14 +48,18 @@ export const OptionsModal = () => {
         <Wrapper onClick={() => setHeaderModalVisible(false)}>
           <Content>
             <Li>
-              <TextButton to="/login">Войти</TextButton>
+              <Link to="/login">
+                <TextButton>Войти</TextButton>
+              </Link>
             </Li>
 
             <Li>
               <Line />
             </Li>
             <Li>
-              <TextButton to="/registration">Зарегистрироваться</TextButton>
+              <Link to="/registration">
+                <TextButton>Зарегистрироваться</TextButton>
+              </Link>
             </Li>
           </Content>
         </Wrapper>

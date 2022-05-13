@@ -3,7 +3,6 @@ import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
-import LinkButton from '../../UI/buttons/link-button';
 import { FormikInput } from '../../UI/inputs/formik-input';
 
 import 'react-calendar/dist/Calendar.css';
@@ -188,7 +187,7 @@ export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
           />
         </Row>
 
-        <LinkButton
+        {/* <LinkButton
           type={'submit'}
           disabled={!isValid}
           onClick={() => {
@@ -196,7 +195,7 @@ export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
           }}
         >
           Создать проект
-        </LinkButton>
+        </LinkButton> */}
       </Content>
     );
   },

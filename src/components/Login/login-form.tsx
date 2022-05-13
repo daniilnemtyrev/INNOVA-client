@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
 import { colors } from '../../styles/colors/colors';
-import LinkButton from '../UI/buttons/link-button';
+import { Button } from '../UI/buttons/button-base';
 import { FormikInput } from '../UI/inputs/formik-input';
 import { LoginInput } from './login-formik';
 
@@ -18,6 +18,10 @@ export const Content = styled.div`
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 0 2px rgba(194, 195, 197);
+`;
+
+const ButtonsGroup = styled.div`
+  display: flex;
 `;
 
 const ErrorText = styled.p`
@@ -63,16 +67,17 @@ export const LoginForm: FC<FormikProps<LoginInput>> = observer(
         />
 
         <ErrorText>{loginError && loginError}</ErrorText>
-
-        <LinkButton
-          type={'submit'}
-          disabled={!isValid}
-          onClick={() => {
-            handleSubmit();
-          }}
-        >
-          Вход
-        </LinkButton>
+        <ButtonsGroup>
+          <Button
+            type={'submit'}
+            disabled={!isValid}
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
+            Войти
+          </Button>
+        </ButtonsGroup>
       </Content>
     );
   },

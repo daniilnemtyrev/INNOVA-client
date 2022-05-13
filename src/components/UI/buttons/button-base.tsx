@@ -10,25 +10,21 @@ interface Props {
 }
 
 const Container = styled.button<{ disabled?: boolean }>`
-  min-width: 100px;
-  max-width: 200px;
-  height: 35px;
+  height: 34px;
   background-color: ${props =>
-    props.disabled ? colors.grey[0] : colors.white[0]};
-  border-radius: 3px;
-  border: 1px solid ${colors.blue[1]};
+    props.disabled ? colors.grey[5] : colors.blue[5]};
+  border-radius: 2px;
   box-shadow: none;
-  color: ${colors.blue[3]};
-  margin-bottom: 10px;
-  padding: 0px 7px;
-  margin-top: 3px;
-  font-size: 13px;
-  font-family: 'Source Sans Pro', sans-serif;
+  border: none;
+  color: ${props => (props.disabled ? colors.grey[2] : colors.white[0])};
+  padding: 8px 16px;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   &:hover {
     background-color: ${props =>
-      props.disabled ? colors.grey[0] : colors.blue[0]};
+      props.disabled ? colors.grey[5] : colors.blue[6]};
   }
 `;
 
