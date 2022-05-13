@@ -47,20 +47,28 @@ export const OptionsModal = () => {
       {headerModalVisible && (
         <Wrapper onClick={() => setHeaderModalVisible(false)}>
           <Content>
-            <Li>
-              <Link to="/login">
-                <TextButton>Войти</TextButton>
-              </Link>
-            </Li>
+            {authStore.IsAuth ? (
+              <Li>
+                <TextButton onClick={logout}>Выйти</TextButton>
+              </Li>
+            ) : (
+              <>
+                <Li>
+                  <Link to="/login">
+                    <TextButton>Войти</TextButton>
+                  </Link>
+                </Li>
 
-            <Li>
-              <Line />
-            </Li>
-            <Li>
-              <Link to="/registration">
-                <TextButton>Зарегистрироваться</TextButton>
-              </Link>
-            </Li>
+                <Li>
+                  <Line />
+                </Li>
+                <Li>
+                  <Link to="/registration">
+                    <TextButton>Зарегистрироваться</TextButton>
+                  </Link>
+                </Li>
+              </>
+            )}
           </Content>
         </Wrapper>
       )}
