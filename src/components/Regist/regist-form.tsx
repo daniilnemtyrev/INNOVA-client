@@ -2,19 +2,24 @@ import { FormikProps } from 'formik';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../styles/colors/colors';
+import { Button } from '../UI/buttons/button-base';
 import { FormikInput } from '../UI/inputs/formik-input';
 import { RegistInput } from './regist-formik';
 
 export const Content = styled.div`
   display: flex;
+  width: 650px;
   flex-direction: column;
   justify-content: center;
   min-height: 190px;
-  background-color: #fff;
+  background: linear-gradient(127.44deg, #505050 0%, #383838 100%);
   padding: 25px;
   border-radius: 10px;
-  border: 1px solid ${colors.blue[1]};
   box-shadow: 0 0 2px rgba(194, 195, 197);
+`;
+
+const ButtonsGroup = styled.div`
+  display: flex;
 `;
 
 export const RegistForm: FC<FormikProps<RegistInput>> = ({
@@ -94,15 +99,17 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
         handleBlur={handleBlur}
       />
 
-      {/* <LinkButton
-        type={'submit'}
-        disabled={!isValid}
-        onClick={() => {
-          handleSubmit();
-        }}
-      >
-        Зарегестрироваться
-      </LinkButton> */}
+      <ButtonsGroup>
+        <Button
+          type={'submit'}
+          disabled={!isValid}
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          Зарегистрироваться
+        </Button>
+      </ButtonsGroup>
     </Content>
   );
 };

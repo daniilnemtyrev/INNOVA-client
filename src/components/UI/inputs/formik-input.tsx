@@ -21,25 +21,25 @@ interface Props {
 }
 
 const Container = styled.div`
+  display: flex;
   position: relative;
-  margin-bottom: 16px;
+  flex-direction: column;
+  margin-bottom: 26px;
   max-height: 40px;
 `;
 
 const Input = styled(InputBase)<{ error?: string; touched?: boolean }>`
-  border-color: ${props => props.error && props.touched && colors.red[0]};
+  border-color: ${props => props.error && props.touched && colors.red[1]};
 `;
 
 const LabelError = styled.div`
-  background-color: ${colors.white[0]};
-  padding: 3px 3px;
   position: absolute;
-  top: -8px;
-  left: 20px;
+  top: -10px;
+  left: 0;
 `;
 
 const StyledText = styled.p`
-  color: ${colors.red[0]};
+  color: ${colors.red[1]};
   font-size: 12px;
 `;
 
