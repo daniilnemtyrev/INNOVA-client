@@ -21,7 +21,12 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-react",
+    "@typescript-eslint/eslint-plugin",
+    "prettier"
+  ],
   "rules": {
     "prettier/prettier": [
       "error",
