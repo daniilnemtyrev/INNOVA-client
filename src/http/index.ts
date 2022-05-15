@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { AuthResponse } from '../models/response/authResponse';
 
 export const API_URL = 'http://localhost:4000/';
@@ -8,7 +8,10 @@ const $api = axios.create({
   baseURL: API_URL,
 });
 
-$api.interceptors.request.use(config => {
+$api.interceptors.request.use((config: AxiosRequestConfig) => {
+  if (config.headers === undefined) {
+    return (config.headers = {});
+  }
   config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
   return config;
 });
