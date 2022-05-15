@@ -1,6 +1,9 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 import styled from 'styled-components';
-import { Line } from '../../../icons/line';
 import { colors } from '../../../styles/colors/colors';
 
 interface Props {
@@ -18,12 +21,12 @@ const Input = styled.input.attrs({
 })`
   width: 100%;
   min-height: 40px;
-  margin-bottom: 10px;
   box-shadow: none;
   border: none;
   background-color: none;
   background: transparent;
-  font-size: 13px;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
   color: ${colors.white[0]};
   border-bottom: 1px solid ${colors.grey[5]};
   &::placeholder {

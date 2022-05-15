@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { LoginFormik } from '../components/Login/login-formik';

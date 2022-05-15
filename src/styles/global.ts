@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;600;700;800;900&family=Caudex:wght@700&family=Montserrat:wght@600&family=Orbitron:wght@700&family=Play&display=swap');
   html,

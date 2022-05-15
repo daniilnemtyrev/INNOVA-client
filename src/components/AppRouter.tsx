@@ -11,41 +11,48 @@ import Login from '../pages/Login';
 import MyProjects from '../pages/MyProjects';
 import Profile from '../pages/Profile';
 import Regist from '../pages/Regist';
-import { publicRoutes, privateRoutes, adminRoutes } from '../routes';
 
+// eslint-disable-next-line react/function-component-definition
 const AppRouter: FC = () => {
   const { rootStore } = useStores();
-  const authStore = rootStore.authStore;
-  const userStore = rootStore.userStore;
-  console.log(userStore.user.roles);
+  const { authStore } = rootStore;
+  const { userStore } = rootStore;
 
   const isAdmin = userStore.user.roles?.find(role => role.value === 'admin');
-  console.log(isAdmin);
 
-  return authStore.IsAuth ? (
-    isAdmin ? (
-      <Routes>
-        <Route element={<AdminPage />} path={'/admin'} />
-        <Route path="*" element={<Navigate to="/admin" />} />
-      </Routes>
-    ) : (
-      <Routes>
-        <Route element={<Chat />} path={'/chat'} />
-        <Route element={<Home />} path={'/home'} />
-        <Route element={<Profile />} path={'/profile'} />
-        <Route element={<EditProfile />} path={'/profile/edit'} />
-        <Route element={<CreateProject />} path={'/profile/createProject'} />
-        <Route element={<MyProjects />} path={'/profile/myProject'} />
-        <Route path="*" element={<Navigate to="/home" />} />
-      </Routes>
-    )
-  ) : (
-    <Routes>
-      <Route element={<Home />} path={'/home'} />
-      <Route element={<Login />} path={'/login'} />
-      <Route element={<Regist />} path={'/registration'} />
-      <Route path="*" element={<Navigate to="/home" />} />
-    </Routes>
+  return (
+    <>
+      {authStore.IsAuth && isAdmin && (
+        <Routes>
+          <Route element={<AdminPage />} path="/admin" />
+          <Route path="*" element={<Navigate to="/admin" />} />
+        </Routes>
+      )}
+      {authStore.IsAuth && !isAdmin && (
+        <Routes>
+          <Route element={<Chat />} path="/chat" />
+          <Route element={<Home />} path="/home" />
+          <Route element={<Profile />} path="/profile" />
+          <Route element={<EditProfile />} path="/profile/edit" />
+          <Route element={<CreateProject />} path="/profile/createProject" />
+          <Route element={<MyProjects />} path="/profile/myProject" />
+          <Route path="*" element={<Navigate to="/home" />} />
+        </Routes>
+      )}
+
+      {!authStore.IsAuth && (
+        <Routes>
+          <Route element={<Profile />} path="/profile" />
+          <Route element={<EditProfile />} path="/profile/edit" />
+          <Route element={<CreateProject />} path="/profile/createProject" />
+          <Route element={<MyProjects />} path="/profile/myProject" />
+          <Route element={<Home />} path="/home" />
+          <Route element={<Login />} path="/login" />
+          <Route element={<Regist />} path="/registration" />
+          <Route path="*" element={<Navigate to="/home" />} />
+        </Routes>
+      )}
+    </>
   );
 };
 

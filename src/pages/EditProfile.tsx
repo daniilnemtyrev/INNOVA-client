@@ -1,26 +1,20 @@
+/* eslint-disable react/function-component-definition */
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { Header } from '../components/general/header/header';
-import styled from 'styled-components';
 import { colors } from '../styles/colors/colors';
 import { EditProfileFormik } from '../components/EditProfile/form/edit-profile-formik';
-
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-color: ${colors.blue[0]};
-`;
+import { Main } from '../styles/general';
+import { Sidebar } from '../components/general/sidebar/sidebar';
 
 const EditProfile: FC = () => {
   return (
     <>
+      <Sidebar />
       <Header />
-      <Container>
+      <Main>
         <EditProfileFormik />
-      </Container>
+      </Main>
     </>
   );
 };

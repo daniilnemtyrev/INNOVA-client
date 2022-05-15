@@ -40,7 +40,7 @@ export const LoginForm: FC<FormikProps<LoginInput>> = observer(
     handleSubmit,
   }) => {
     const { rootStore } = useStores();
-    const authStore = rootStore.authStore;
+    const { authStore } = rootStore;
     const loginError = authStore.errorMessage;
 
     return (
@@ -69,7 +69,7 @@ export const LoginForm: FC<FormikProps<LoginInput>> = observer(
         <ErrorText>{loginError && loginError}</ErrorText>
         <ButtonsGroup>
           <Button
-            type={'submit'}
+            type="submit"
             disabled={!isValid}
             onClick={() => {
               handleSubmit();

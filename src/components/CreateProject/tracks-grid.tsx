@@ -23,8 +23,8 @@ export const Content = styled.main`
 
 export const TracksGrid = observer(() => {
   const { rootStore } = useStores();
-  const projectStore = rootStore.projectStore;
-  const tracks = projectStore.tracks;
+  const { projectStore } = rootStore;
+  const { tracks } = projectStore;
 
   const chooseTrackAsync = async (data: ITrack) => {
     projectStore.project.trackId = data.trackId;

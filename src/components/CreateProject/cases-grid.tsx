@@ -2,12 +2,10 @@ import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
-import { BackArrow } from '../../icons/back-arrow';
 import { ICase } from '../../models/ICase';
 import { colors } from '../../styles/colors/colors';
 import { GridLoader } from '../Loaders/grid-loader';
 import { BackButton } from '../UI/buttons/back-button';
-import { Button } from '../UI/buttons/button-base';
 import { GridCard } from './grid-card';
 
 export const Content = styled.main`
@@ -38,8 +36,8 @@ const NoCases = styled.div`
 
 export const CasesGrid = observer(() => {
   const { rootStore } = useStores();
-  const projectStore = rootStore.projectStore;
-  const cases = projectStore.cases;
+  const { projectStore } = rootStore;
+  const { cases } = projectStore;
 
   const chooseCase = ({ id, name, description }: ICase) => {
     projectStore.project.caseId = id;
@@ -74,14 +72,14 @@ export const CasesGrid = observer(() => {
         <>
           <BackButton onClick={onBack} />
           {cases.length ? (
-            cases.map(cases => {
+            cases.map(casess => {
               const data = {
-                id: cases.id,
-                name: cases.name,
-                description: cases.description,
+                id: casess.id,
+                name: casess.name,
+                description: casess.description,
               };
               return (
-                <GridCard onClick={() => chooseCase(data)} name={cases.name} />
+                <GridCard onClick={() => chooseCase(data)} name={casess.name} />
               );
             })
           ) : (

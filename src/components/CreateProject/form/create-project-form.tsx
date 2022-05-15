@@ -8,9 +8,7 @@ import { FormikInput } from '../../UI/inputs/formik-input';
 import 'react-calendar/dist/Calendar.css';
 
 import { ICreateProjectForm } from './create-project-formik';
-import { BackArrow } from '../../../icons/back-arrow';
 import { useStores } from '../../../hooks/useStore';
-import { Button } from '../../UI/buttons/button-base';
 import { BackButton } from '../../UI/buttons/back-button';
 
 export const Content = styled.div`
@@ -70,17 +68,9 @@ const TextContainer = styled.div`
 `;
 
 export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
-  ({
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    isValid,
-    handleSubmit,
-  }) => {
+  ({ values, errors, touched, handleChange, handleBlur }) => {
     const { rootStore } = useStores();
-    const project = rootStore.projectStore.project;
+    const { project } = rootStore.projectStore;
 
     const onBack = () => {
       project.caseId = null;
@@ -108,9 +98,9 @@ export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
           <LabelInput>Название проекта</LabelInput>
           <FormikInput
             value={values.name}
-            name={'name'}
-            type={'text'}
-            placeholder={'Имя'}
+            name="name"
+            type="text"
+            placeholder="Имя"
             error={errors.name}
             touched={touched.name}
             handleChange={handleChange('name')}
@@ -122,9 +112,9 @@ export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
           <LabelInput>Описание проекта</LabelInput>
           <FormikInput
             value={values.description}
-            name={'description'}
-            type={'text'}
-            placeholder={'Описание проекта'}
+            name="description"
+            type="text"
+            placeholder="Описание проекта"
             error={errors.description}
             touched={touched.description}
             handleChange={handleChange('description')}
@@ -136,9 +126,9 @@ export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
           <LabelInput>Целевая аудитория</LabelInput>
           <FormikInput
             value={values.auditorium}
-            name={'auditorium'}
-            type={'text'}
-            placeholder={'Целевая аудитория'}
+            name="auditorium"
+            type="text"
+            placeholder="Целевая аудитория"
             error={errors.auditorium}
             touched={touched.auditorium}
             handleChange={handleChange('auditorium')}
@@ -150,9 +140,9 @@ export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
           <LabelInput>Образ проекта</LabelInput>
           <FormikInput
             value={values.prototype}
-            name={'prototype'}
-            type={'text'}
-            placeholder={'Образ проекта'}
+            name="prototype"
+            type="text"
+            placeholder="Образ проекта"
             error={errors.prototype}
             touched={touched.prototype}
             handleChange={handleChange('prototype')}
@@ -163,9 +153,9 @@ export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
           <LabelInput>Unit-экономика</LabelInput>
           <FormikInput
             value={values.economy}
-            name={'economy'}
-            type={'text'}
-            placeholder={'Unit-экономика'}
+            name="economy"
+            type="text"
+            placeholder="Unit-экономика"
             error={errors.economy}
             touched={touched.economy}
             handleChange={handleChange('economy')}
@@ -177,9 +167,9 @@ export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
           <LabelInput>Маркетинг</LabelInput>
           <FormikInput
             value={values.marketing}
-            name={'marketing'}
-            type={'text'}
-            placeholder={'Маркетинг'}
+            name="marketing"
+            type="text"
+            placeholder="Маркетинг"
             error={errors.marketing}
             touched={touched.marketing}
             handleChange={handleChange('marketing')}

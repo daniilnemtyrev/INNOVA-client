@@ -1,5 +1,7 @@
-import { FormikTouched } from 'formik';
-import React, { ChangeEvent } from 'react';
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/function-component-definition */
+
+import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
 import { InputBase } from './input-base';
@@ -24,8 +26,9 @@ const Container = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  margin-bottom: 26px;
-  max-height: 40px;
+  margin-bottom: 23px;
+  max-height: 30px;
+  width: 100%;
 `;
 
 const Input = styled(InputBase)<{ error?: string; touched?: boolean }>`

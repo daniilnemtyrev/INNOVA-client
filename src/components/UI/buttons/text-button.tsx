@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 
 import styled from 'styled-components';
@@ -25,9 +28,13 @@ const Text = styled.p`
   color: ${colors.white[0]};
 `;
 
-export const TextButton = (props: Props) => {
-  const { onClick, disabled, color, children, ...rest } = props;
-
+export const TextButton = ({
+  onClick,
+  disabled,
+  color,
+  children,
+  ...rest
+}: Props) => {
   return (
     <Button disabled={disabled} onClick={onClick} {...rest}>
       <Text>{children}</Text>

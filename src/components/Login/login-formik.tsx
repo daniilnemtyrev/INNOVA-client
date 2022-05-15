@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Formik } from 'formik';
 import { LoginForm } from './login-form';
@@ -17,7 +18,7 @@ const initialValues: LoginInput = {
 
 export const LoginFormik = () => {
   const { rootStore } = useStores();
-  const authStore = rootStore.authStore;
+  const { authStore } = rootStore;
   return (
     <Formik
       initialValues={initialValues}

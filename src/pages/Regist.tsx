@@ -1,8 +1,9 @@
+/* eslint-disable react/function-component-definition */
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
+import styled from 'styled-components';
 import { RegistFormik } from '../components/Regist/regist-formik';
 import { Header } from '../components/general/header/header';
-import styled from 'styled-components';
 import { Sidebar } from '../components/general/sidebar/sidebar';
 
 export const Main = styled.main`

@@ -1,26 +1,17 @@
+/* eslint-disable react/function-component-definition */
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import styled from 'styled-components';
 import { Header } from '../components/general/header/header';
+import { Sidebar } from '../components/general/sidebar/sidebar';
 import { ProfileCard } from '../components/Profile/profile-card';
-import { colors } from '../styles/colors/colors';
-
-export const Container = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-color: ${colors.blue[0]};
-`;
+import { ProfileMain } from '../components/Profile/profile-main';
 
 const Profile = () => {
   return (
     <>
+      <Sidebar />
       <Header />
-      <Container>
-        <ProfileCard />
-      </Container>
+      <ProfileMain />
     </>
   );
 };

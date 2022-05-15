@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import { FormikProps } from 'formik';
 import React, { FC } from 'react';
 import styled from 'styled-components';
@@ -35,8 +36,8 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
     <Content>
       <FormikInput
         value={values.surname}
-        name={'surname'}
-        type={'text'}
+        name="surname"
+        type="text"
         placeholder="Фамилия"
         error={errors.surname}
         touched={touched.surname}
@@ -46,8 +47,8 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
 
       <FormikInput
         value={values.name}
-        name={'name'}
-        type={'text'}
+        name="name"
+        type="text"
         placeholder="Имя"
         error={errors.name}
         touched={touched.name}
@@ -57,8 +58,8 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
 
       <FormikInput
         value={values.patronymic}
-        name={'patronymic'}
-        type={'text'}
+        name="patronymic"
+        type="text"
         placeholder="Отчество"
         error={errors.patronymic}
         touched={touched.patronymic}
@@ -68,8 +69,8 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
 
       <FormikInput
         value={values.birthdate}
-        name={'birthdate'}
-        type={'text'}
+        name="birthdate"
+        type="text"
         placeholder="Дата рождения"
         error={errors.birthdate}
         touched={touched.birthdate}
@@ -79,8 +80,8 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
 
       <FormikInput
         value={values.email}
-        name={'email'}
-        type={'text'}
+        name="email"
+        type="text"
         placeholder="E-mail"
         error={errors.email}
         touched={touched.email}
@@ -90,7 +91,7 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
 
       <FormikInput
         value={values.password}
-        name={'password'}
+        name="password"
         type="password"
         placeholder="Password"
         error={errors.password}
@@ -101,7 +102,7 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
 
       <ButtonsGroup>
         <Button
-          type={'submit'}
+          type="submit"
           disabled={!isValid}
           onClick={() => {
             handleSubmit();

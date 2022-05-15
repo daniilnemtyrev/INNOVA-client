@@ -68,7 +68,7 @@ const LabelText = styled(Email)``;
 
 export const ProfileCard = observer(() => {
   const { rootStore } = useStores();
-  const userStore = rootStore.userStore;
+  const { userStore } = rootStore;
   const fioStr = `${userStore.user.surname}  ${userStore.user.name}  ${userStore.user.patronymic}`;
 
   const updateRequestStatus = async () => {
@@ -94,7 +94,7 @@ export const ProfileCard = observer(() => {
           <LabelText>{`Статус пользователя: ${userStore.user.request_status}`}</LabelText>
         </GeneralInfo>
       </UserInfo>
-      {userStore.user.request_status == 'Не подтвержден' && (
+      {userStore.user.request_status === 'Не подтвержден' && (
         <>
           <Advice>
             <LabelText>

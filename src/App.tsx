@@ -1,12 +1,13 @@
+/* eslint-disable react/function-component-definition */
 import './App.css';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
-import AppRouter from './components/AppRouter';
 import { BrowserRouter } from 'react-router-dom';
+import styled from 'styled-components';
+import AppRouter from './components/AppRouter';
 import GlobalStyle from './styles/global';
 import { useStores } from './hooks/useStore';
 import { ModalsContextProvider } from './context/modals-context';
-import styled from 'styled-components';
 
 const Content = styled.section<{ sidebarVisible: boolean }>`
   display: grid;
@@ -25,9 +26,8 @@ const Content = styled.section<{ sidebarVisible: boolean }>`
 
 const App: React.FC = () => {
   const { rootStore } = useStores();
-  const authStore = rootStore.authStore;
-  const otherStore = rootStore.otherStore;
-  console.log(otherStore.sidebarVisible);
+  const { authStore } = rootStore;
+  const { otherStore } = rootStore;
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
