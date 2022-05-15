@@ -22,7 +22,10 @@
     "sourceType": "module"
   },
   "plugins": [
+    "react",
+    "eslint-plugin-prettier",
     "eslint-plugin-react-hooks",
+    "eslint-plugin-jsx-a11y",
     "eslint-plugin-react",
     "@typescript-eslint/eslint-plugin",
     "prettier"
@@ -44,7 +47,8 @@
       "ignorePackages",
       {
         "ts": "never",
-        "tsx": "never"
+        "tsx": "never",
+        "js": "never"
       }
     ]
   },
