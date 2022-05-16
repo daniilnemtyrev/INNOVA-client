@@ -1,4 +1,3 @@
-/* eslint-disable react/function-component-definition */
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -46,7 +45,7 @@ const Text = styled(Status)`
 `;
 
 export const ProfileInfoCard = observer(() => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const { userStore } = rootStore;
   const fioStr = `${userStore.user.surname}  ${userStore.user.name}  ${userStore.user.patronymic}`;
 
@@ -71,10 +70,13 @@ export const ProfileInfoCard = observer(() => {
 
       {userStore.user.request_status === 'Не подтвержден' && (
         <Advice>
-          <Text>
-            * для участия в форуме Вам нужно заполнить профиль и отправить
-            заявку
-          </Text>
+          {!userStore.profileIsFilled && (
+            <Text>
+              * для участия в форуме Вам нужно заполнить профиль и отправить
+              заявку
+            </Text>
+          )}
+
           <Button
             disabled={!userStore.profileIsFilled}
             onClick={updateRequestStatus}

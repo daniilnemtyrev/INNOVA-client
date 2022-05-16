@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unstable-nested-components */
+
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Formik } from 'formik';
@@ -17,7 +19,7 @@ const initialValues: LoginInput = {
 };
 
 export const LoginFormik = () => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const { authStore } = rootStore;
   return (
     <Formik

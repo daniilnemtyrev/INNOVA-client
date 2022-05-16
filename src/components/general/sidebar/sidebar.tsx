@@ -32,9 +32,9 @@ const ShowButton = styled.button`
 `;
 
 export const Sidebar = observer(() => {
-  const { rootStore } = useStores();
-  const otherStore = rootStore.otherStore;
-  const authStore = rootStore.authStore;
+  const rootStore = useStores();
+  const { otherStore } = rootStore;
+  const { authStore } = rootStore;
   return (
     <Container visible={otherStore.sidebarVisible}>
       <SidebarButton />

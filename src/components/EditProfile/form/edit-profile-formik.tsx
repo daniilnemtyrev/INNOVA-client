@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable react/function-component-definition */
+
 import React from 'react';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ export interface EditProfileInput {
 }
 
 export const EditProfileFormik = () => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const navigate = useNavigate();
   const { userStore } = rootStore;
   const initialValues: EditProfileInput = {

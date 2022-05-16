@@ -33,8 +33,8 @@ const Wrapper = styled.div`
 `;
 
 export const OptionsModal = () => {
-  const { rootStore } = useStores();
-  const authStore = rootStore.authStore;
+  const rootStore = useStores();
+  const { authStore } = rootStore;
   const { headerModalVisible, setHeaderModalVisible } = useModalContext();
   console.log(headerModalVisible);
 

@@ -37,6 +37,12 @@
         "endOfLine": "auto"
       }
     ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents":  "arrow-function"
+      }
+    ],
     "no-use-before-define": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",

@@ -58,7 +58,7 @@ const LineBottom = styled.div`
 `;
 
 export const SidebarButton = () => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const otherStore = rootStore.otherStore;
   return (
     <Container onClick={() => otherStore.setSidebarVisible(false)}>

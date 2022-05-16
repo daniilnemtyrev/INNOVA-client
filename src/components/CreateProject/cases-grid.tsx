@@ -35,7 +35,7 @@ const NoCases = styled.div`
 `;
 
 export const CasesGrid = observer(() => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const { projectStore } = rootStore;
   const { cases } = projectStore;
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/require-default-props */
-/* eslint-disable react/function-component-definition */
+
 import React, { useState } from 'react';
 import Select, { GroupBase, StylesConfig } from 'react-select';
 import { colors } from '../../../styles/colors/colors';

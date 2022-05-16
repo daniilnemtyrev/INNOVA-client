@@ -19,9 +19,9 @@ export const Container = styled.section`
 `;
 
 const CreateProject = () => {
-  const { rootStore } = useStores();
-  const projectStore = rootStore.projectStore;
-  const project = projectStore.project;
+  const rootStore = useStores();
+  const { projectStore } = rootStore;
+  const { project } = projectStore;
   console.log(project.trackId);
 
   useEffect(() => {

@@ -1,4 +1,3 @@
-/* eslint-disable react/function-component-definition */
 import './App.css';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
@@ -25,7 +24,7 @@ const Content = styled.section<{ sidebarVisible: boolean }>`
 `;
 
 const App: React.FC = () => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const { authStore } = rootStore;
   const { otherStore } = rootStore;
 

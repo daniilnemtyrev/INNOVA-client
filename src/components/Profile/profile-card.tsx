@@ -67,7 +67,7 @@ const NameContainer = styled.div`
 const LabelText = styled(Email)``;
 
 export const ProfileCard = observer(() => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const { userStore } = rootStore;
   const fioStr = `${userStore.user.surname}  ${userStore.user.name}  ${userStore.user.patronymic}`;
 

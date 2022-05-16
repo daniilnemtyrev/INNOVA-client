@@ -69,7 +69,7 @@ const TextContainer = styled.div`
 
 export const CreateProjectForm: FC<FormikProps<ICreateProjectForm>> = observer(
   ({ values, errors, touched, handleChange, handleBlur }) => {
-    const { rootStore } = useStores();
+    const rootStore = useStores();
     const { project } = rootStore.projectStore;
 
     const onBack = () => {

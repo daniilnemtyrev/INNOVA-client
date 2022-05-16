@@ -21,10 +21,10 @@ export const Content = styled.main`
 `;
 
 export const ProjectsList = observer(() => {
-  const { rootStore } = useStores();
-  const userStore = rootStore.userStore;
-  const projectStore = rootStore.projectStore;
-  const myProjects = projectStore.myProjects;
+  const rootStore = useStores();
+  const { userStore } = rootStore;
+  const { projectStore } = rootStore;
+  const { myProjects } = projectStore;
 
   useEffect(() => {
     const getProjects = async () => {

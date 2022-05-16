@@ -14,7 +14,7 @@ import Regist from '../pages/Regist';
 
 // eslint-disable-next-line react/function-component-definition
 const AppRouter: FC = () => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const { authStore } = rootStore;
   const { userStore } = rootStore;
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/function-component-definition */
 import { FormikProps } from 'formik';
 import React, { FC } from 'react';
 import styled from 'styled-components';

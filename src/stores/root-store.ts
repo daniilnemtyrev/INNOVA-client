@@ -5,8 +5,11 @@ import UserStore from './user-store';
 
 export class RootStore {
   authStore;
+
   userStore;
+
   projectStore;
+
   otherStore;
 
   constructor() {

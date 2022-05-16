@@ -39,7 +39,7 @@ export const LoginForm: FC<FormikProps<LoginInput>> = observer(
     isValid,
     handleSubmit,
   }) => {
-    const { rootStore } = useStores();
+    const rootStore = useStores();
     const { authStore } = rootStore;
     const loginError = authStore.errorMessage;
 

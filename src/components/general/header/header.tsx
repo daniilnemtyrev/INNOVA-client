@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { useStores } from '../../../hooks/useStore';
 import { colors } from '../../../styles/colors/colors';
 import { OptionsModal } from './options-modal';
@@ -8,7 +9,6 @@ import logo from '../../../icons/logo_innova_2.png';
 import { NavIcon } from '../../../icons/nav-icon';
 import { useModalContext } from '../../../context/modals-context';
 import { NavButton } from '../../UI/buttons/nav-button';
-import { Link } from 'react-router-dom';
 
 interface NavElems {
   id: number;
@@ -66,8 +66,8 @@ const LogoImage = styled.img`
 `;
 
 export const Header = observer(() => {
-  const { rootStore } = useStores();
-  const otherStore = rootStore.otherStore;
+  const rootStore = useStores();
+  const { otherStore } = rootStore;
   const { setHeaderModalVisible } = useModalContext();
 
   return (

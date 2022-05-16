@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
-/* eslint-disable react/function-component-definition */
+
 import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';

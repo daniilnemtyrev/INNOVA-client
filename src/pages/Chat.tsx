@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
+import { observer } from 'mobx-react-lite';
+import styled from 'styled-components';
 import { Message, Payload } from '../interfaces/IChat';
 
-import { observer } from 'mobx-react-lite';
 import { ButtonNav } from '../components/UI/ButtonNav';
 import { Button } from '../components/UI/buttons/button-base';
 import { InputBase } from '../components/UI/inputs/input-base';
-import styled from 'styled-components';
 import { useStores } from '../hooks/useStore';
 
 const socket = io('ws://localhost:4000');
@@ -123,9 +123,9 @@ export const OtherMessageSpan = styled.span`
 `;
 
 const Chat: React.FC = () => {
-  const { rootStore } = useStores();
-  const userStore = rootStore.userStore;
-  const authStore = rootStore.authStore;
+  const rootStore = useStores();
+  const { userStore } = rootStore;
+  const { authStore } = rootStore;
   const [title] = useState('ЧАЧАЧАТ');
   const [text, setText] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
@@ -169,7 +169,7 @@ const Chat: React.FC = () => {
           <Button
             onClick={() => {
               // authStore.logout(messages);
-              //setMessages([]);
+              // setMessages([]);
             }}
           >
             Выйти

@@ -1,4 +1,3 @@
-/* eslint-disable react/function-component-definition */
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { Header } from '../components/general/header/header';

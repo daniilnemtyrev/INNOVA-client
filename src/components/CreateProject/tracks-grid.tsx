@@ -22,7 +22,7 @@ export const Content = styled.main`
 `;
 
 export const TracksGrid = observer(() => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const { projectStore } = rootStore;
   const { tracks } = projectStore;
 

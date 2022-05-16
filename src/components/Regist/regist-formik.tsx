@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable react/function-component-definition */
+
 import React from 'react';
 import { Formik } from 'formik';
 import { RegistForm } from './regist-form';
@@ -26,7 +26,7 @@ const initialValues: RegistInput = {
 };
 
 export const RegistFormik = () => {
-  const { rootStore } = useStores();
+  const rootStore = useStores();
   const { authStore } = rootStore;
   return (
     <Formik
