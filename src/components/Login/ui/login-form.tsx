@@ -2,10 +2,10 @@ import { FormikProps } from 'formik';
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { useStores } from '../../hooks/useStore';
-import { colors } from '../../styles/colors/colors';
-import { Button } from '../UI/buttons/button-base';
-import { FormikInput } from '../UI/inputs/formik-input';
+import { useStores } from '../../../hooks/useStore';
+import { colors } from '../../../styles/colors/colors';
+import { Button } from '../../UI/buttons/button-base';
+import { FormikInput } from '../../UI/inputs/formik-input';
 import { LoginInput } from './login-formik';
 
 export const Content = styled.div`

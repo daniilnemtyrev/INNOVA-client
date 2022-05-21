@@ -1,19 +1,13 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
-import { LoginFormik } from '../components/Login/login-formik';
-import { Header } from '../components/general/header/header';
-import { Sidebar } from '../components/general/sidebar/sidebar';
-import { Main } from '../styles/general';
+import { Content } from '../styles/general';
+import { LoginMain } from '../components/Login/login-main';
 
 const Login: FC = () => {
   return (
-    <>
-      <Sidebar />
-      <Header />
-      <Main>
-        <LoginFormik />
-      </Main>
-    </>
+    <Content>
+      <LoginMain />
+    </Content>
   );
 };
 

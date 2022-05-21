@@ -1,14 +1,17 @@
 import { makeAutoObservable } from 'mobx';
+import axios from 'axios';
 import { IUser } from '../models/IUser';
 import AuthService from '../services/authService';
-import axios from 'axios';
 import { AuthResponse } from '../models/response/authResponse';
-import { RegistInput } from '../components/Regist/regist-formik';
+import { RegistInput } from '../components/Regist/ui/regist-formik';
 
 export default class AuthStore {
   rootStore;
+
   IsAuth = false;
+
   IsSend = false;
+
   errorMessage = '';
 
   constructor(rootStore: any) {

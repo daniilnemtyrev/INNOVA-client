@@ -1,7 +1,7 @@
-import $api from '../http';
 import { AxiosResponse } from 'axios';
+import $api from '../http';
 import { AuthResponse } from '../models/response/authResponse';
-import { RegistInput } from '../components/Regist/regist-formik';
+import { RegistInput } from '../components/Regist/ui/regist-formik';
 
 export default class AuthService {
   static async login(

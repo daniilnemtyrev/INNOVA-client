@@ -4,8 +4,8 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { RegistForm } from './regist-form';
-import { registValidSchema } from '../../shared/schemas/regist-valid-schema';
-import { useStores } from '../../hooks/useStore';
+import { registValidSchema } from '../../../shared/schemas/regist-valid-schema';
+import { useStores } from '../../../hooks/useStore';
 
 export interface RegistInput {
   surname: string;

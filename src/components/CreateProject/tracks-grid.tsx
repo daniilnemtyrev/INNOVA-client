@@ -45,15 +45,12 @@ export const TracksGrid = observer(() => {
       getTracks();
     }
   }, []);
+  console.log(tracks);
 
   return (
     <Content>
       {projectStore.isLoading ? (
-        <>
-          <BackButton to="/profile" />
-
-          <GridLoader />
-        </>
+        <BackButton to="/profile" />
       ) : (
         <>
           <BackButton to="/profile" />

@@ -85,6 +85,10 @@ export const ProfileInfoCard = observer(() => {
           </Button>
         </Advice>
       )}
+
+      <Link to="/profile/tracks">
+        <Button>Создать проект</Button>
+      </Link>
     </Content>
   );
 });

@@ -1,9 +1,9 @@
 import { FormikProps } from 'formik';
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { colors } from '../../styles/colors/colors';
-import { Button } from '../UI/buttons/button-base';
-import { FormikInput } from '../UI/inputs/formik-input';
+import { colors } from '../../../styles/colors/colors';
+import { Button } from '../../UI/buttons/button-base';
+import { FormikInput } from '../../UI/inputs/formik-input';
 import { RegistInput } from './regist-formik';
 
 export const Content = styled.div`

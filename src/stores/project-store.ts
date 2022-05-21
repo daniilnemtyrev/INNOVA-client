@@ -23,10 +23,15 @@ const initialValuesProject: IProject = {
 
 export default class ProjectStore {
   rootStore;
+
   project: IProject = initialValuesProject;
+
   myProjects: IProject[] = [];
+
   tracks: ITrack[] = [];
+
   cases: ICase[] = [];
+
   isLoading = false;
 
   constructor(rootStore: any) {
@@ -71,6 +76,7 @@ export default class ProjectStore {
       runInAction(() => {
         this.setTracks(response.data);
       });
+      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -78,7 +84,7 @@ export default class ProjectStore {
 
   async getCasesByTrackId(trackId: number | null) {
     const data = {
-      trackId: trackId,
+      trackId,
     };
     try {
       const response = await ProjectService.getCasesByTrackId(data);

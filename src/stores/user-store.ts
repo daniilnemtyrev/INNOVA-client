@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-import { EditProfileInput } from '../components/EditProfile/form/edit-profile-formik';
+import { EditProfileInput } from '../components/EditProfile/ui/edit-profile-formik';
 import { IUpdReqStatus } from '../models/IUpdReqStatus';
 
 import { IUser } from '../models/IUser';
@@ -24,7 +24,9 @@ const initialValues: IUser = {
 
 export default class UserStore {
   rootStore;
+
   user = initialValues;
+
   profileIsFilled = false;
 
   constructor(rootStore: any) {

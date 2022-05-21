@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useStores } from '../hooks/useStore';
 import AdminPage from '../pages/Admin';
+import { Cases } from '../pages/Cases';
 import Chat from '../pages/Chat';
 import CreateProject from '../pages/CreateProject';
 import EditProfile from '../pages/EditProfile';
@@ -11,6 +12,7 @@ import Login from '../pages/Login';
 import MyProjects from '../pages/MyProjects';
 import Profile from '../pages/Profile';
 import Regist from '../pages/Regist';
+import { Tracks } from '../pages/Tracks';
 
 // eslint-disable-next-line react/function-component-definition
 const AppRouter: FC = () => {
@@ -34,7 +36,12 @@ const AppRouter: FC = () => {
           <Route element={<Home />} path="/home" />
           <Route element={<Profile />} path="/profile" />
           <Route element={<EditProfile />} path="/profile/edit" />
-          <Route element={<CreateProject />} path="/profile/createProject" />
+          <Route element={<Tracks />} path="/profile/tracks" />
+          <Route element={<Cases />} path="/profile/tracks/cases" />
+          <Route
+            element={<CreateProject />}
+            path="/profile/tracks/cases/create"
+          />
           <Route element={<MyProjects />} path="/profile/myProject" />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
@@ -44,7 +51,14 @@ const AppRouter: FC = () => {
         <Routes>
           <Route element={<Profile />} path="/profile" />
           <Route element={<EditProfile />} path="/profile/edit" />
-          <Route element={<CreateProject />} path="/profile/createProject" />
+
+          <Route element={<Tracks />} path="/profile/tracks" />
+          <Route element={<Cases />} path="/profile/tracks/cases" />
+          <Route
+            element={<CreateProject />}
+            path="/profile/tracks/cases/create"
+          />
+
           <Route element={<MyProjects />} path="/profile/myProject" />
           <Route element={<Home />} path="/home" />
           <Route element={<Login />} path="/login" />

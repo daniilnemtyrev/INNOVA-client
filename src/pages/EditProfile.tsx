@@ -2,19 +2,15 @@ import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { Header } from '../components/general/header/header';
 import { colors } from '../styles/colors/colors';
-import { EditProfileFormik } from '../components/EditProfile/form/edit-profile-formik';
+import { EditProfileFormik } from '../components/EditProfile/ui/edit-profile-formik';
 import { Main } from '../styles/general';
 import { Sidebar } from '../components/general/sidebar/sidebar';
 
 const EditProfile: FC = () => {
   return (
-    <>
-      <Sidebar />
-      <Header />
-      <Main>
-        <EditProfileFormik />
-      </Main>
-    </>
+    <Main>
+      <EditProfileFormik />
+    </Main>
   );
 };
 

@@ -5,8 +5,8 @@ import React from 'react';
 import { Formik } from 'formik';
 import { LoginForm } from './login-form';
 
-import { loginValidSchema } from '../../shared/schemas/login-valid-schema';
-import { useStores } from '../../hooks/useStore';
+import { loginValidSchema } from '../../../shared/schemas/login-valid-schema';
+import { useStores } from '../../../hooks/useStore';
 
 export interface LoginInput {
   email: string;

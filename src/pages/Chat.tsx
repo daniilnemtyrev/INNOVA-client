@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, { useContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { observer } from 'mobx-react-lite';

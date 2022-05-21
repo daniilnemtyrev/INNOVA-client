@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useStores } from '../../../hooks/useStore';
 import { colors } from '../../../styles/colors/colors';
-import { StateSetter } from '../../types/custom-types';
 
 const Container = styled.div`
   width: 130px;
@@ -59,7 +58,7 @@ const LineBottom = styled.div`
 
 export const SidebarButton = () => {
   const rootStore = useStores();
-  const otherStore = rootStore.otherStore;
+  const { otherStore } = rootStore;
   return (
     <Container onClick={() => otherStore.setSidebarVisible(false)}>
       <Button />
