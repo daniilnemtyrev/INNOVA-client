@@ -41,6 +41,7 @@ const LabelError = styled.div`
 `;
 
 const StyledText = styled.p`
+  font-family: 'Montserrat', sans-serif;
   color: ${colors.red[1]};
   font-size: 12px;
 `;

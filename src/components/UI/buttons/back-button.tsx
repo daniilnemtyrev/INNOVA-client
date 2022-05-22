@@ -1,16 +1,18 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
+import { Link, To, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { BackArrow } from '../../../icons/back-arrow';
 
 interface Props {
-  to?: string;
+  to?: To;
   onClick?: () => void;
 }
 
-const Container = styled.button`
-  position: absolute;
-  top: 20px;
-  left: 15px;
+const Container = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 40px;
   height: 40px;
   border: none;
@@ -20,9 +22,17 @@ const Container = styled.button`
   }
 `;
 
-export const BackButton = ({ to, onClick }: Props) => {
+export const BackButton = ({ to = '', onClick }: Props) => {
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    if (onClick !== undefined) onClick();
+
+    if (to === '') navigate(-1);
+  };
+
   return (
-    <Container onClick={onClick}>
+    <Container to={to} onClick={() => goBack()}>
       <BackArrow />
     </Container>
   );

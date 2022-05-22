@@ -1,20 +1,25 @@
-import $api from '../http';
 import { AxiosResponse } from 'axios';
+import $api from '../http';
 import { ITrack } from '../models/ITrack';
 import { ICase } from '../models/ICase';
 import { IProject } from '../models/IProject';
 
 interface IDataGetCases {
-  trackId: number | null;
+  id: number | null;
 }
 
 interface IDataGetProjects {
   id: number | null;
 }
 
+interface IResponseGetAllTracks {
+  data: ITrack[];
+  total: number;
+}
+
 export default class ProjectService {
-  static getAllTracks(): Promise<AxiosResponse<ITrack[]>> {
-    return $api.get<ITrack[]>('tracks/getAll');
+  static getAllTracks(): Promise<AxiosResponse<IResponseGetAllTracks>> {
+    return $api.get<IResponseGetAllTracks>('tracks/getAll');
   }
 
   static getCasesByTrackId(

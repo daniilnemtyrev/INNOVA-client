@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
@@ -23,7 +24,7 @@ const Content = styled.section<{ sidebarVisible: boolean }>`
   transition: 2s;
 `;
 
-export const Layout = ({ children }: Props) => {
+export const Layout = observer(({ children }: Props) => {
   const rootStore = useStores();
   const { otherStore } = rootStore;
 
@@ -34,4 +35,4 @@ export const Layout = ({ children }: Props) => {
       {children}
     </Content>
   );
-};
+});

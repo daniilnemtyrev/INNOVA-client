@@ -1,11 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { colors } from '../styles/colors/colors';
 
 export const BackArrow = (props: any) => {
   return (
     <svg
-      width={30}
-      height={48}
+      width={12}
+      height={18}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}

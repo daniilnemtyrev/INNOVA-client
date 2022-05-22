@@ -74,7 +74,7 @@ export default class ProjectStore {
     try {
       const response = await ProjectService.getAllTracks();
       runInAction(() => {
-        this.setTracks(response.data);
+        this.setTracks(response.data.data);
       });
       console.log(response.data);
     } catch (err) {
@@ -82,13 +82,12 @@ export default class ProjectStore {
     }
   }
 
-  async getCasesByTrackId(trackId: number | null) {
+  async getCasesByTrackId(id: number | null) {
     const data = {
-      trackId,
+      id,
     };
     try {
       const response = await ProjectService.getCasesByTrackId(data);
-      console.log(response.data);
 
       runInAction(() => {
         this.setCases(response.data);

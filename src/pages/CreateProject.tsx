@@ -1,23 +1,22 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-
 import styled from 'styled-components';
+import { CreateProjectMain } from '../components/CreateProject/create-project-main';
+import { PageHeader } from '../components/general/ui/page-header';
 
-import { CreateProjectFormik } from '../components/CreateProject/form/create-project-formik';
-
-import { useStores } from '../hooks/useStore';
-import { colors } from '../styles/colors/colors';
 import { Content } from '../styles/general';
 
-const CreateProject = () => {
-  const rootStore = useStores();
-  const { projectStore } = rootStore;
-  const { project } = projectStore;
+const StyledContent = styled(Content)`
+  flex-direction: column;
+  align-items: flex-start;
+`;
 
+const CreateProject = () => {
   return (
-    <Content>
-      <CreateProjectFormik />
-    </Content>
+    <StyledContent>
+      <PageHeader label="Создайте Ваш проект" />
+      <CreateProjectMain />
+    </StyledContent>
   );
 };
 

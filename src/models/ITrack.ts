@@ -1,5 +1,5 @@
 export interface ITrack {
-  trackId: number | null;
+  id: number | null;
   name: string;
   description: string;
   cases?: number[];
