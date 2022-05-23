@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
@@ -59,15 +61,8 @@ const Text = styled.p`
 `;
 
 export const NavButton = (props: Props) => {
-  const {
-    onClick,
-    disabled,
-    color,
-    children,
-    id,
-    currentItemId,
-    ...rest
-  } = props;
+  const { onClick, disabled, color, children, id, currentItemId, ...rest } =
+    props;
   console.log(id, currentItemId);
 
   const isActive = id === currentItemId;

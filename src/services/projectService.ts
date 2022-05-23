@@ -19,7 +19,7 @@ interface IResponseGetAllTracks {
 
 export default class ProjectService {
   static getAllTracks(): Promise<AxiosResponse<IResponseGetAllTracks>> {
-    return $api.get<IResponseGetAllTracks>('tracks/getAll');
+    return $api.get<IResponseGetAllTracks>('tracks/getAllTracks');
   }
 
   static getCasesByTrackId(

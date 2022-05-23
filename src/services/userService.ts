@@ -1,6 +1,6 @@
-import { IUser } from './../models/IUser';
-import $api from '../http';
 import { AxiosResponse } from 'axios';
+import { IUser } from '../models/IUser';
+import $api from '../http';
 import { AuthResponse } from '../models/response/authResponse';
 import { IUpdReqStatus } from '../models/IUpdReqStatus';
 

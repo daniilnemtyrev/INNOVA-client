@@ -1,8 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
+import { PageHeader } from '../components/general/ui/page-header';
 
-import { ProjectsMain } from '../components/MyProjects/projects-main';
+import { TeamMain } from '../components/Team/team-main';
 
 import { Content } from '../styles/general';
 
@@ -11,12 +12,13 @@ const StyledContent = styled(Content)`
   align-items: flex-start;
 `;
 
-const MyProjects = () => {
+const Team = () => {
   return (
     <StyledContent>
-      <ProjectsMain />
+      <PageHeader label="Команда" to="/profile" />
+      <TeamMain />
     </StyledContent>
   );
 };
 
-export default observer(MyProjects);
+export default observer(Team);

@@ -7,17 +7,18 @@ interface Props {
 }
 
 const Content = styled.div`
-  background-color: none;
-  align-items: center;
-  padding: 10px 10px;
-  border: none;
   width: 100%;
-  height: 50px;
-  border-bottom: 2px solid ${colors.blue[0]};
-  display: flex;
-  cursor: pointer;
+  min-height: 40px;
+  box-shadow: none;
+  border: none;
+  background-color: none;
+  background: transparent;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  color: ${colors.white[0]};
+  border-bottom: 1px solid ${colors.grey[5]};
   &:hover {
-    background-color: ${colors.blue[0]};
+    background-color: ${colors.grey[1]};
   }
 `;
 

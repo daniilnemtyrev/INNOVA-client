@@ -1,11 +1,14 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/require-default-props */
 import React from 'react';
+import { To } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
 import { BackButton } from '../../UI/buttons/back-button';
 
 interface Props {
   label?: string;
+  to?: To;
 }
 
 const Container = styled.article`
@@ -24,10 +27,10 @@ const StyledText = styled.h1`
   color: ${colors.white[0]};
 `;
 
-export const PageHeader = ({ label }: Props) => {
+export const PageHeader = ({ to, label }: Props) => {
   return (
     <Container>
-      <BackButton />
+      <BackButton to={to} />
       <StyledText>{label}</StyledText>
     </Container>
   );

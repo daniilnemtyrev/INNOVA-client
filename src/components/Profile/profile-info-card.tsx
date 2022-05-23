@@ -37,6 +37,12 @@ const Status = styled.p`
   color: ${colors.white[0]};
 `;
 
+const ButtonsGroup = styled.div`
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+`;
+
 const Advice = styled.div``;
 
 const Text = styled(Status)`
@@ -86,9 +92,15 @@ export const ProfileInfoCard = observer(() => {
         </Advice>
       )}
 
-      <Link to="/profile/tracks">
-        <Button>Создать проект</Button>
-      </Link>
+      <ButtonsGroup>
+        <Link to="/profile/tracks">
+          <Button>Создать проект</Button>
+        </Link>
+
+        <Link to="/profile/createTeam">
+          <Button>Создать команду</Button>
+        </Link>
+      </ButtonsGroup>
     </Content>
   );
 });

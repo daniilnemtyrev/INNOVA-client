@@ -8,15 +8,14 @@ import { BackButton } from '../UI/buttons/back-button';
 import { ListItem } from './list-item';
 
 export const Content = styled.main`
-  position: relative;
-  width: 60%;
   display: flex;
+  width: 650px;
   flex-direction: column;
+  justify-content: center;
   min-height: 190px;
-  background-color: ${colors.grey[0]};
-  padding: 25px 100px 25px 100px;
+  background: linear-gradient(127.44deg, #505050 0%, #383838 100%);
+  padding: 25px;
   border-radius: 10px;
-  border: 1px solid ${colors.blue[1]};
   box-shadow: 0 0 2px rgba(194, 195, 197);
 `;
 

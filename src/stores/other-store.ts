@@ -1,10 +1,10 @@
 import { makeAutoObservable } from 'mobx';
 
-
-
 export default class OtherStore {
   rootStore;
+
   navCurrentId = 0;
+
   sidebarVisible = true;
 
   constructor(rootStore: any) {
@@ -19,5 +19,4 @@ export default class OtherStore {
   setSidebarVisible(state: boolean) {
     this.sidebarVisible = state;
   }
-
 }

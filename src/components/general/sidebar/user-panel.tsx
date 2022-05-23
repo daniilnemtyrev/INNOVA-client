@@ -42,6 +42,12 @@ export const UserPanel = () => {
           <Text>Мои проекты</Text>
         </PanelItem>
       </Link>
+
+      <Link to="/profile/team">
+        <PanelItem>
+          <Text>Моя команда</Text>
+        </PanelItem>
+      </Link>
     </Container>
   );
 };

@@ -5,6 +5,7 @@ import { useStores } from '../hooks/useStore';
 import AdminPage from '../pages/Admin';
 import { Cases } from '../pages/Cases';
 import Chat from '../pages/Chat';
+import { CreateTeam } from '../pages/CreateTeam';
 import CreateProject from '../pages/CreateProject';
 import EditProfile from '../pages/EditProfile';
 import Home from '../pages/Home';
@@ -13,6 +14,7 @@ import MyProjects from '../pages/MyProjects';
 import Profile from '../pages/Profile';
 import Regist from '../pages/Regist';
 import { Tracks } from '../pages/Tracks';
+import Team from '../pages/Team';
 
 // eslint-disable-next-line react/function-component-definition
 const AppRouter: FC = () => {
@@ -42,6 +44,8 @@ const AppRouter: FC = () => {
             element={<CreateProject />}
             path="/profile/tracks/cases/create"
           />
+          <Route element={<Team />} path="/profile/team" />
+          <Route element={<CreateTeam />} path="/profile/createTeam" />
           <Route element={<MyProjects />} path="/profile/myProject" />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
@@ -63,6 +67,8 @@ const AppRouter: FC = () => {
           <Route element={<Home />} path="/home" />
           <Route element={<Login />} path="/login" />
           <Route element={<Regist />} path="/registration" />
+          <Route element={<CreateTeam />} path="/profile/createTeam" />
+          <Route element={<Team />} path="/profile/team" />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       )}

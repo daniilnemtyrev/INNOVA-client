@@ -1,3 +1,6 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-param-reassign */
 import axios, { AxiosRequestConfig } from 'axios';
 import { AuthResponse } from '../models/response/authResponse';
 
