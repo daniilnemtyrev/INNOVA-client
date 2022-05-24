@@ -6,17 +6,12 @@ import { PageHeader } from '../components/general/ui/page-header';
 
 import { Content } from '../styles/general';
 
-const StyledContent = styled(Content)`
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
 const CreateProject = () => {
   return (
-    <StyledContent>
+    <Content>
       <PageHeader label="Создайте Ваш проект" />
       <CreateProjectMain />
-    </StyledContent>
+    </Content>
   );
 };
 

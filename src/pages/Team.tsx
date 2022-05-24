@@ -7,17 +7,12 @@ import { TeamMain } from '../components/Team/team-main';
 
 import { Content } from '../styles/general';
 
-const StyledContent = styled(Content)`
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
 const Team = () => {
   return (
-    <StyledContent>
+    <Content>
       <PageHeader label="Команда" to="/profile" />
       <TeamMain />
-    </StyledContent>
+    </Content>
   );
 };
 

@@ -5,7 +5,7 @@ import { colors } from '../../styles/colors/colors';
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  grid-columns: 2/3;
+  grid-column: 2/3;
   grid-row: 2/3;
   background-color: ${colors.grey[6]};
 `;

@@ -19,4 +19,5 @@ export interface IUser {
       description: string;
     },
   ];
+  teamId: number | null;
 }

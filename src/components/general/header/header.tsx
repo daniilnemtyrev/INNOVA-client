@@ -20,7 +20,7 @@ interface NavElems {
 const Container = styled.header`
   width: 100%;
   height: 120px;
-  grid-columns: 2/3;
+  grid-column: 2/3;
   grid-row: 1/2;
   display: flex;
   justify-content: space-between;
@@ -28,7 +28,11 @@ const Container = styled.header`
   padding-left: 40px;
   padding-right: 40px;
   box-shadow: 0px 0px 5px 0px rgba(122, 122, 122, 0.2);
-  background: transparent;
+  background: radial-gradient(
+    98.26% 251.56% at 13.33% 18.61%,
+    #b3b3b3 0%,
+    #1d1919 100%
+  );
 `;
 
 const Nav = styled.nav`
@@ -73,8 +77,8 @@ export const Header = observer(() => {
   return (
     <Container>
       <Logo>
-        <LogoText>ИННОВА ФОРУМ</LogoText>
         <LogoImage src={logo} />
+        <LogoText>ИННОВА ФОРУМ</LogoText>
       </Logo>
 
       <Nav>

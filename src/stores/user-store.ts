@@ -20,6 +20,7 @@ const initialValues: IUser = {
   move_to: '',
   move_from: '',
   roles: [{ id: null, value: '', description: '' }],
+  teamId: null,
 };
 
 export default class UserStore {

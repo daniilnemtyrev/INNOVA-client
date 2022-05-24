@@ -8,9 +8,19 @@ export interface CreateTeam {
   userId: number | null;
 }
 
+export interface GetUserTeam {
+  id: number;
+}
+
+export interface IUserCard {
+  name: string;
+  surname: string;
+}
+
 const initialValues: ITeam = {
   id: null,
   name: '',
+  users: [],
 };
 
 export default class TeamStore {
@@ -30,7 +40,21 @@ export default class TeamStore {
   async createTeam(data: CreateTeam) {
     try {
       const response = await TeamService.createTeam(data);
-      console.log(response.data);
+
+      runInAction(() => {
+        this.setTeam(response.data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async getUserTeam(teamId: number) {
+    const data: GetUserTeam = {
+      id: teamId,
+    };
+    try {
+      const response = await TeamService.getUserTeam(data);
 
       runInAction(() => {
         this.setTeam(response.data);

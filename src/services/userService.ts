@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { EditProfileInput } from '../components/EditProfile/ui/edit-profile-formik';
 import { IUser } from '../models/IUser';
 import $api from '../http';
 import { AuthResponse } from '../models/response/authResponse';
@@ -9,7 +10,7 @@ export default class UserService {
     return $api.get<IUser[]>('users/getAll');
   }
 
-  static editUser(data: IUser): Promise<AxiosResponse<IUser>> {
+  static editUser(data: EditProfileInput): Promise<AxiosResponse<IUser>> {
     return $api.post<IUser>('users/editUser', data);
   }
 

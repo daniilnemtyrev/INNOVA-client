@@ -3,10 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
-import { SettingsIcon } from '../../icons/settings-icon';
 import { colors } from '../../styles/colors/colors';
 import { Button } from '../UI/buttons/button-base';
-import { SendRequestButton } from './ui/send-request-button';
 
 const Content = styled.div`
   display: flex;
@@ -21,6 +19,7 @@ const Content = styled.div`
 
 const NameContainer = styled.div`
   display: flex;
+
   align-items: center;
   margin-bottom: 15px;
 `;
@@ -44,43 +43,28 @@ const ButtonsGroup = styled.div`
   justify-content: space-between;
 `;
 
-export const ProfileInfoCard = observer(() => {
+export const TeamInfoCard = observer(() => {
   const rootStore = useStores();
-  const { userStore } = rootStore;
-  const fioStr = `${userStore.user.surname}  ${userStore.user.name}  ${userStore.user.patronymic}`;
+  const { teamStore } = rootStore;
 
-  const updateRequestStatus = async () => {
-    const data = {
-      id: userStore.user.id,
-      reqStatus: 'Ожидается подтверждение',
-    };
-    await userStore.updateRequestStatus(data);
-  };
+  // const updateRequestStatus = async () => {
+  //   const data = {
+  //     id: userStore.user.id,
+  //     reqStatus: 'Ожидается подтверждение',
+  //   };
+  //   await userStore.updateRequestStatus(data);
+  // };
 
   return (
     <Content>
       <NameContainer>
-        <Name>{fioStr}</Name>
-        <Link to="/profile/edit">
-          <SettingsIcon />
-        </Link>
+        <Name>Код команды:</Name>
+        <Name>{teamStore.team.name}</Name>
       </NameContainer>
-
-      <Status>{`Статус пользователя: ${userStore.user.request_status}`}</Status>
-
-      <SendRequestButton
-        status={userStore.user.request_status}
-        profileFilled={userStore.profileIsFilled}
-        onClick={updateRequestStatus}
-      />
 
       <ButtonsGroup>
         <Link to="/profile/tracks">
           <Button>Создать проект</Button>
-        </Link>
-
-        <Link to="/profile/createTeam">
-          <Button>Создать команду</Button>
         </Link>
       </ButtonsGroup>
     </Content>

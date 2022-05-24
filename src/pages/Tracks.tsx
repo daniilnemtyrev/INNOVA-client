@@ -6,16 +6,11 @@ import { TracksMain } from '../components/Tracks/tracks-main';
 import { Button } from '../components/UI/buttons/button-base';
 import { Content } from '../styles/general';
 
-const StyledContent = styled(Content)`
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
 export const Tracks = () => {
   return (
-    <StyledContent>
+    <Content>
       <PageHeader label="Выберите проектный трек" />
       <TracksMain />
-    </StyledContent>
+    </Content>
   );
 };

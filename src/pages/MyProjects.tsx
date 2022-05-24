@@ -6,16 +6,11 @@ import { ProjectsMain } from '../components/MyProjects/projects-main';
 
 import { Content } from '../styles/general';
 
-const StyledContent = styled(Content)`
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
 const MyProjects = () => {
   return (
-    <StyledContent>
+    <Content>
       <ProjectsMain />
-    </StyledContent>
+    </Content>
   );
 };
 

@@ -14,10 +14,6 @@ const Content = styled.div`
   margin-right: 20px;
 `;
 
-export const ProfilePhotoCard = () => {
-  return (
-    <Content>
-      <UserIcon />
-    </Content>
-  );
+export const TeamPhotoCard = () => {
+  return <Content />;
 };

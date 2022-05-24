@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Main } from '../../styles/general';
 import { ProfileInfoCard } from './profile-info-card';
 import { ProfileOtherCard } from './profile-other-card';
 import { ProfilePhotoCard } from './profile-photo-card';
 
-const Main = styled.main`
+const ProfileGrid = styled.section`
   display: grid;
   padding-top: 30px;
   padding-left: 50px;
@@ -12,7 +13,7 @@ const Main = styled.main`
   grid-template-rows: 250px 100px;
   width: 100%;
   height: calc(100vh - 120px);
-  grid-columns: 2/3;
+  grid-column: 2/3;
   grid-row: 2/3;
   background: transparent;
 `;
@@ -20,9 +21,11 @@ const Main = styled.main`
 export const ProfileMain = () => {
   return (
     <Main>
-      <ProfilePhotoCard />
-      <ProfileInfoCard />
-      <ProfileOtherCard />
+      <ProfileGrid>
+        <ProfilePhotoCard />
+        <ProfileInfoCard />
+        <ProfileOtherCard />
+      </ProfileGrid>
     </Main>
   );
 };
