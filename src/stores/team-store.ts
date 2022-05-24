@@ -13,6 +13,7 @@ export interface GetUserTeam {
 }
 
 export interface IUserCard {
+  id: number;
   name: string;
   surname: string;
 }
