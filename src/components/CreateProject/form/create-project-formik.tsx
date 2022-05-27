@@ -41,6 +41,7 @@ export const CreateProjectFormik = () => {
       caseId: project.caseId,
       caseName: project.caseName,
       caseDescription: project.caseDescription,
+      teamId: userStore.user.teamId,
     };
     try {
       await projectStore.createProject(data);

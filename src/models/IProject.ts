@@ -13,4 +13,5 @@ export interface IProject {
   prototype: string;
   economy: string;
   marketing: string;
+  teamId: number | null;
 }

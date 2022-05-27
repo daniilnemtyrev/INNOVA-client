@@ -46,7 +46,7 @@ const ButtonsGroup = styled.div`
 
 export const ProfileInfoCard = observer(() => {
   const rootStore = useStores();
-  const { userStore } = rootStore;
+  const { userStore, teamStore } = rootStore;
   const fioStr = `${userStore.user.surname}  ${userStore.user.name}  ${userStore.user.patronymic}`;
 
   const updateRequestStatus = async () => {
@@ -75,13 +75,18 @@ export const ProfileInfoCard = observer(() => {
       />
 
       <ButtonsGroup>
-        <Link to="/profile/tracks">
-          <Button>Создать проект</Button>
-        </Link>
+        {!userStore.user.team && userStore.user.teamId && (
+          <Status>Команда: {teamStore.team.name}</Status>
+        )}
 
-        <Link to="/profile/createTeam">
-          <Button>Создать команду</Button>
-        </Link>
+        {userStore.user.team && (
+          <Status>Команда: {userStore.user.team.name}</Status>
+        )}
+        {!userStore.user.teamId && (
+          <Link to="/profile/createTeam">
+            <Button>Создать команду</Button>
+          </Link>
+        )}
       </ButtonsGroup>
     </Content>
   );

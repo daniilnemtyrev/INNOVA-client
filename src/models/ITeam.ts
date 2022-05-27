@@ -4,4 +4,8 @@ export interface ITeam {
   id: number | null;
   name: string;
   users: IUserCard[];
+  project: {
+    id: number | null;
+    name: string;
+  };
 }

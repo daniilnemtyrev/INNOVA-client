@@ -9,26 +9,18 @@ import { Button } from '../UI/buttons/button-base';
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   grid-column: 2/3;
   grid-row: 1/2;
   background-color: ${colors.grey[6]};
   margin-bottom: 20px;
-  padding: 0px 10px;
+  padding: 10px 10px;
 `;
 
-const NameContainer = styled.div`
-  display: flex;
-
-  align-items: center;
-  margin-bottom: 15px;
-`;
-
-const Name = styled.p`
+const Name = styled.span`
   font-size: 18px;
   font-family: 'Montserrat', sans-serif;
   color: ${colors.white[0]};
-  margin-right: 10px;
+  margin-bottom: 15px;
 `;
 
 const Status = styled.span`
@@ -45,7 +37,7 @@ const ButtonsGroup = styled.div`
 
 export const TeamInfoCard = observer(() => {
   const rootStore = useStores();
-  const { teamStore } = rootStore;
+  const { teamStore, projectStore, userStore } = rootStore;
 
   // const updateRequestStatus = async () => {
   //   const data = {
@@ -57,15 +49,22 @@ export const TeamInfoCard = observer(() => {
 
   return (
     <Content>
-      <NameContainer>
-        <Name>Код команды:</Name>
-        <Name>{teamStore.team.name}</Name>
-      </NameContainer>
+      <Name>Код команды: {teamStore.team.name}</Name>
 
       <ButtonsGroup>
-        <Link to="/profile/tracks">
-          <Button>Создать проект</Button>
-        </Link>
+        {!teamStore.team.project && projectStore.project.name && (
+          <Status>Проект: {projectStore.project.name}</Status>
+        )}
+
+        {teamStore.team.project && (
+          <Status>Проект: {teamStore.team.project.name}</Status>
+        )}
+
+        {!userStore.user.projectId && (
+          <Link to="/profile/tracks">
+            <Button>Создать проект</Button>
+          </Link>
+        )}
       </ButtonsGroup>
     </Content>
   );

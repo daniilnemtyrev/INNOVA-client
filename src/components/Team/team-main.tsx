@@ -31,11 +31,12 @@ const NoTeam = styled.span`
 export const TeamMain = observer(() => {
   const rootStore = useStores();
   const { teamStore, userStore } = rootStore;
-  console.log(teamStore.team.id);
 
   useEffect(() => {
     const getTeamAsync = async () => {
       if (userStore.user.teamId) {
+        console.log(1);
+
         await teamStore.getUserTeam(userStore.user.teamId);
       }
     };

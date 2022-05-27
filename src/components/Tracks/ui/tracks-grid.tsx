@@ -40,7 +40,6 @@ export const TracksGrid = observer(() => {
       getTracks();
     }
   }, []);
-  console.log(tracks);
 
   return (
     <Content>

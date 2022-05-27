@@ -45,7 +45,6 @@ export const CasesGrid = observer(() => {
     };
     getCases();
   }, []);
-  console.log(cases);
 
   return (
     <Content>

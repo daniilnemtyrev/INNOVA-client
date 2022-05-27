@@ -37,7 +37,6 @@ export const OptionsModal = () => {
   const rootStore = useStores();
   const { authStore } = rootStore;
   const { headerModalVisible, setHeaderModalVisible } = useModalContext();
-  console.log(headerModalVisible);
 
   const logout = async () => {
     setHeaderModalVisible(false);

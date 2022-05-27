@@ -20,4 +20,11 @@ export interface IUser {
     },
   ];
   teamId: number | null;
+  projectId: number | null;
+  team: {
+    name: string;
+  } | null;
+  project: {
+    name: string;
+  } | null;
 }

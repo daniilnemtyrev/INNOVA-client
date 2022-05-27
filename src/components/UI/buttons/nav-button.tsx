@@ -63,7 +63,6 @@ const Text = styled.p`
 export const NavButton = (props: Props) => {
   const { onClick, disabled, color, children, id, currentItemId, ...rest } =
     props;
-  console.log(id, currentItemId);
 
   const isActive = id === currentItemId;
   return (

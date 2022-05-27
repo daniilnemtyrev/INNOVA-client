@@ -43,8 +43,6 @@ const Label = styled.span`
 `;
 
 export const UserCard = ({ id, name, surname, currentUserId }: Props) => {
-  console.log(id);
-
   const label = `${name[0]} ${surname[0]}`;
   return (
     <Content>

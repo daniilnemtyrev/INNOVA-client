@@ -22,6 +22,10 @@ const initialValues: ITeam = {
   id: null,
   name: '',
   users: [],
+  project: {
+    id: null,
+    name: '',
+  },
 };
 
 export default class TeamStore {
@@ -44,6 +48,7 @@ export default class TeamStore {
 
       runInAction(() => {
         this.setTeam(response.data);
+        this.rootStore.userStore.user.teamId = this.team.id;
       });
     } catch (err) {
       console.log(err);
@@ -56,6 +61,7 @@ export default class TeamStore {
     };
     try {
       const response = await TeamService.getUserTeam(data);
+      console.log(response.data);
 
       runInAction(() => {
         this.setTeam(response.data);

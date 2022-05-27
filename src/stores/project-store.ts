@@ -19,6 +19,7 @@ const initialValuesProject: IProject = {
   prototype: '',
   economy: '',
   marketing: '',
+  teamId: null,
 };
 
 export default class ProjectStore {
@@ -64,6 +65,7 @@ export default class ProjectStore {
       const response = await ProjectService.createProject(data);
       runInAction(() => {
         this.setProject(response.data);
+        this.rootStore.userStore.user.projectId = this.project.id;
       });
     } catch (err) {
       console.log(err);
@@ -76,7 +78,6 @@ export default class ProjectStore {
       runInAction(() => {
         this.setTracks(response.data.data);
       });
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -103,7 +104,6 @@ export default class ProjectStore {
     };
     try {
       const response = await ProjectService.getProjectsByUserId(data);
-      console.log(response.data);
 
       runInAction(() => {
         this.setProjects(response.data);

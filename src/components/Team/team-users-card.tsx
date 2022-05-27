@@ -42,26 +42,25 @@ export const TeamUsersCard = observer(() => {
   const rootStore = useStores();
   const { teamStore, userStore } = rootStore;
   const { users } = teamStore.team;
+  console.log(users);
+
   return (
     <Content>
       <Label>Участники</Label>
       <UsersList>
-        {users.map(user => (
-          <UserCard
-            id={user.id}
-            name={user.name}
-            surname={user.surname}
-            currentUserId={userStore.user.id}
-          />
-        ))}
+        {users &&
+          users.map(user => (
+            <UserCard
+              id={user.id}
+              name={user.name}
+              surname={user.surname}
+              currentUserId={userStore.user.id}
+            />
+          ))}
       </UsersList>
       <ButtonsGroup>
         <Link to="/profile/tracks">
-          <Button>Создать проект</Button>
-        </Link>
-
-        <Link to="/profile/createTeam">
-          <Button>Создать команду</Button>
+          <Button>Пригласить участников</Button>
         </Link>
       </ButtonsGroup>
     </Content>
