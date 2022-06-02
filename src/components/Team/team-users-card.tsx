@@ -59,7 +59,7 @@ export const TeamUsersCard = observer(() => {
           ))}
       </UsersList>
       <ButtonsGroup>
-        <Link to="/profile/tracks">
+        <Link to="/users">
           <Button>Пригласить участников</Button>
         </Link>
       </ButtonsGroup>

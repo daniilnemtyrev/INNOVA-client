@@ -35,6 +35,8 @@ export default class UserStore {
 
   user = initialValues;
 
+  confirmedUsers: IUser[] = [];
+
   profileIsFilled = false;
 
   constructor(rootStore: any) {
@@ -44,6 +46,10 @@ export default class UserStore {
 
   setUser(user: IUser) {
     this.user = user;
+  }
+
+  setConfirmedUsers(users: IUser[]) {
+    this.confirmedUsers = users;
   }
 
   setProfileIsFilled(value: boolean) {
@@ -71,6 +77,18 @@ export default class UserStore {
       const response = await UserService.updateRequestStatus(data);
       runInAction(() => {
         this.user.request_status = response.data;
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async getConfirmedUsers() {
+    try {
+      const response = await UserService.getConfirmedUsers();
+
+      runInAction(() => {
+        this.setConfirmedUsers(response.data);
       });
     } catch (err) {
       console.log(err);

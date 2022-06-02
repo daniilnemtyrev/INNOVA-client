@@ -2,12 +2,15 @@ import { AxiosResponse } from 'axios';
 import { EditProfileInput } from '../components/EditProfile/ui/edit-profile-formik';
 import { IUser } from '../models/IUser';
 import $api from '../http';
-import { AuthResponse } from '../models/response/authResponse';
 import { IUpdReqStatus } from '../models/IUpdReqStatus';
 
 export default class UserService {
   static fetchUsers(): Promise<AxiosResponse<IUser[]>> {
     return $api.get<IUser[]>('users/getAll');
+  }
+
+  static getConfirmedUsers(): Promise<AxiosResponse<IUser[]>> {
+    return $api.get<IUser[]>('users/getConfirmedUsers');
   }
 
   static editUser(data: EditProfileInput): Promise<AxiosResponse<IUser>> {
