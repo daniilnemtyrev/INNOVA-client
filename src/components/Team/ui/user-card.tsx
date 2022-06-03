@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { useStores } from '../../../hooks/useStore';
 import { CancelIcon } from '../../../icons/cancel-icon';
 import { colors } from '../../../styles/colors/colors';
 
@@ -9,6 +10,7 @@ interface Props {
   id: number;
   currentUserId: number | null;
   surname: string;
+  isCreator: boolean;
 }
 
 const Content = styled.button`
@@ -20,7 +22,7 @@ const Content = styled.button`
   border: 4px solid ${colors.purple[1]};
   background-color: ${colors.blue[7]};
   border-radius: 50%;
-
+  margin-right: 10px;
   position: relative;
 `;
 
@@ -42,12 +44,25 @@ const Label = styled.span`
   color: #fff;
 `;
 
-export const UserCard = ({ id, name, surname, currentUserId }: Props) => {
+export const UserCard = ({
+  id,
+  name,
+  surname,
+  currentUserId,
+  isCreator,
+}: Props) => {
+  const rootStore = useStores();
+  const { userStore } = rootStore;
+
+  const removeUserTeamAsync = async () => {
+    await userStore.removeUserTeam({ userId: id });
+  };
+
   const label = `${name[0]} ${surname[0]}`;
   return (
     <Content>
-      {currentUserId !== id && (
-        <IconContainer>
+      {currentUserId !== id && isCreator && (
+        <IconContainer onClick={removeUserTeamAsync}>
           <CancelIcon />
         </IconContainer>
       )}

@@ -38,7 +38,7 @@ const ButtonsGroup = styled.div`
 export const TeamInfoCard = observer(() => {
   const rootStore = useStores();
   const { teamStore, projectStore, userStore } = rootStore;
-
+  const isCreator = userStore.user.id === teamStore.team.creatorId;
   // const updateRequestStatus = async () => {
   //   const data = {
   //     id: userStore.user.id,
@@ -60,7 +60,7 @@ export const TeamInfoCard = observer(() => {
           <Status>Проект: {teamStore.team.project.name}</Status>
         )}
 
-        {!userStore.user.projectId && (
+        {!userStore.user.projectId && isCreator && (
           <Link to="/profile/tracks">
             <Button>Создать проект</Button>
           </Link>

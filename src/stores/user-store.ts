@@ -1,9 +1,19 @@
+/* eslint-disable no-console */
+/* eslint-disable class-methods-use-this */
 import { makeAutoObservable, runInAction } from 'mobx';
 import { EditProfileInput } from '../components/EditProfile/ui/edit-profile-formik';
-import { IUpdReqStatus } from '../models/IUpdReqStatus';
 
 import { IUser } from '../models/IUser';
 import UserService from '../services/userService';
+
+export type UpdReqStatus = {
+  id: number | null;
+  reqStatus: string | null;
+};
+
+export type RemoveUserTeam = {
+  userId?: number | null;
+};
 
 const initialValues: IUser = {
   id: null,
@@ -28,6 +38,7 @@ const initialValues: IUser = {
   project: {
     name: '',
   },
+  invites: [],
 };
 
 export default class UserStore {
@@ -72,7 +83,7 @@ export default class UserStore {
     }
   }
 
-  async updateRequestStatus(data: IUpdReqStatus) {
+  async updateRequestStatus(data: UpdReqStatus) {
     try {
       const response = await UserService.updateRequestStatus(data);
       runInAction(() => {
@@ -89,6 +100,21 @@ export default class UserStore {
 
       runInAction(() => {
         this.setConfirmedUsers(response.data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async removeUserTeam(data: RemoveUserTeam) {
+    try {
+      await UserService.removeUserTeam(data);
+      runInAction(() => {
+        this.rootStore.teamStore.team.users =
+          this.rootStore.teamStore.team.users.filter(
+            (user: IUser) => user.id !== data.userId,
+          );
+        console.log(this.rootStore.teamStore.team.users);
       });
     } catch (err) {
       console.log(err);

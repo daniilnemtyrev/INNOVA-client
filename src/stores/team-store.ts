@@ -21,6 +21,7 @@ export interface IUserCard {
 const initialValues: ITeam = {
   id: null,
   name: '',
+  creatorId: null,
   users: [],
   project: {
     id: null,

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
@@ -5,9 +6,9 @@ import { colors } from '../../styles/colors/colors';
 import { Button } from '../UI/buttons/button-base';
 
 interface Props {
-  id: number | null;
-  name: string;
-  surname: string;
+  id?: number | null;
+  senderName: string;
+  teamId: number | null;
 }
 
 const Content = styled.section`
@@ -41,24 +42,33 @@ const Icon = styled.div`
   margin-right: 10px;
 `;
 
-export const UserCard = ({ id, name, surname }: Props) => {
+export const NotifCard = ({ senderName, teamId, id }: Props) => {
   const rootStore = useStores();
   const { userStore, invitesStore } = rootStore;
-  const senderName = `${userStore.user.surname} ${userStore.user.name}`;
-  console.log(userStore.user.teamId);
 
-  const sendInviteToTeam = async () => {
-    await invitesStore.sendInviteToTeam(id, userStore.user.teamId, senderName);
+  const acceptInviteAsync = async () => {
+    await invitesStore.acceptInvite({
+      id,
+      teamId,
+      userId: userStore.user.id,
+    });
+  };
+
+  const cancelInviteAsync = async () => {
+    await invitesStore.cancelInvite({ id });
   };
 
   return (
     <Content>
       <UserInfo>
         <Icon />
-        <Name>{`${name} ${surname}`}</Name>
+        <Name>{`Приглашение на вступление в команду от ${senderName}`}</Name>
       </UserInfo>
 
-      <Button onClick={sendInviteToTeam}>Пригласить</Button>
+      <Button onClick={acceptInviteAsync}>Принять</Button>
+      <Button cancelType onClick={cancelInviteAsync}>
+        Отклонить
+      </Button>
     </Content>
   );
 };

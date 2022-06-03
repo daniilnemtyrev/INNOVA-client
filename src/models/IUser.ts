@@ -1,3 +1,5 @@
+import { IInvite } from './IInvite';
+
 export interface IUser {
   id: number | null;
   email?: string;
@@ -27,4 +29,5 @@ export interface IUser {
   project: {
     name: string;
   } | null;
+  invites: IInvite[];
 }

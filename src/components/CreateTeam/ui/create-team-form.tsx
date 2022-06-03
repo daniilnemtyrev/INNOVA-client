@@ -59,7 +59,6 @@ export const CreateTeamForm = observer(() => {
   const rootStore = useStores();
   const { userStore } = rootStore;
   const { teamStore } = rootStore;
-  const { projectStore } = rootStore;
 
   const [teamName, setTeamName] = useState('');
 

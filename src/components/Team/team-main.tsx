@@ -8,14 +8,17 @@ import { TeamInfoCard } from './team-info-card';
 import { TeamUsersCard } from './team-users-card';
 import { TeamPhotoCard } from './team-photo-card';
 
+const StyledMain = styled(Main)`
+  align-items: flex-start;
+`;
+
 const TeamGrid = styled.section`
   display: grid;
   padding-top: 30px;
   padding-left: 50px;
   grid-template-columns: 230px 600px;
-  grid-template-rows: 250px 170px;
+  grid-template-rows: 150px 170px;
   width: 100%;
-  height: calc(100vh - 120px);
   grid-column: 2/3;
   grid-row: 2/3;
   background: transparent;
@@ -44,7 +47,7 @@ export const TeamMain = observer(() => {
   }, []);
 
   return (
-    <Main>
+    <StyledMain>
       {teamStore.team.id && (
         <TeamGrid>
           <TeamPhotoCard />
@@ -53,6 +56,6 @@ export const TeamMain = observer(() => {
         </TeamGrid>
       )}
       {!teamStore.team.id && <NoTeam>У Вас пока нет команды</NoTeam>}
-    </Main>
+    </StyledMain>
   );
 });

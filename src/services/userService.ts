@@ -2,7 +2,8 @@ import { AxiosResponse } from 'axios';
 import { EditProfileInput } from '../components/EditProfile/ui/edit-profile-formik';
 import { IUser } from '../models/IUser';
 import $api from '../http';
-import { IUpdReqStatus } from '../models/IUpdReqStatus';
+import { RemoveUserTeam, UpdReqStatus } from '../stores/user-store';
+import { IInvite } from '../models/IInvite';
 
 export default class UserService {
   static fetchUsers(): Promise<AxiosResponse<IUser[]>> {
@@ -18,8 +19,12 @@ export default class UserService {
   }
 
   static updateRequestStatus(
-    data: IUpdReqStatus,
+    data: UpdReqStatus,
   ): Promise<AxiosResponse<string>> {
     return $api.post<string>('users/updReqStatus', data);
+  }
+
+  static removeUserTeam(data: RemoveUserTeam): Promise<AxiosResponse<string>> {
+    return $api.post<string>('users/removeUserTeam', data);
   }
 }

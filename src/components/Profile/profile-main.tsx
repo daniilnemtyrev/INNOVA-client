@@ -12,7 +12,6 @@ const ProfileGrid = styled.section`
   grid-template-columns: 230px 600px;
   grid-template-rows: 250px 100px;
   width: 100%;
-  height: calc(100vh - 120px);
   grid-column: 2/3;
   grid-row: 2/3;
   background: transparent;

@@ -1,6 +1,8 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useStores } from '../../../hooks/useStore';
 import { colors } from '../../../styles/colors/colors';
 
 const Container = styled.section`
@@ -17,6 +19,20 @@ const Container = styled.section`
 const PanelItem = styled.div`
   display: flex;
   margin-bottom: 8px;
+  position: relative;
+`;
+
+const Counter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -9px;
+  right: -12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: ${colors.blue[6]};
 `;
 
 const Text = styled.p`
@@ -28,7 +44,9 @@ const Text = styled.p`
   color: ${colors.white[0]};
 `;
 
-export const UserPanel = () => {
+export const UserPanel = observer(() => {
+  const rootStore = useStores();
+  const { userStore, invitesStore } = rootStore;
   return (
     <Container>
       <Link to="/profile">
@@ -48,6 +66,17 @@ export const UserPanel = () => {
           <Text>Моя команда</Text>
         </PanelItem>
       </Link>
+
+      <Link to="/notifications">
+        <PanelItem>
+          <Text>Уведмоления</Text>
+          {userStore.user.invites.length > 0 && (
+            <Counter>
+              <Text>{userStore.user.invites.length}</Text>
+            </Counter>
+          )}
+        </PanelItem>
+      </Link>
     </Container>
   );
-};
+});

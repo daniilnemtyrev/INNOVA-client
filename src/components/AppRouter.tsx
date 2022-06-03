@@ -16,6 +16,7 @@ import Regist from '../pages/Regist';
 import { Tracks } from '../pages/Tracks';
 import Team from '../pages/Team';
 import { Users } from '../pages/Users';
+import Notifications from '../pages/Notifications';
 
 // eslint-disable-next-line react/function-component-definition
 const AppRouter: FC = () => {
@@ -49,6 +50,7 @@ const AppRouter: FC = () => {
           <Route element={<CreateTeam />} path="/profile/createTeam" />
           <Route element={<MyProjects />} path="/profile/myProject" />
           <Route element={<Users />} path="/users" />
+          <Route element={<Notifications />} path="/notifications" />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       )}
@@ -72,6 +74,7 @@ const AppRouter: FC = () => {
           <Route element={<CreateTeam />} path="/profile/createTeam" />
           <Route element={<Team />} path="/profile/team" />
           <Route element={<Users />} path="/users" />
+          <Route element={<Notifications />} path="/notifications" />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       )}

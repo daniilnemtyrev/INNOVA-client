@@ -30,9 +30,17 @@ export const UsersList = observer(() => {
     <Content>
       {!userStore.confirmedUsers && <NoUsers>Нет доступных участников</NoUsers>}
       {userStore.confirmedUsers &&
-        userStore.confirmedUsers.map(user => (
-          <UserCard name={user.name} surname={user.surname} />
-        ))}
+        userStore.confirmedUsers.map(
+          user =>
+            user && (
+              <UserCard
+                id={user.id}
+                key={user.id + user.name}
+                name={user.name}
+                surname={user.surname}
+              />
+            ),
+        )}
     </Content>
   );
 });

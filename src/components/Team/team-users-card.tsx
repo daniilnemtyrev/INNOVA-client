@@ -21,7 +21,7 @@ const Content = styled.section`
 const UsersList = styled.section`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
   flex-grow: 2;
 `;
 
@@ -42,7 +42,6 @@ export const TeamUsersCard = observer(() => {
   const rootStore = useStores();
   const { teamStore, userStore } = rootStore;
   const { users } = teamStore.team;
-  console.log(users);
 
   return (
     <Content>
@@ -55,6 +54,7 @@ export const TeamUsersCard = observer(() => {
               name={user.name}
               surname={user.surname}
               currentUserId={userStore.user.id}
+              isCreator={userStore.user.id === teamStore.team.creatorId}
             />
           ))}
       </UsersList>

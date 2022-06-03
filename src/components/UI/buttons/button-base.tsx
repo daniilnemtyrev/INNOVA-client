@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
 
@@ -10,12 +11,18 @@ interface Props {
   onClick?: (event: any) => void;
   children?: string | JSX.Element;
   disabled?: boolean;
+  styles?: object;
+  cancelType?: boolean;
 }
 
-const Container = styled.button<{ disabled?: boolean }>`
+const Container = styled.button<{ disabled?: boolean; cancelType?: boolean }>`
   height: 34px;
   background-color: ${props =>
-    props.disabled ? colors.grey[5] : colors.blue[5]};
+    props.disabled
+      ? colors.grey[5]
+      : props.cancelType
+      ? colors.red[1]
+      : colors.blue[5]};
   border-radius: 2px;
   box-shadow: none;
   border: none;
@@ -27,7 +34,11 @@ const Container = styled.button<{ disabled?: boolean }>`
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   &:hover {
     background-color: ${props =>
-      props.disabled ? colors.grey[5] : colors.blue[6]};
+      props.disabled
+        ? colors.grey[5]
+        : props.cancelType
+        ? colors.red[0]
+        : colors.blue[6]};
   }
 `;
 
@@ -36,10 +47,19 @@ export const Button = ({
   onClick,
   children,
   disabled,
+  styles,
+  cancelType,
   ...rest
 }: Props) => {
   return (
-    <Container type={type} onClick={onClick} disabled={disabled} {...rest}>
+    <Container
+      style={styles}
+      cancelType={cancelType}
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      {...rest}
+    >
       {children}
     </Container>
   );
