@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { EditProfileForm } from './edit-profile-form';
 import { useStores } from '../../../hooks/useStore';
 import { profileValidSchema } from '../../../shared/schemas/profile-valid-schema';
+import { Toast } from '../../Toasts/toast-emiter';
+import { ToastVariant } from '../../../enums/toast-enum';
 
 export interface EditProfileInput {
   surname: string;
@@ -41,8 +43,13 @@ export const EditProfileFormik = () => {
   const editUserAsync = async (values: EditProfileInput) => {
     try {
       await userStore.editUser(values);
+      Toast({ type: ToastVariant.SUCCESS, text: 'Данные изменены!' });
       navigate('/profile');
     } catch (e) {
+      Toast({
+        type: ToastVariant.ERROR,
+        text: 'Упс... Пожалуйста, попробуйте еще раз',
+      });
       console.log(e);
     }
   };

@@ -75,11 +75,14 @@ export default class UserStore {
 
     try {
       const response = await UserService.editUser(dataWithId);
+      console.log(5);
+      console.log(response.status);
 
       this.setUser(response.data);
       this.setProfileIsFilled(true);
     } catch (err) {
       console.log(err);
+      throw new Error(String(err));
     }
   }
 

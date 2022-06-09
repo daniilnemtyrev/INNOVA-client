@@ -1,8 +1,10 @@
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import { PageHeader } from '../components/general/ui/page-header';
 
 import { ProfileMain } from '../components/Profile/profile-main';
+
 import { Content } from '../styles/general';
 
 const Profile = () => {
