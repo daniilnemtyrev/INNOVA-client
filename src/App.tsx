@@ -9,10 +9,14 @@ import { useStores } from './hooks/useStore';
 import { ModalsContextProvider } from './context/modals-context';
 import { Layout } from './components/general/Layout';
 import 'react-toastify/dist/ReactToastify.min.css';
+import AdminPage from './pages/Admin';
 
 const App: React.FC = () => {
   const rootStore = useStores();
   const { authStore } = rootStore;
+  const { userStore } = rootStore;
+
+  const isAdmin = userStore.user.roles?.find(role => role.value === 'admin');
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -25,9 +29,13 @@ const App: React.FC = () => {
       <GlobalStyle />
       <ModalsContextProvider>
         <ToastContainer />
-        <Layout>
-          <AppRouter />
-        </Layout>
+        {authStore.IsAuth && isAdmin ? (
+          <AdminPage />
+        ) : (
+          <Layout>
+            <AppRouter />
+          </Layout>
+        )}
       </ModalsContextProvider>
     </BrowserRouter>
   );

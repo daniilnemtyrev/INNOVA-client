@@ -1,4 +1,3 @@
-import React from 'react';
 import { toast } from 'react-toastify';
 import { ToastVariant } from '../../enums/toast-enum';
 

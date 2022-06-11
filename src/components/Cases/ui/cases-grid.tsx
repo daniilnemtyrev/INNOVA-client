@@ -6,7 +6,6 @@ import { useStores } from '../../../hooks/useStore';
 import { ICase } from '../../../models/ICase';
 import { colors } from '../../../styles/colors/colors';
 import { GridLoader } from '../../Loaders/grid-loader';
-import { BackButton } from '../../UI/buttons/back-button';
 import { GridCard } from '../../general/ui/grid-card';
 
 export const Content = styled.main`

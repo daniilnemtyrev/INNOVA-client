@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { useRefresh } from 'react-admin';
 import styled from 'styled-components';
+import { API } from '../../../pages/Admin';
 import UserService from '../../../services/userService';
 import { colors } from '../../../styles/colors/colors';
 
 export const AcceptButton = ({ record }: any) => {
   const refresh = useRefresh();
+
   return (
     <Button
       onClick={() => {
-        UserService.editUser({
-          ...record,
-          request_status: 'Подтверждена',
+        fetch(`${API}/users/${record.id}`, {
+          method: 'PATCH',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ...record, request_status: 'Подтверждена' }),
         }).then(() => refresh());
       }}
     >

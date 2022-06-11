@@ -14,7 +14,7 @@ const Content = styled.section<{ sidebarVisible: boolean }>`
   grid-template-columns: ${props =>
     props.sidebarVisible ? '130px 1fr' : '0px 1fr'};
   grid-template-rows: 120px 1fr;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   background: radial-gradient(
     98.26% 251.56% at 13.33% 18.61%,

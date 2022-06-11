@@ -2,11 +2,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
 
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset' | undefined;
   onClick?: (event: any) => void;
   children?: string | JSX.Element;

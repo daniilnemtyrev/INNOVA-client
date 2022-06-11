@@ -93,7 +93,7 @@ export const Header = observer(() => {
             </NavButton>
           </Link>
 
-          <Link to="/login">
+          <Link to="/news">
             <NavButton
               id={1}
               onClick={() => otherStore.setNavCurrentId(1)}

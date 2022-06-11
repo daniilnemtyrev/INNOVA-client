@@ -1,20 +1,28 @@
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
-import crudProvider from '@fusionworks/ra-data-nest-crud';
-import { UserList } from '../components/admin/userList';
-import { RequestList } from '../components/admin/requestList';
+import crudProvider from 'ra-data-nestjsx-crud';
+import { UserList } from '../components/admin/users';
+import { RequestList } from '../components/admin/requests';
 import { TracksList, TrackCreate, TrackEdit } from '../components/admin/tracks';
-import { CasesList } from '../components/admin/cases/casesList';
-import { CaseEdit } from '../components/admin/cases/caseEdit';
-import { CaseCreate } from '../components/admin/cases/caseCreate';
+import { CasesList, CaseCreate, CaseEdit } from '../components/admin/cases';
+import { NewsCreate, NewsEdit, NewsList } from '../components/admin/news';
+import { SponsorsCreate, SponsorsEdit, SponsorsList } from '../components/admin/sponsors';
 
+export const API = 'http://localhost:4000';
 const AdminPage = () => {
-  const dataProvider = crudProvider('http://localhost:4000');
-
+  const dataProvider = crudProvider(API);
   return (
     <Admin dataProvider={dataProvider}>
-      <Resource name="users/getAll" list={UserList} />
-      <Resource name="users/getUserByQuery" list={RequestList} />
+      <Resource
+        name="users"
+        options={{ label: 'Пользователи' }}
+        list={UserList}
+      />
+      <Resource
+        name="users/requests"
+        options={{ label: 'Подтверждение заявок' }}
+        list={RequestList}
+      />
       <Resource
         name="tracks"
         options={{ label: 'Проектные треки' }}
@@ -28,6 +36,20 @@ const AdminPage = () => {
         list={CasesList}
         edit={CaseEdit}
         create={CaseCreate}
+      />
+      <Resource
+        name="news"
+        options={{ label: 'Новости' }}
+        list={NewsList}
+        create={NewsCreate}
+        edit={NewsEdit}
+      />
+      <Resource
+        name="sponsors"
+        options={{ label: 'Спонсоры' }}
+        list={SponsorsList}
+        edit={SponsorsEdit}
+        create={SponsorsCreate}
       />
     </Admin>
   );

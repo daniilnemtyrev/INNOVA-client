@@ -2,5 +2,5 @@ import React from 'react';
 import { Main } from '../../styles/general';
 
 export const HomeMain = () => {
-  return <Main>MAIN</Main>;
+  return <Main>HomeMain</Main>;
 };

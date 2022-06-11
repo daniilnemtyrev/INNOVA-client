@@ -6,16 +6,17 @@ import {
   TextField,
   EditButton,
   DeleteWithConfirmButton,
+  ListProps,
 } from 'react-admin';
 
-export const CasesList = (props: any) => {
+export const CasesList = (props: ListProps) => {
   return (
     <List {...props} title="Кейс-задачи">
       <Datagrid title="Кейс-задачи">
         <TextField source="id" />
-        <TextField source="name" />
-        <TextField source="trackId" />
-        <TextField source="description" />
+        <TextField source="name" label="Название" />
+        <TextField source="trackId" label="Проектный трек" textAlign="center" />
+        <TextField source="description" label="Описание" />
         <EditButton />
         <DeleteWithConfirmButton />
       </Datagrid>

@@ -2,14 +2,15 @@
 import React from 'react';
 import {
   Create,
+  CreateProps,
   ReferenceInput,
   SelectInput,
   SimpleForm,
   TextInput,
 } from 'react-admin';
 
-export const CaseCreate = (props: any) => (
-  <Create {...props} resource="cases/create">
+export const CaseCreate = (props: CreateProps) => (
+  <Create {...props}>
     <SimpleForm>
       <TextInput source="name" />
       <ReferenceInput source="trackId" reference="tracks">
