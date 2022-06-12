@@ -23,9 +23,13 @@ export const TaskList = observer(() => {
       projectId: userStore.user.projectId,
     });
   };
+
   useEffect(() => {
     const getTasks = async () => {
       await projectStore.getTasksByProjectId(userStore.user.projectId);
+      if (userStore.user.teamId) {
+        await teamStore.getUserTeam(userStore.user.teamId);
+      }
     };
     getTasks();
   }, []);
@@ -59,6 +63,7 @@ export const TaskList = observer(() => {
           <UsersBlock usersVisible={usersVisible}>
             {users.map(item => (
               <UserCard
+                key={item.id}
                 user={item}
                 setUserId={setUserId}
                 setUserName={setUserName}
@@ -82,7 +87,7 @@ export const TaskList = observer(() => {
       </AddContainer>
 
       {tasks.map(task => (
-        <TaskCard task={task} />
+        <TaskCard key={task.id} task={task} />
       ))}
     </Content>
   );

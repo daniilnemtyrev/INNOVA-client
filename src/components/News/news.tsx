@@ -4,25 +4,10 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import styled from 'styled-components';
 import { ToastVariant } from '../../enums/toast-enum';
 import $api from '../../http';
+import { Title } from '../../styles/general';
 import { Toast } from '../Toasts/toast-emiter';
 import { NewsItem } from './news-item';
 import { NewsItemI } from './styles';
-
-const Main = styled.main`
-  width: 100%;
-  height: calc(100vh - 120px);
-  background: transparent;
-`;
-const Title = styled.h3`
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  font-size: 1.575rem;
-  color: white;
-  span {
-    border-bottom: 3px solid #036fd5;
-  }
-`;
 
 const NewsWrapper = styled.div`
   display: flex;
@@ -33,7 +18,7 @@ const NewsWrapper = styled.div`
 `;
 
 export const News = () => {
-  const [news, setNews] = useState([]);
+  const [news, setNews] = useState<NewsItemI[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const getNews = async () => {
@@ -56,18 +41,17 @@ export const News = () => {
   }, []);
 
   return (
-    <Main>
+    <>
       <Title>
         <span>Новости</span>
       </Title>
-
       <NewsWrapper>
         {isLoading ? (
           <ClipLoader color="blue" loading={isLoading} size={100} />
         ) : (
-          news.map((el: NewsItemI) => <NewsItem key={el.id} {...el} />)
+          news.map(el => <NewsItem key={el.id} {...el} />)
         )}
       </NewsWrapper>
-    </Main>
+    </>
   );
 };

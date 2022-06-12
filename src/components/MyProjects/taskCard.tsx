@@ -61,7 +61,7 @@ export const TaskCard = ({ task }: Prop) => {
   const taskUser = task.userId === userStore.user.id;
   const user = users.find(item => item.id === task.userId);
   const deleteTask = async () => {
-    await projectStore.deleteTaskById(task.id);
+    await projectStore.deleteTaskById(task.id!);
   };
   return (
     <TaskContainer taskUser={taskUser}>

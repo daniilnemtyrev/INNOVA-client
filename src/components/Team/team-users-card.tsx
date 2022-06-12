@@ -50,6 +50,7 @@ export const TeamUsersCard = observer(() => {
         {users &&
           users.map(user => (
             <UserCard
+              key={user.id}
               id={user.id}
               name={user.name}
               surname={user.surname}

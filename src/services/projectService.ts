@@ -53,7 +53,7 @@ export default class ProjectService {
     return $api.post<Task>(`tasks/createTask`, data);
   }
 
-  static async setProject(data: any) {
+  static async setProject(data: IProject) {
     return $api.post(`projects/update`, data);
   }
 }

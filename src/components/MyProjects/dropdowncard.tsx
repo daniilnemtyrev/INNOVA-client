@@ -1,8 +1,21 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
+import { IUserCard } from '../../stores/team-store';
 
-export const UserCard = ({ user, setUserId, setUserName, setVisible }: any) => {
+interface Props {
+  user: IUserCard;
+  setUserId: Dispatch<SetStateAction<number>>;
+  setUserName: Dispatch<SetStateAction<string>>;
+  setVisible: Dispatch<SetStateAction<boolean>>;
+}
+
+export const UserCard = ({
+  user,
+  setUserId,
+  setUserName,
+  setVisible,
+}: Props) => {
   return (
     <Card
       onClick={() => {

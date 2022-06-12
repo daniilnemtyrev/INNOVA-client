@@ -45,7 +45,6 @@ export const UserCard = ({ id, name, surname }: Props) => {
   const rootStore = useStores();
   const { userStore, invitesStore } = rootStore;
   const senderName = `${userStore.user.surname} ${userStore.user.name}`;
-  console.log(userStore.user.teamId);
 
   const sendInviteToTeam = async () => {
     await invitesStore.sendInviteToTeam(id, userStore.user.teamId, senderName);
