@@ -52,6 +52,7 @@ const initialValues: IUser = {
     name: '',
   },
   invites: [],
+  status: 'Активный',
 };
 
 export default class UserStore {

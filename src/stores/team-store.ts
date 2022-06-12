@@ -62,7 +62,6 @@ export default class TeamStore {
     };
     try {
       const response = await TeamService.getUserTeam(data);
-      console.log(response.data);
 
       runInAction(() => {
         this.setTeam(response.data);
@@ -72,19 +71,4 @@ export default class TeamStore {
     }
   }
 
-  // async editUser(data: EditProfileInput) {
-  //   const dataWithId = {
-  //     ...data,
-
-  //   };
-
-  //   try {
-  //     const response = await UserService.editUser(dataWithId);
-
-  //     this.setUser(response.data);
-
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 }

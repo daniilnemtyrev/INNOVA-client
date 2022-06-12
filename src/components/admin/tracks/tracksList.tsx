@@ -6,9 +6,10 @@ import {
   TextField,
   EditButton,
   DeleteWithConfirmButton,
+  ListProps,
 } from 'react-admin';
 
-export const TracksList = (props: any) => {
+export const TracksList = (props: ListProps) => {
   return (
     <List {...props} title="Проектные треки">
       <Datagrid title="Проектные треки">

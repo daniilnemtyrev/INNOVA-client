@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
-import { useRefresh } from 'react-admin';
+import React from 'react';
+import { useRefresh, useRecordContext } from 'react-admin';
 import styled from 'styled-components';
-import UserService from '../../../services/userService';
+import { IUser } from '../../../models/IUser';
+import { API } from '../../../pages/Admin';
 import { colors } from '../../../styles/colors/colors';
 
-export const RejectButton = ({ record }: any) => {
+export const RejectButton = () => {
   const refresh = useRefresh();
+  const record = useRecordContext<IUser>();
   return (
     <Button
-      onClick={() =>
-        UserService.editUser({ ...record, request_status: 'Отклонена' }).then(
-          () => refresh(),
-        )
-      }
+      onClick={() => {
+        fetch(`${API}/users/${record.id}`, {
+          method: 'PATCH',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ...record, request_status: 'Отклонена' }),
+        }).then(() => refresh());
+      }}
     >
-      {' '}
       Отклонить
     </Button>
   );
@@ -24,7 +30,7 @@ const Button = styled.button`
   cursor: pointer;
   height: 25px;
   width: 90px;
-  background-color: ${colors.red};
+  background-color: #e05353;
   border-radius: 4px;
   text-align: center;
   color: ${colors.white};

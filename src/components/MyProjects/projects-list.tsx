@@ -9,7 +9,7 @@ import { ListItem } from './list-item';
 
 export const Content = styled.main`
   display: flex;
-  width: 650px;
+  width: 800px;
   flex-direction: column;
   justify-content: center;
   min-height: 190px;
@@ -23,15 +23,20 @@ export const ProjectsList = observer(() => {
   const rootStore = useStores();
   const { userStore } = rootStore;
   const { projectStore } = rootStore;
-  const { myProjects } = projectStore;
+  const { myProject } = projectStore;
 
   useEffect(() => {
     const getProjects = async () => {
-      projectStore.setIsLoading(true);
-      await projectStore.getProjectsByUserId(userStore.user.id);
-      projectStore.setIsLoading(false);
+      await projectStore.getProjectsByTeamId(userStore.user.teamId);
+      if (userStore.user.teamId && !userStore.user.projectId) {
+        if (myProject) {
+          await projectStore.setProjectId({
+            projectId: myProject.id,
+            userId: userStore.user.id,
+          });
+        }
+      }
     };
-
     getProjects();
   }, []);
 
@@ -41,7 +46,7 @@ export const ProjectsList = observer(() => {
       {projectStore.isLoading ? (
         <ProjectsListLoader />
       ) : (
-        myProjects.map(project => <ListItem name={project.name} />)
+        <ListItem project={myProject} />
       )}
     </Content>
   );

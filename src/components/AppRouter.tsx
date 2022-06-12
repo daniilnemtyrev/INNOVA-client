@@ -2,7 +2,6 @@ import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useStores } from '../hooks/useStore';
-import AdminPage from '../pages/Admin';
 import { Cases } from '../pages/Cases';
 import Chat from '../pages/Chat';
 import { CreateTeam } from '../pages/CreateTeam';
@@ -17,24 +16,17 @@ import { Tracks } from '../pages/Tracks';
 import Team from '../pages/Team';
 import { Users } from '../pages/Users';
 import Notifications from '../pages/Notifications';
+import { News } from './News/news';
+import { SelectedNews } from './News/SelectedNews';
 
 // eslint-disable-next-line react/function-component-definition
 const AppRouter: FC = () => {
   const rootStore = useStores();
   const { authStore } = rootStore;
-  const { userStore } = rootStore;
-
-  const isAdmin = userStore.user.roles?.find(role => role.value === 'admin');
 
   return (
     <>
-      {authStore.IsAuth && isAdmin && (
-        <Routes>
-          <Route element={<AdminPage />} path="/admin" />
-          <Route path="*" element={<Navigate to="/admin" />} />
-        </Routes>
-      )}
-      {authStore.IsAuth && !isAdmin && (
+      {authStore.IsAuth && (
         <Routes>
           <Route element={<Chat />} path="/chat" />
           <Route element={<Home />} path="/home" />
@@ -70,6 +62,8 @@ const AppRouter: FC = () => {
           <Route element={<MyProjects />} path="/profile/myProject" />
           <Route element={<Home />} path="/home" />
           <Route element={<Login />} path="/login" />
+          <Route element={<News />} path="/news" />
+          <Route element={<SelectedNews />} path="/news/:id" />
           <Route element={<Regist />} path="/registration" />
           <Route element={<CreateTeam />} path="/profile/createTeam" />
           <Route element={<Team />} path="/profile/team" />

@@ -31,4 +31,5 @@ export interface IUser {
     name: string;
   } | null;
   invites: IInvite[];
+  status: 'Забанен' | 'Активный';
 }

@@ -38,7 +38,6 @@ export default class InvitesStore {
   }
 
   async acceptInvite(data: AcceptInvite) {
-    console.log(data);
 
     try {
       await InviteService.acceptInvite(data);

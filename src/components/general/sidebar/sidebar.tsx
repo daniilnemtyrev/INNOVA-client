@@ -10,7 +10,6 @@ import { UserPanel } from './user-panel';
 const Container = styled.article<{ visible: boolean }>`
   display: flex;
   flex-direction: column;
-  height: 100vh;
   grid-column: 1/2;
   grid-row: 1/3;
   background-color: ${colors.grey[1]};
