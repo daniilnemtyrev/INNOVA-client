@@ -20,3 +20,14 @@ export const Main = styled.main`
   height: 100%;
   background: transparent;
 `;
+
+export const Title = styled.h3`
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.575rem;
+  color: white;
+  span {
+    border-bottom: 3px solid #036fd5;
+  }
+`;
