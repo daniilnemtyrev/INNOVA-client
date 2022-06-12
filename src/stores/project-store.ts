@@ -143,6 +143,7 @@ export default class ProjectStore {
   async deleteTaskById(id: number | null | undefined) {
     try {
       await ProjectService.deleteTask(id);
+      await this.getTasksByProjectId(this.rootStore.userStore.user.projectId);
     } catch (err) {
       console.log(err);
     }
@@ -151,6 +152,7 @@ export default class ProjectStore {
   async createTask(data: Task) {
     try {
       await ProjectService.createTask(data);
+      await this.getTasksByProjectId(this.rootStore.userStore.user.projectId);
     } catch (err) {
       console.log(err);
     }
