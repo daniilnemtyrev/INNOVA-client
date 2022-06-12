@@ -9,8 +9,8 @@ const ProfileGrid = styled.section`
   display: grid;
   padding-top: 30px;
   padding-left: 50px;
-  grid-template-columns: 230px 600px;
-  grid-template-rows: 250px 100px;
+  grid-template-columns: 220px 600px;
+  grid-template-rows: 200px 100px;
   width: 100%;
   grid-column: 2/3;
   grid-row: 2/3;
