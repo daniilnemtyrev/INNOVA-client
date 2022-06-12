@@ -18,15 +18,27 @@ import { Users } from '../pages/Users';
 import Notifications from '../pages/Notifications';
 import { News } from './News/news';
 import { SelectedNews } from './News/SelectedNews';
+import { Curator } from '../pages/Curator';
 
 // eslint-disable-next-line react/function-component-definition
 const AppRouter: FC = () => {
   const rootStore = useStores();
   const { authStore } = rootStore;
+  const { userStore } = rootStore;
+
+  const isCurator = userStore.user.roles?.find(
+    role => role.value === 'curator',
+  );
 
   return (
     <>
-      {authStore.IsAuth && (
+      {authStore.IsAuth && isCurator && (
+        <Routes>
+          <Route element={<Curator />} path="/curator" />
+          <Route path="*" element={<Navigate to="/curator" />} />
+        </Routes>
+      )}
+      {authStore.IsAuth && !isCurator && (
         <Routes>
           <Route element={<Chat />} path="/chat" />
           <Route element={<Home />} path="/home" />
