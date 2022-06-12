@@ -1,3 +1,4 @@
+import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -50,6 +51,8 @@ const ButtonsGroup = styled.div`
 export const ProfileInfoCard = observer(() => {
   const rootStore = useStores();
   const { userStore, teamStore } = rootStore;
+  console.log(toJS(userStore.user));
+
   const fioStr = `${userStore.user.surname}  ${userStore.user.name}  ${userStore.user.patronymic}`;
 
   const updateRequestStatus = async () => {

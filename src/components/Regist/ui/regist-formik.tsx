@@ -37,9 +37,7 @@ export const RegistFormik = () => {
       validateOnChange
       validationSchema={registValidSchema}
       onSubmit={values => {
-        console.log(values);
-
-        //authStore.registration(values);
+        authStore.registration(values);
       }}
       component={formikProps => <RegistForm {...formikProps} />}
     />

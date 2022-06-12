@@ -109,12 +109,13 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
         sitekey="6LcN6WMgAAAAACeSrY5MJkDwTxtq1QSPjvqYIn9p"
         onChange={(token: string | null) => onChange(token)}
         onExpired={() => onChange(null)}
+        style={{ marginBottom: 20 }}
       />
 
       <ButtonsGroup>
         <Button
           type="submit"
-          disabled={!isValid || !captcha}
+          disabled={!isValid}
           onClick={() => {
             handleSubmit();
           }}

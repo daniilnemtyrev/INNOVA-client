@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
 import { useStores } from '../../hooks/useStore';
@@ -19,7 +20,7 @@ const Text = styled.span`
   margin-bottom: 5px;
 `;
 
-export const ProfileOtherCard = () => {
+export const ProfileOtherCard = observer(() => {
   const rootStore = useStores();
   const { userStore } = rootStore;
   const { user } = userStore;
@@ -34,4 +35,4 @@ export const ProfileOtherCard = () => {
       <Text>{`Номер телефона: ${user.phone ? user.phone : '-'}`}</Text>
     </Content>
   );
-};
+});

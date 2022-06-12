@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 import axios from 'axios';
 import { IUser } from '../models/IUser';
 import AuthService from '../services/authService';
@@ -34,11 +34,9 @@ export default class AuthStore {
   async login(email: string, password: string) {
     try {
       const response = await AuthService.login(email, password);
-      console.log(response.data.user);
       localStorage.setItem('token', response.data.acessToken);
       this.setAuth(true);
       this.setSend(true);
-      console.log(response.data.user);
 
       this.rootStore.userStore.setUser(response.data.user);
     } catch (err) {
@@ -53,9 +51,10 @@ export default class AuthStore {
       const response = await AuthService.registration(data);
       localStorage.setItem('token', response.data.acessToken);
       this.setAuth(true);
+
       this.rootStore.userStore.setUser(response.data.user);
     } catch (err) {
-      console.log(err);
+      console.log(String(err));
     }
   }
 
@@ -79,9 +78,14 @@ export default class AuthStore {
           withCredentials: true,
         },
       );
-      localStorage.setItem('token', response.data.acessToken);
-      this.setAuth(true);
-      this.rootStore.userStore.setUser(response.data.user);
+      runInAction(() => {
+        localStorage.setItem('token', response.data.acessToken);
+        this.setAuth(true);
+        this.rootStore.userStore.setUser(response.data.user);
+        if (response.data.user.place_of_work_stud) {
+          this.rootStore.userStore.setProfileIsFilled(true);
+        }
+      });
     } catch (error) {
       console.log(error);
     }

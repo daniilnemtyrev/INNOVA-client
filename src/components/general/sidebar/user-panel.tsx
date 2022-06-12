@@ -70,7 +70,7 @@ export const UserPanel = observer(() => {
       <Link to="/notifications">
         <PanelItem>
           <Text>Уведмоления</Text>
-          {userStore.user.invites.length > 0 && (
+          {userStore.user.invites && (
             <Counter>
               <Text>{userStore.user.invites.length}</Text>
             </Counter>
