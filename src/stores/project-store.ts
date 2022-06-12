@@ -120,6 +120,14 @@ export default class ProjectStore {
     }
   }
 
+  async setProjectId(data: any) {
+    try {
+      await ProjectService.setProject(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async getTasksByProjectId(projectId: number | null) {
     try {
       const response = await ProjectService.getTasksByProjectId(projectId);

@@ -30,8 +30,8 @@ export const ProjectsList = observer(() => {
       await projectStore.getProjectsByTeamId(userStore.user.teamId);
       if (userStore.user.teamId && !userStore.user.projectId) {
         if (myProject) {
-          projectStore.setProject({
-            ...myProject,
+          await projectStore.setProjectId({
+            projectId: myProject.id,
             userId: userStore.user.id,
           });
         }
