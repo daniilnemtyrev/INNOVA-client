@@ -12,39 +12,44 @@ interface Props {
 
 const Container = styled.button`
   position: relative;
-  width: 200px;
-  height: 70px;
+  width: 500px;
+  border-radius: 10px;
+  height: 200px;
   border: none;
+  align-items: center;
+  justifu-content: center;
   box-shadow: none;
   margin-bottom: 20px;
-  text-align: center;
   background-color: ${colors.grey[2]};
   &:hover {
-    background-color: ${colors.blue[0]};
+    background-color: #3a3b3c;
   }
 `;
 
 const Description = styled.div<{ desVisible: boolean }>`
-  position: absolute;
-  top: 60px;
-  display: flex;
+  padding: 10px;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 70px;
   text-align: center;
   z-index: 10;
-  background-color: ${colors.grey[4]};
-  visibility: ${props => (props.desVisible ? 'visible' : 'hidden')};
+  display: ${props => (props.desVisible ? 'flex' : 'none')};
   opacity: ${props => (props.desVisible ? 0.93 : 0)};
   transition: all 0.2s ease-in-out;
 `;
 
 const Text = styled.p`
   color: ${colors.white[0]};
-  font-size: 13px;
+  font-size: 20px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
+`;
+const TextContainer = styled.div<{ desVisible: boolean }>`
+  display: ${props => (props.desVisible ? 'none' : 'flex')};
+  display: {focus? 'none'}
+  width: 90%;
+  height: 90%;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const GridCard = ({ name, description, onClick, to }: Props) => {
@@ -56,7 +61,9 @@ export const GridCard = ({ name, description, onClick, to }: Props) => {
         onMouseEnter={() => setDesVisible(true)}
         onMouseLeave={() => setDesVisible(false)}
       >
-        <Text>{name}</Text>
+        <TextContainer desVisible={desVisible}>
+          <Text>{name}</Text>
+        </TextContainer>
         <Description desVisible={desVisible}>
           <Text>{description}</Text>
         </Description>
