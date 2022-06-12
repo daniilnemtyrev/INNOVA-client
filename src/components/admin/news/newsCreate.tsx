@@ -11,13 +11,12 @@ import {
   SimpleForm,
   TextInput,
 } from 'react-admin';
-import { FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 export const NewsCreate = (props: CreateProps) => {
   const navigate = useNavigate();
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = (data: any) => {
     const formData = new FormData();
     formData.append('title', data.title);
     formData.append('text', data.text);

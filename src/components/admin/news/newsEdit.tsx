@@ -13,7 +13,6 @@ import {
   useRecordContext,
   WrapperField,
 } from 'react-admin';
-import { FieldValues } from 'react-hook-form';
 import { RichTextInput, RichTextInputToolbar } from 'ra-input-rich-text';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,7 +31,7 @@ const Image = () => {
 export const NewsEdit = (props: EditProps) => {
   const navigate = useNavigate();
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = (data: any) => {
     const formData = new FormData();
     formData.append('title', data.title);
     formData.append('text', data.text);

@@ -9,17 +9,15 @@ import {
   SimpleForm,
   TextInput,
 } from 'react-admin';
-import { FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 export const SponsorsCreate = (props: CreateProps) => {
   const navigate = useNavigate();
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = (data: any) => {
     const formData = new FormData();
     formData.append('link', data.link);
     formData.append('file', data.file.rawFile);
-
     fetch(`http://localhost:4000/sponsors`, {
       method: 'POST',
       body: formData,
@@ -36,7 +34,12 @@ export const SponsorsCreate = (props: CreateProps) => {
           source="link"
           label="Ссылка"
         />
-        <ImageInput source="file" label="Логотип" accept="image/*">
+        <ImageInput
+          validate={[required('Обязательное поле')]}
+          source="file"
+          label="Логотип"
+          accept="image/*"
+        >
           <ImageField source="src" title="name" />
         </ImageInput>
       </SimpleForm>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { News } from '../News/news';
-import { Sponsors } from '../Sponsors';
+import { Sponsors } from './Sponsors';
 import { Organizator } from './Organizator';
 
 const Main = styled.main`

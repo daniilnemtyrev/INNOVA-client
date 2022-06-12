@@ -11,7 +11,6 @@ import {
   useRecordContext,
   WrapperField,
 } from 'react-admin';
-import { FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 const Image = () => {
@@ -29,7 +28,7 @@ const Image = () => {
 export const SponsorsEdit = (props: EditProps) => {
   const navigate = useNavigate();
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = (data: any) => {
     const formData = new FormData();
     formData.append('link', data.link);
     if (data.file) formData.append('file', data.file.rawFile);
