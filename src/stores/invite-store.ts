@@ -38,7 +38,6 @@ export default class InvitesStore {
   }
 
   async acceptInvite(data: AcceptInvite) {
-
     try {
       await InviteService.acceptInvite(data);
       runInAction(() => {

@@ -1,6 +1,6 @@
 export interface Task {
-    id?: number;
-    userId?: number;
-    projectId?: number;
-    description?: string;
+  id?: number | null;
+  userId: number | null;
+  projectId: number | null;
+  description?: string;
 }

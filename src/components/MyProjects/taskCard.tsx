@@ -58,7 +58,6 @@ export const TaskCard = ({ task }: Prop) => {
   const rootStore = useStores();
   const { projectStore, teamStore, userStore } = rootStore;
   const { users } = teamStore.team;
-  const { tasks } = projectStore;
   const taskUser = task.userId === userStore.user.id;
   const user = users.find(item => item.id === task.userId);
   const deleteTask = async () => {

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { List, Datagrid, TextField, ListProps } from 'react-admin';
 import { AcceptButton } from '../../UI/buttons/accept-button';

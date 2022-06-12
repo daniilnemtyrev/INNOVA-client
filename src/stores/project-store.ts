@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { makeAutoObservable, runInAction } from 'mobx';
 import { ICase } from '../models/ICase';
 import { IProject } from '../models/IProject';
@@ -119,7 +120,7 @@ export default class ProjectStore {
     }
   }
 
-  async setProjectId(data) {
+  async setProjectId(data: any) {
     try {
       await ProjectService.setProject(data);
     } catch (err) {
@@ -139,7 +140,7 @@ export default class ProjectStore {
     }
   }
 
-  async deleteTaskById(id: number | null) {
+  async deleteTaskById(id: number | null | undefined) {
     try {
       await ProjectService.deleteTask(id);
     } catch (err) {

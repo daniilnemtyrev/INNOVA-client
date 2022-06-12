@@ -45,15 +45,15 @@ export default class ProjectService {
     return $api.get(`tasks/${data}`);
   }
 
-  static async deleteTask(data: number | null){
+  static async deleteTask(data: number | null | undefined) {
     return $api.delete(`tasks/${data}`);
   }
 
-  static async createTask(data: Task){
+  static async createTask(data: Task) {
     return $api.post<Task>(`tasks/createTask`, data);
   }
 
-  static async setProject(data) {
+  static async setProject(data: any) {
     return $api.post(`projects/update`, data);
   }
 }

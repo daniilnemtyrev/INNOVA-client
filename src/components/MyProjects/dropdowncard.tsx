@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import styled from 'styled-components';
 import React from 'react';
 
-export const UserCard = ({ user, setUserId, setUserName, setVisible }) => {
+export const UserCard = ({ user, setUserId, setUserName, setVisible }: any) => {
   return (
     <Card
       onClick={() => {
