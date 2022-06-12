@@ -1,3 +1,4 @@
+/* eslint-disable spaced-comment */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unstable-nested-components */
 
@@ -36,7 +37,9 @@ export const RegistFormik = () => {
       validateOnChange
       validationSchema={registValidSchema}
       onSubmit={values => {
-        authStore.registration(values);
+        console.log(values);
+
+        //authStore.registration(values);
       }}
       component={formikProps => <RegistForm {...formikProps} />}
     />

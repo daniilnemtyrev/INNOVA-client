@@ -1,19 +1,16 @@
 /* eslint-disable no-param-reassign */
 import { FormikProps } from 'formik';
-import { observer } from 'mobx-react-lite';
 import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { moveOptions } from '../../UI/select/move-options';
-
 import { FormikInput } from '../../UI/inputs/formik-input';
 
 import 'react-calendar/dist/Calendar.css';
 import { CalendarIcon } from '../../../icons/calendar-icon';
 import { EditProfileInput } from './edit-profile-formik';
-import { BackButton } from '../../UI/buttons/back-button';
 import { Button } from '../../UI/buttons/button-base';
 import { SelectBase } from '../../UI/select/select-basic';
 
@@ -91,7 +88,6 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = ({
         handleChange={handleChange('surname')}
         handleBlur={handleBlur}
       />
-
       <FormikInput
         value={values.name}
         name="name"
@@ -102,7 +98,6 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = ({
         handleChange={handleChange('name')}
         handleBlur={handleBlur}
       />
-
       <FormikInput
         value={values.patronymic}
         name="patronymic"
@@ -113,7 +108,6 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = ({
         handleChange={handleChange('patronymic')}
         handleBlur={handleBlur}
       />
-
       <Row>
         <FormikInput
           value={values.birthdate}
@@ -138,7 +132,6 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = ({
           />
         )}
       </Row>
-
       <FormikInput
         value={values.place_of_work_stud}
         name="place_of_work_stud"
@@ -149,7 +142,6 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = ({
         handleChange={handleChange('place_of_work_stud')}
         handleBlur={handleBlur}
       />
-
       <FormikInput
         value={values.post_status}
         name="post_status"
@@ -160,7 +152,6 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = ({
         handleChange={handleChange('post_status')}
         handleBlur={handleBlur}
       />
-
       <SelectBase
         value={selectedMoveTo}
         name="move_to"
@@ -172,7 +163,6 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = ({
         placeholder={values.move_to ? values.move_to : 'Способ приезда'}
         options={moveOptions}
       />
-
       <SelectBase
         value={selectedMoveFrom}
         name="move_from"
@@ -184,7 +174,6 @@ export const EditProfileForm: FC<FormikProps<EditProfileInput>> = ({
         options={moveOptions}
         placeholder={values.move_from ? values.move_from : 'Способ отъезда'}
       />
-
       <FormikInput
         value={values.phone}
         name="phone"

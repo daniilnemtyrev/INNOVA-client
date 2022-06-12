@@ -1,5 +1,6 @@
 import { FormikProps } from 'formik';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import styled from 'styled-components';
 import { colors } from '../../../styles/colors/colors';
 import { Button } from '../../UI/buttons/button-base';
@@ -31,6 +32,11 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
   isValid,
   handleSubmit,
 }) => {
+  const [captcha, setCaptcha] = useState('');
+  function onChange(value: any) {
+    setCaptcha(value);
+  }
+
   return (
     <Content>
       <FormikInput
@@ -99,10 +105,16 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
         handleBlur={handleBlur}
       />
 
+      <ReCAPTCHA
+        sitekey="6LcN6WMgAAAAACeSrY5MJkDwTxtq1QSPjvqYIn9p"
+        onChange={(token: string | null) => onChange(token)}
+        onExpired={() => onChange(null)}
+      />
+
       <ButtonsGroup>
         <Button
           type="submit"
-          disabled={!isValid}
+          disabled={!isValid || !captcha}
           onClick={() => {
             handleSubmit();
           }}
@@ -113,6 +125,3 @@ export const RegistForm: FC<FormikProps<RegistInput>> = ({
     </Content>
   );
 };
-function useStore(rootStore: any) {
-  throw new Error('Function not implemented.');
-}
