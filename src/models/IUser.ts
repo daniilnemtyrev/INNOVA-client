@@ -2,6 +2,7 @@ import { IInvite } from './IInvite';
 
 export interface IUser {
   id: number | null;
+  imagePath: string;
   email?: string;
   surname: string;
   name: string;

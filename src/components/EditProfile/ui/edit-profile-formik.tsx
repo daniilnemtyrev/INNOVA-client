@@ -4,6 +4,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 import { EditProfileForm } from './edit-profile-form';
 import { useStores } from '../../../hooks/useStore';
 import { profileValidSchema } from '../../../shared/schemas/profile-valid-schema';
@@ -23,7 +24,7 @@ export interface EditProfileInput {
   move_from: string;
 }
 
-export const EditProfileFormik = () => {
+export const EditProfileFormik = observer(() => {
   const rootStore = useStores();
   const navigate = useNavigate();
   const { userStore } = rootStore;
@@ -48,7 +49,7 @@ export const EditProfileFormik = () => {
     } catch (e) {
       Toast({
         type: ToastVariant.ERROR,
-        text: 'Упс... Пожалуйста, попробуйте еще раз',
+        text: 'Что-то пошло не так... Пожалуйста, попробуйте еще раз',
       });
       console.log(e);
     }
@@ -66,4 +67,4 @@ export const EditProfileFormik = () => {
       component={formikProps => <EditProfileForm {...formikProps} />}
     />
   );
-};
+});

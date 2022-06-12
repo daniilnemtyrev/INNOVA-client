@@ -15,8 +15,21 @@ export type RemoveUserTeam = {
   userId?: number | null;
 };
 
+export type UpdateUserInfo = {
+  surname: '';
+  name: '';
+  patronymic: '';
+  post_status: '';
+  place_of_work_stud: '';
+  birthdate: '';
+  phone: '';
+  move_to: '';
+  move_from: '';
+};
+
 const initialValues: IUser = {
   id: null,
+  imagePath: '',
   email: '',
   password: '',
   surname: '',
@@ -59,6 +72,21 @@ export default class UserStore {
     this.user = user;
   }
 
+  updateInfo(data: UpdateUserInfo) {
+    this.user = {
+      ...this.user,
+      surname: data.surname,
+      name: data.name,
+      patronymic: data.patronymic,
+      birthdate: data.birthdate,
+      phone: data.phone,
+      move_to: data.move_to,
+      move_from: data.move_from,
+      post_status: data.post_status,
+      place_of_work_stud: data.place_of_work_stud,
+    };
+  }
+
   setConfirmedUsers(users: IUser[]) {
     this.confirmedUsers = users;
   }
@@ -75,14 +103,25 @@ export default class UserStore {
 
     try {
       const response = await UserService.editUser(dataWithId);
-      console.log(5);
-      console.log(response.status);
 
-      this.setUser(response.data);
+      this.updateInfo(response.data);
       this.setProfileIsFilled(true);
     } catch (err) {
       console.log(err);
       throw new Error(String(err));
+    }
+  }
+
+  async setImage(data: FormData) {
+    try {
+      const response = await UserService.setImage(data);
+      console.log(response.data);
+
+      runInAction(() => {
+        this.user.imagePath = response.data;
+      });
+    } catch (err) {
+      console.log(err);
     }
   }
 

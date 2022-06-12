@@ -69,7 +69,8 @@ export const SelectBase = ({
     }),
     placeholder: (styles: any) => ({
       ...styles,
-      padding: 0,
+      position: 'absolute',
+      color: colors.white[0],
     }),
   };
 

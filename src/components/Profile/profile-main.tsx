@@ -15,6 +15,7 @@ const ProfileGrid = styled.section`
   grid-column: 2/3;
   grid-row: 2/3;
   background: transparent;
+  justify-content: center;
 `;
 
 export const ProfileMain = () => {

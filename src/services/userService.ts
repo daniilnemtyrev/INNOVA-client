@@ -2,8 +2,11 @@ import { AxiosResponse } from 'axios';
 import { EditProfileInput } from '../components/EditProfile/ui/edit-profile-formik';
 import { IUser } from '../models/IUser';
 import $api from '../http';
-import { RemoveUserTeam, UpdReqStatus } from '../stores/user-store';
-import { IInvite } from '../models/IInvite';
+import {
+  RemoveUserTeam,
+  UpdateUserInfo,
+  UpdReqStatus,
+} from '../stores/user-store';
 
 export default class UserService {
   static fetchUsers(): Promise<AxiosResponse<IUser[]>> {
@@ -14,8 +17,14 @@ export default class UserService {
     return $api.get<IUser[]>('users/getConfirmedUsers');
   }
 
-  static editUser(data: EditProfileInput): Promise<AxiosResponse<IUser>> {
-    return $api.post<IUser>('users/editUser', data);
+  static setImage(data: FormData): Promise<AxiosResponse<string>> {
+    return $api.post<string>(`users/${data.get('id')}/setImage`, data);
+  }
+
+  static editUser(
+    data: EditProfileInput,
+  ): Promise<AxiosResponse<UpdateUserInfo>> {
+    return $api.post<UpdateUserInfo>('users/edtUser', data);
   }
 
   static updateRequestStatus(
