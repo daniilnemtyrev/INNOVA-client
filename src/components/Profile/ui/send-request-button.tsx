@@ -11,7 +11,13 @@ interface Props {
   onClick: () => void;
 }
 
-const Advice = styled.div``;
+const Advice = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  width: 50%;
+  justify-content: space-between;
+`;
 
 const Text = styled.span`
   font-size: 14px;
@@ -19,6 +25,7 @@ const Text = styled.span`
   color: ${colors.white[0]};
   font-size: 12px;
   margin-bottom: 5px;
+  flex-grow: 1;
 `;
 
 export const SendRequestButton = ({

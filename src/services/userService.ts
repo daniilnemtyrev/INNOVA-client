@@ -24,7 +24,7 @@ export default class UserService {
   static editUser(
     data: EditProfileInput,
   ): Promise<AxiosResponse<UpdateUserInfo>> {
-    return $api.post<UpdateUserInfo>('users/edtUser', data);
+    return $api.post<UpdateUserInfo>('users/editUser', data);
   }
 
   static updateRequestStatus(

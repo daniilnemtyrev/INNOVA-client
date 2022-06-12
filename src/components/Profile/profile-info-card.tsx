@@ -11,12 +11,12 @@ import { SendRequestButton } from './ui/send-request-button';
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+
   grid-column: 2/3;
   grid-row: 1/2;
   background-color: ${colors.grey[6]};
   margin-bottom: 20px;
-  padding: 0px 10px;
+  padding: 10px 10px;
 `;
 
 const NameContainer = styled.div`
@@ -36,12 +36,15 @@ const Status = styled.span`
   font-size: 14px;
   font-family: 'Montserrat', sans-serif;
   color: ${colors.white[0]};
+  margin-bottom: 10px;
 `;
 
 const ButtonsGroup = styled.div`
   display: flex;
+  flex-direction: column;
   width: 50%;
   justify-content: space-between;
+  align-items: flex-start;
 `;
 
 export const ProfileInfoCard = observer(() => {
@@ -74,20 +77,25 @@ export const ProfileInfoCard = observer(() => {
         onClick={updateRequestStatus}
       />
 
-      <ButtonsGroup>
-        {!userStore.user.team && userStore.user.teamId && (
-          <Status>Команда: {teamStore.team.name}</Status>
-        )}
+      {userStore.user.request_status === 'Подтвержден' && (
+        <ButtonsGroup>
+          {!userStore.user.team && userStore.user.teamId && (
+            <Status>Команда: {teamStore.team.name}</Status>
+          )}
 
-        {userStore.user.team && (
-          <Status>Команда: {userStore.user.team.name}</Status>
-        )}
-        {!userStore.user.teamId && (
-          <Link to="/profile/createTeam">
-            <Button>Создать команду</Button>
-          </Link>
-        )}
-      </ButtonsGroup>
+          {userStore.user.team && (
+            <Status>Команда: {userStore.user.team.name}</Status>
+          )}
+          {!userStore.user.teamId && (
+            <>
+              <Status>Без команды</Status>
+              <Link to="/profile/createTeam">
+                <Button>Создать команду</Button>
+              </Link>
+            </>
+          )}
+        </ButtonsGroup>
+      )}
     </Content>
   );
 });
