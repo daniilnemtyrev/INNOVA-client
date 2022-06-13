@@ -5,7 +5,7 @@ export default class OtherStore {
 
   navCurrentId = 0;
 
-  sidebarVisible = true;
+  sidebarVisible = false;
 
   constructor(rootStore: any) {
     makeAutoObservable(this, { rootStore: false });
