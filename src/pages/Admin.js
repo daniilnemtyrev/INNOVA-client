@@ -7,6 +7,7 @@ import { TracksList, TrackCreate, TrackEdit } from '../components/admin/tracks';
 import { CasesList, CaseCreate, CaseEdit } from '../components/admin/cases';
 import { NewsCreate, NewsEdit, NewsList } from '../components/admin/news';
 import { SponsorsCreate, SponsorsEdit, SponsorsList } from '../components/admin/sponsors';
+import { TimetableCreate, TimetableEdit, TimetableList } from '../components/admin/timetable';
 
 export const API = 'http://localhost:4000';
 const AdminPage = () => {
@@ -50,6 +51,13 @@ const AdminPage = () => {
         list={SponsorsList}
         edit={SponsorsEdit}
         create={SponsorsCreate}
+      />
+      <Resource
+        name="timetable"
+        options={{ label: 'Расписание' }}
+        list={TimetableList}
+        edit={TimetableEdit}
+        create={TimetableCreate}
       />
     </Admin>
   );

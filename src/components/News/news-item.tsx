@@ -23,6 +23,7 @@ const Image = styled.img`
 `;
 
 const Text = styled.p`
+  font-family: 'Nunito', sans-serif;
   padding-top: 0.5rem;
   padding-bottom: 0.75rem;
   text-align: center;
@@ -31,7 +32,7 @@ const Text = styled.p`
 
 export const NewsItem = ({ id, title }: NewsItemI) => {
   return (
-    <Link to={`${id}`}>
+    <Link to={`news/${id}`}>
       <Wrapper>
         <ImageWrapper>
           <Image src={`${API}/news/${id}/image`} alt="news logo" />

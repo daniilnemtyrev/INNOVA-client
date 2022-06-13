@@ -15,7 +15,14 @@ export const Organizator = () => {
       <Title>
         <span>Организатор</span>
       </Title>
-      <p style={{ textAlign: 'center', margin: '0 20px', color: 'white' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          margin: '0 20px',
+          color: 'white',
+          fontFamily: 'Nunito, sans-serif',
+        }}
+      >
         Федеральное государственное бюджетное образовательное учреждение высшего
         образования «Ижевский государственный технический университет имени М.Т.
         Калашникова»

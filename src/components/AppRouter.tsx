@@ -42,6 +42,8 @@ const AppRouter: FC = () => {
         <Routes>
           <Route element={<Chat />} path="/chat" />
           <Route element={<Home />} path="/home" />
+          <Route element={<News />} path="/home/news" />
+          <Route element={<SelectedNews />} path="/home/news/:id" />
           <Route element={<Profile />} path="/profile" />
           <Route element={<EditProfile />} path="/profile/edit" />
           <Route element={<Tracks />} path="/profile/tracks" />
@@ -74,8 +76,8 @@ const AppRouter: FC = () => {
           <Route element={<MyProjects />} path="/profile/myProject" />
           <Route element={<Home />} path="/home" />
           <Route element={<Login />} path="/login" />
-          <Route element={<News />} path="/news" />
-          <Route element={<SelectedNews />} path="/news/:id" />
+          <Route element={<News />} path="/home/news" />
+          <Route element={<SelectedNews />} path="/home/news/:id" />
           <Route element={<Regist />} path="/registration" />
           <Route element={<CreateTeam />} path="/profile/createTeam" />
           <Route element={<Team />} path="/profile/team" />

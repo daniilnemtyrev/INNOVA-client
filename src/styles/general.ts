@@ -27,6 +27,7 @@ export const Title = styled.h3`
   text-align: center;
   font-size: 1.575rem;
   color: white;
+  font-family: 'Nunito', sans-serif;
   span {
     border-bottom: 3px solid #036fd5;
   }

@@ -16,6 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
+  font-family: 'Nunito', sans-serif;
   text-align: center;
   color: white;
   font-size: 2.4rem;
@@ -30,6 +31,7 @@ const Body = styled.div`
   max-width: 1140px;
   width: 100%;
   color: white;
+  font-family: 'Nunito', sans-serif;
   a {
     color: #3490dc;
   }
