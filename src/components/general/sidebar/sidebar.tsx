@@ -22,9 +22,9 @@ const Container = styled.article<{ visible: boolean }>`
 const ShowButton = styled.button`
   position: absolute;
   top: 50vh;
-  right: -55px;
-  width: 50px;
-  height: 60px;
+  right: -45px;
+  width: 30px;
+  height: 40px;
   border: none;
   background: none;
   box-shadow: none;
@@ -37,8 +37,9 @@ export const Sidebar = observer(() => {
   return (
     <Container visible={otherStore.sidebarVisible}>
       <SidebarButton />
-      <UserPanel />
-      {!otherStore.sidebarVisible && (
+      {authStore.IsAuth && <UserPanel />}
+
+      {!otherStore.sidebarVisible && authStore.IsAuth && (
         <ShowButton onClick={() => otherStore.setSidebarVisible(true)}>
           <SidebarShow />
         </ShowButton>

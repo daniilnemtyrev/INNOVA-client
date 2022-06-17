@@ -63,26 +63,11 @@ const AppRouter: FC = () => {
 
       {!authStore.IsAuth && (
         <Routes>
-          <Route element={<Profile />} path="/profile" />
-          <Route element={<EditProfile />} path="/profile/edit" />
-
-          <Route element={<Tracks />} path="/profile/tracks" />
-          <Route element={<Cases />} path="/profile/tracks/cases" />
-          <Route
-            element={<CreateProject />}
-            path="/profile/tracks/cases/create"
-          />
-
-          <Route element={<MyProjects />} path="/profile/myProject" />
           <Route element={<Home />} path="/home" />
           <Route element={<Login />} path="/login" />
           <Route element={<News />} path="/home/news" />
           <Route element={<SelectedNews />} path="/home/news/:id" />
           <Route element={<Regist />} path="/registration" />
-          <Route element={<CreateTeam />} path="/profile/createTeam" />
-          <Route element={<Team />} path="/profile/team" />
-          <Route element={<Users />} path="/users" />
-          <Route element={<Notifications />} path="/notifications" />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       )}
