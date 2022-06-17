@@ -7,6 +7,7 @@ import {
   EditButton,
   DeleteWithConfirmButton,
   ListProps,
+  ReferenceField,
 } from 'react-admin';
 
 export const CasesList = (props: ListProps) => {
@@ -15,8 +16,23 @@ export const CasesList = (props: ListProps) => {
       <Datagrid title="Кейс-задачи">
         <TextField source="id" />
         <TextField source="name" label="Название" />
-        <TextField source="trackId" label="Проектный трек" textAlign="center" />
-        <TextField source="description" label="Описание" />
+        <ReferenceField
+          source="trackId"
+          reference="tracks"
+          label="Проектный трек"
+        >
+          <TextField source="name" />
+        </ReferenceField>
+        <TextField
+          sx={{
+            display: 'block',
+            height: 100,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+          source="description"
+          label="Описание"
+        />
         <EditButton />
         <DeleteWithConfirmButton />
       </Datagrid>

@@ -13,11 +13,11 @@ export const CaseEdit = (props: EditProps) => (
   <Edit {...props} redirect="list">
     <SimpleForm>
       <TextInput disabled source="id" />
-      <TextInput source="name" />
+      <TextInput fullWidth source="name" />
       <ReferenceInput source="trackId" reference="tracks">
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <TextInput multiline source="description" />
+      <TextInput multiline fullWidth source="description" />
     </SimpleForm>
   </Edit>
 );

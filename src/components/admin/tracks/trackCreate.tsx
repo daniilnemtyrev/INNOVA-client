@@ -10,9 +10,10 @@ import {
 } from 'react-admin';
 
 export const TrackCreate = (props: CreateProps) => (
-  <Create {...props} title="Создание проектного трека">
+  <Create {...props} title="Создание проектного трека" redirect="list">
     <SimpleForm>
       <TextInput
+        fullWidth
         source="name"
         label="Название"
         validate={[

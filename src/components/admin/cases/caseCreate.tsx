@@ -10,13 +10,13 @@ import {
 } from 'react-admin';
 
 export const CaseCreate = (props: CreateProps) => (
-  <Create {...props}>
+  <Create {...props} title="Создание кейс-задачи" redirect="list">
     <SimpleForm>
-      <TextInput source="name" />
+      <TextInput fullWidth source="name" />
       <ReferenceInput source="trackId" reference="tracks">
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <TextInput multiline source="description" />
+      <TextInput fullWidth multiline source="description" />
     </SimpleForm>
   </Create>
 );
